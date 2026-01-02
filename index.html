@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P_B QUEENS | Heritage & Global Luxury Fine Jewelry</title>
+    <!-- Added Playfair Display and Montserrat for luxury typography -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --royal-gold: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            --gold-soft: #D4AF37;
+            --white-pure: #FFFFFF;
+            --white-off: #FDFBF7;
+            /* Updated to horizontal gradient with stronger gold visibility */
+            --gold-gradient-bg: linear-gradient(90deg, #FFFFFF 0%, #FFF9E6 25%, #FFEAA7 50%, #FFF9E6 75%, #FFFFFF 100%);
+            --charcoal: #121212;
+            --glass: rgba(255, 255, 255, 0.45);
+            --glass-thick: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --shadow-lux: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --transition-smooth: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        /* Modern Reset & Base Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background:
+                radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.15), transparent 60%),
+                linear-gradient(135deg, #FFFFFF 0%, #FFF6E5 40%, #EAD8A5 100%);
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            color: var(--charcoal);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        h1,
+        h2,
+        h3,
+        .brand-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Premium Glassmorphism & Custom UI Elements */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 4px;
+        }
+
+        .gold-text {
+            background: var(--royal-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+
+            /* ✨ luxury edge definition */
+            -webkit-text-stroke: 0.4px rgba(0, 0, 0, 0.25);
+            position: relative;
+        }
+
+        .gold-text::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='1' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            pointer-events: none;
+        }
+
+        nav.scrolled .gold-text {
+            -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.35);
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.8rem 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition-smooth);
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.18);
+            /* ✅ true glass */
+            backdrop-filter: blur(28px) saturate(160%);
+            -webkit-backdrop-filter: blur(28px) saturate(160%);
+
+            padding: 1.05rem 6%;
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow:
+                0 8px 30px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.35);
+
+            transition: background 0.4s ease, backdrop-filter 0.4s ease;
+        }
+
+        nav::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg,
+                    rgba(255, 255, 255, 0.35),
+                    rgba(255, 255, 255, 0.05),
+                    rgba(255, 255, 255, 0.25));
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        nav.scrolled::before {
+            opacity: 1;
+        }
+
+        nav.scrolled .logo {
+            font-size: 1.6rem;
+            letter-spacing: 0.3rem;
+        }
+
+        nav.scrolled .nav-links a {
+            font-size: 0.68rem;
+            letter-spacing: 0.18rem;
+        }
+
+
+        .logo {
+            font-size: 2.2rem;
+            letter-spacing: 0.4rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            cursor: pointer;
+
+            position: relative;
+            z-index: 2;
+        }
+
+
+        .nav-links {
+            display: flex;
+            gap: 3.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.2rem;
+            font-weight: 500;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold-soft);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+        }
+
+
+        .hero-bg-accent {
+            position: absolute;
+            width: 60vw;
+            height: 60vw;
+            background: var(--royal-gold);
+            filter: blur(180px);
+            opacity: 0.08;
+            top: -10%;
+            right: -5%;
+            border-radius: 50%;
+            animation: float-pulse 15s infinite alternate;
+        }
+
+        @keyframes float-pulse {
+            0% {
+                transform: scale(1) translate(0, 0);
+            }
+
+            100% {
+                transform: scale(1.1) translate(-50px, 30px);
+            }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 10;
+            max-width: 800px;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: revealUp 1.2s forwards 0.5s;
+        }
+
+        @keyframes revealUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .hero-tag {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5rem;
+            color: #888;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 5.5rem;
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .hero h1 span {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .btn-luxury {
+            display: inline-block;
+            padding: 1.1rem 3.2rem;
+
+            background: linear-gradient(135deg,
+                    #B38728,
+                    #F9E27D,
+                    #D4AF37,
+                    #F3E5AB);
+
+            color: #121212;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.28rem;
+            font-size: 0.78rem;
+            font-weight: 600;
+
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+
+            box-shadow:
+                0 12px 30px rgba(212, 175, 55, 0.35),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+
+
+        .btn-luxury:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 18px 40px rgba(212, 175, 55, 0.45),
+                inset 0 1px 0 rgba(255, 255, 255, 0.7);
+        }
+
+
+        .btn-luxury::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg,
+                    transparent 30%,
+                    rgba(255, 255, 255, 0.6) 50%,
+                    transparent 70%);
+            transform: translateX(-120%);
+            transition: 0.8s ease;
+        }
+
+
+        .btn-luxury:hover::before {
+            transform: translateX(120%);
+        }
+
+
+        /* --- Categories --- */
+        .section-padding {
+            padding: 70px 4%;
+        }
+
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.3rem;
+            font-size: 0.8rem;
+        }
+
+        .horizontal-scroll-wrapper {
+            position: relative;
+            padding: 20px 0;
+            overflow: hidden;
+        }
+
+        .product-row {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            padding: 16px 3% 28px;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            scroll-snap-type: x mandatory;
+        }
+
+        .product-row::-webkit-scrollbar {
+            display: none;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .category-item {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .category-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .category-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .category-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2.5rem;
+            transition: 0.5s;
+        }
+
+        .category-overlay h3 {
+            color: white;
+            font-size: 1.8rem;
+            letter-spacing: 0.1rem;
+        }
+
+        .category-overlay span {
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 0.2rem;
+        }
+
+        /* --- Product Catalog --- */
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 50px;
+        }
+
+        .filter-btn {
+            background: none;
+            border: none;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            color: #888;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .filter-btn.active {
+            color: var(--gold-soft);
+            font-weight: 600;
+        }
+
+        .filter-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gold-soft);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            flex: 0 0 320px;
+            scroll-snap-align: start;
+            cursor: pointer;
+
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 12px;
+            overflow: hidden;
+
+            position: relative;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.04);
+
+            transition:
+                transform 0.7s cubic-bezier(0.19, 1, 0.22, 1),
+                box-shadow 0.7s cubic-bezier(0.19, 1, 0.22, 1),
+                background 0.7s ease,
+                border-color 0.7s ease;
+        }
+
+        /* FULL CARD HOVER (not image-only) */
+        .product-card:hover {
+            transform: translateY(-14px);
+
+            background: rgba(255, 255, 255, 0.92);
+            border-color: rgba(212, 175, 55, 0.35);
+
+            box-shadow:
+                0 30px 60px rgba(0, 0, 0, 0.12),
+                0 0 0 1px rgba(212, 175, 55, 0.25),
+                0 20px 40px rgba(212, 175, 55, 0.18);
+        }
+
+        /* INNER GLASS HIGHLIGHT */
+        .product-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+
+            background:
+                radial-gradient(circle at 20% 15%,
+                    rgba(255, 255, 255, 0.55),
+                    transparent 60%);
+
+            opacity: 0;
+            pointer-events: none;
+
+            transition: opacity 0.6s ease;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+
+
+        .product-img-wrapper {
+            aspect-ratio: 1 / 1;
+            /* perfect square */
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+
+        .product-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            /* keeps full jewelry visible */
+            object-position: center;
+            padding: 18px;
+            /* breathing space for luxury look */
+            transition: transform 0.8s ease;
+        }
+
+
+        .product-card:hover .product-img-wrapper img {
+            transform: scale(1.08);
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: white;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            opacity: 0;
+            transition: 0.5s;
+            pointer-events: none;
+        }
+
+        .product-card:hover .sparkle {
+            opacity: 0.8;
+            animation: sparkleRotate 2s linear infinite;
+        }
+
+        @keyframes sparkleRotate {
+            from {
+                transform: rotate(0);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .product-info {
+            padding: 1.2rem 1.4rem;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            font-size: 0.9rem;
+            letter-spacing: 0.1rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .product-price {
+            color: var(--gold-soft);
+            font-weight: 500;
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.6rem;
+            justify-content: center;
+            padding: 6px 1.2rem 1.2rem;
+        }
+
+        .btn-action {
+            flex: 1;
+            padding: 0.8rem 0;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            cursor: pointer;
+            border: 1px solid #eee;
+            background: white;
+            transition: 0.3s;
+            /* Added rounded corners for modern elegance */
+            border-radius: 6px;
+        }
+
+        .btn-action:hover {
+            background: var(--charcoal);
+            color: white;
+            border-color: var(--charcoal);
+        }
+
+        /* Updated Buy button to gold background with white text */
+        .btn-buy {
+            background: linear-gradient(135deg, #D4AF37, #F0D36D);
+            color: white;
+            border: none;
+            font-weight: 600;
+        }
+
+        .btn-buy:hover {
+            background: linear-gradient(135deg, #BF953F, #D4AF37);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* --- Modal --- */
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: white;
+            width: 100%;
+            max-width: 1000px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            animation: modalIn 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(40px);
+            }
+        }
+
+        .modal-img {
+            background: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-body {
+            padding: 4rem;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--gold-soft);
+            transform: rotate(90deg);
+        }
+
+        /* --- Contact Section (Luxury) --- */
+        .contact-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-glow {
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            background: var(--royal-gold);
+            filter: blur(160px);
+            opacity: 0.08;
+            top: -80px;
+            right: 10%;
+            pointer-events: none;
+        }
+
+        .contact-card {
+            max-width: 1000px;
+            margin: auto;
+            padding: 4rem 4.5rem;
+            text-align: center;
+            border-radius: 16px;
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        }
+
+        .contact-intro {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 2;
+            max-width: 720px;
+            margin: 0 auto 3rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem 4rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .contact-item {
+            text-align: center;
+        }
+
+        .contact-label {
+            display: block;
+            font-size: 0.65rem;
+            letter-spacing: 0.25rem;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 0.6rem;
+        }
+
+        .contact-item a,
+        .contact-item p {
+            font-size: 0.95rem;
+            color: var(--charcoal);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--gold-soft);
+        }
+
+        .contact-actions {
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .contact-card {
+                padding: 3rem 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+
+        /* --- Footer --- */
+        footer {
+            background: var(--charcoal);
+            color: white;
+            padding: 100px 6% 50px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: 4rem;
+            margin-bottom: 80px;
+        }
+
+        .footer-brand h4 {
+            font-size: 1.8rem;
+            letter-spacing: 0.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand p {
+            color: #888;
+            line-height: 2;
+            font-size: 0.85rem;
+        }
+
+        .footer-links h5 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold-soft);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #222;
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            color: #555;
+            font-size: 0.75rem;
+            letter-spacing: 0.1rem;
+        }
+
+        /* --- Toggles & Badges --- */
+        .currency-toggle {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            z-index: 1000;
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .currency-toggle span {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #888;
+        }
+
+        .currency-toggle span.active {
+            color: var(--gold-soft);
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 1024px) {
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .modal-content {
+                grid-template-columns: 1fr;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+
+            .modal-body {
+                padding: 2rem;
+            }
+        }
+
+        /* Hide scrollbar but keep scroll functionality */
+        html {
+            overflow-x: hidden;
+        }
+
+        body {
+            overflow-x: hidden;
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        /* Chrome, Edge, Safari */
+        body::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="currency-toggle" id="currencyToggle">
+        <span class="active" data-curr="INR">₹ INR</span>
+        <span data-curr="USD">$ USD</span>
+    </div>
+
+    <nav id="navbar">
+        <div class="logo brand-font gold-text">P_B QUEENS</div>
+        <ul class="nav-links">
+            <li><a href="#collections">Collections</a></li>
+            <li><a href="#heritage">Heritage</a></li>
+            <li><a href="#bespoke">Bespoke</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div style="display: flex; gap: 1.5rem; align-items: center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4H6z"></path>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <path d="M16 10a4 4 0 01-8 0"></path>
+            </svg>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg-accent"></div>
+        <div class="hero-content">
+            <p class="hero-tag">Handcrafted in Jaipur, Celebrated Globally</p>
+            <h1>Eternal <span>Heritage</span>, Modern Luxury</h1>
+            <a href="#products" class="btn-luxury">Explore Collection</a>
+        </div>
+    </section>
+
+    <!-- Categories Section with Premium Hover Effects -->
+    <section class="section-padding" id="collections">
+        <div class="section-header">
+            <p>Masterpiece Collections</p>
+            <h2>The Necklace Edit</h2>
+        </div>
+        <div class="horizontal-scroll-wrapper">
+            <div class="product-row" id="necklaceRow">
+                <!-- 10 Necklaces injected by JS -->
+            </div>
+        </div>
+
+        <div class="section-header" style="margin-top: 100px;">
+            <p>Ethereal Drops</p>
+            <h2>The Earring Edit</h2>
+        </div>
+        <div class="horizontal-scroll-wrapper">
+            <div class="product-row" id="earringRow">
+                <!-- 10 Earrings injected by JS -->
+            </div>
+        </div>
+
+        <div class="section-header" style="margin-top: 100px;">
+            <p>Signature Curations</p>
+            <h2>Bespoke Rings & Wristwear</h2>
+        </div>
+        <div class="horizontal-scroll-wrapper">
+            <div class="product-row" id="otherRow">
+                <!-- 10+ Other items injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Product Catalog with Filtering -->
+    <section class="section-padding" id="products">
+        <div class="section-header">
+            <p>Fine Jewelry</p>
+            <h2>Signature Collection</h2>
+        </div>
+
+        <div class="filter-tabs">
+            <button class="filter-btn active" data-filter="all">All Pieces</button>
+            <button class="filter-btn" data-filter="gold">Pure Gold</button>
+            <button class="filter-btn" data-filter="diamond">Diamond</button>
+            <button class="filter-btn" data-filter="bridal">Heritage Bridal</button>
+            <button class="filter-btn" data-filter="men">Men's Edit</button>
+        </div>
+
+        <div class="product-grid" id="productGrid">
+            <!-- Products injected by JS -->
+        </div>
+    </section>
+
+    <section class="section-padding glass-card" style="margin: 0 6% 100px; text-align: center;">
+        <div class="section-header" style="margin-bottom: 40px;">
+            <p>Our Promise</p>
+            <h2>Excellence Certified</h2>
+        </div>
+        <div style="display: flex; justify-content: center; gap: 5rem; flex-wrap: wrap;">
+            <div>
+                <h4 class="gold-text">BIS 916</h4>
+                <p style="font-size: 0.7rem; color: #888;">Hallmarked Gold</p>
+            </div>
+            <div>
+                <h4 class="gold-text">IGI</h4>
+                <p style="font-size: 0.7rem; color: #888;">Certified Diamonds</p>
+            </div>
+            <div>
+                <h4 class="gold-text">WORLDWIDE</h4>
+                <p style="font-size: 0.7rem; color: #888;">Secured Shipping</p>
+            </div>
+            <div>
+                <h4 class="gold-text">LIFETIME</h4>
+                <p style="font-size: 0.7rem; color: #888;">Buyback Policy</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Luxury Modals -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-img">
+                <img src="/placeholder.svg" alt="" id="modalImg" style="max-width: 70%;">
+            </div>
+            <div class="modal-body">
+                <span class="modal-close" id="closeModal">&times;</span>
+                <p id="modalCategory"
+                    style="text-transform: uppercase; letter-spacing: 0.3rem; font-size: 0.7rem; color: #888; margin-bottom: 1rem;">
+                </p>
+                <h2 id="modalTitle" style="font-size: 2.5rem; margin-bottom: 1rem;"></h2>
+                <p id="modalPrice" class="gold-text" style="font-size: 1.5rem; margin-bottom: 2rem;"></p>
+                <p id="modalDesc" style="color: #666; font-size: 0.9rem; margin-bottom: 2rem; line-height: 2;"></p>
+
+                <div style="background: #fdfdfd; padding: 1.5rem; border: 1px solid #f0f0f0; margin-bottom: 2rem;">
+                    <p
+                        style="font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 0.1rem; margin-bottom: 0.5rem;">
+                        Specifications</p>
+                    <p id="modalSpecs" style="font-size: 0.8rem;"></p>
+                </div>
+
+                <button class="btn-luxury" style="width: 100%;" id="modalBuyBtn" border-radius="40px">Secure This
+                    Piece</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Success Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content"
+            style="grid-template-columns: 1fr; max-width: 500px; padding: 4rem; text-align: center;">
+            <div
+                style="width: 80px; height: 80px; background: #f0fdf4; color: #16a34a; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; font-size: 2rem;">
+                ✓</div>
+            <h2 style="margin-bottom: 1rem;">Order Reserved</h2>
+            <p style="color: #666; font-size: 0.9rem; line-height: 1.8; margin-bottom: 2rem;">Your luxury piece has been
+                reserved. Our concierge will contact you shortly to finalize the bespoke delivery experience.</p>
+            <button class="btn-luxury" onclick="closeAllModals()">Return to Boutique</button>
+        </div>
+    </div>
+
+    <section id="contact" class="section-padding contact-section">
+        <div class="contact-glow"></div>
+
+        <div class="section-header">
+            <p>Private Concierge</p>
+            <h2>Contact Us</h2>
+        </div>
+
+        <div class="contact-card glass-card">
+            <p class="contact-intro">
+                Experience personalized assistance from our luxury concierge.
+                From bespoke creations to private viewings, we are here for you.
+            </p>
+
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <span class="contact-label">Email</span>
+                    <a href="mailto:concierge@pbqueens.com">concierge@pbqueens.com</a>
+                </div>
+
+                <div class="contact-item">
+                    <span class="contact-label">Phone</span>
+                    <a href="tel:+919999999999">+91 9XXXX XXXXX</a>
+                </div>
+
+                <div class="contact-item">
+                    <span class="contact-label">Studio</span>
+                    <p>Jaipur · Mumbai · Global Shipping</p>
+                </div>
+
+                <div class="contact-item">
+                    <span class="contact-label">Appointments</span>
+                    <p>By Private Consultation Only</p>
+                </div>
+            </div>
+
+            <div class="contact-actions">
+                <a href="mailto:concierge@pbqueens.com" class="btn-luxury">
+                    Request Private Viewing
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h4 class="brand-font gold-text">P_B QUEENS</h4>
+                <p>Preserving the art of Indian jewelry for the modern connoisseur. Every piece tells a story of
+                    royalty, heritage, and meticulous craftsmanship.</p>
+            </div>
+            <div class="footer-links">
+                <h5>Boutique</h5>
+                <ul>
+                    <li><a href="#">New Arrivals</a></li>
+                    <li><a href="#">Bestsellers</a></li>
+                    <li><a href="#">Bridal Suite</a></li>
+                    <li><a href="#">Gifting</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>The Brand</h5>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Certifications</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h5>Concierge</h5>
+                <ul>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Care Guide</a></li>
+                    <li><a href="#">Private Viewing</a></li>
+                    <li><a href="#">Track Order</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 P_B QUEENS HERITAGE LUXURY. ALL RIGHTS RESERVED.</p>
+            <div style="display: flex; gap: 2rem;">
+                <a href="#" style="color: #888; font-size: 0.7rem; text-decoration: none;">PRIVACY POLICY</a>
+                <a href="#" style="color: #888; font-size: 0.7rem; text-decoration: none;">TERMS OF SERVICE</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const products = [
+            // Necklaces (10 items)
+            { id: 1, name: "Maharani Polki Choker", category: "necklace", type: "gold", price: 845000, img: "images/necklace1.jpg", desc: "A masterpiece of 22K gold featuring uncut diamonds (Polki) and emerald drops.", specs: "Gold: 22K | Diamonds: 4.5ct" },
+            { id: 2, name: "Temple Bloom Necklace", category: "necklace", type: "gold", price: 625000, img: "images/necklace2.jpg", desc: "Hand-carved gold necklace inspired by ancient temple architecture.", specs: "Gold: 22K | Weight: 120g" },
+            { id: 3, name: "Diamond Cascade", category: "necklace", type: "diamond", price: 1250000, img: "images/necklace3.jpg", desc: "A river of brilliant-cut diamonds cascading in 18K white gold.", specs: "Diamonds: 12ct | Gold: 18K White" },
+            { id: 4, name: "Emerald Royale", category: "necklace", type: "gold", price: 980000, img: "images/necklace4.jpg", desc: "Zambian emerald beads with a centerpiece diamond pendant.", specs: "Emeralds: 45ct | Diamonds: 2.1ct" },
+            { id: 5, name: "Basra Pearl String", category: "necklace", type: "gold", price: 450000, img: "images/necklace5.jpg", desc: "Authentic Basra pearls with a vintage gold clasp.", specs: "Pearls: AAA Grade | Gold: 18K" },
+            { id: 6, name: "Ruby Radiance", category: "necklace", type: "gold", price: 720000, img: "images/necklace6.jpg", desc: "Pigeon-blood rubies set in a sun-inspired gold frame.", specs: "Rubies: 8.5ct | Gold: 22K" },
+            { id: 7, name: "Minimalist Gold Link", category: "necklace", type: "gold", price: 125000, img: "images/necklace1.jpg", desc: "Modern geometric links in solid 18K gold for daily elegance.", specs: "Gold: 18K | Length: 18in" },
+            { id: 8, name: "Sapphire Night Choker", category: "necklace", type: "diamond", price: 1100000, img: "images/necklace2.jpg", desc: "Deep blue sapphires surrounded by a halo of diamonds.", specs: "Sapphires: 15ct | Diamonds: 3.2ct" },
+            { id: 9, name: "Filigree Heritage", category: "necklace", type: "gold", price: 540000, img: "images/necklace3.jpg", desc: "Exquisite gold filigree work showcasing the mastery of Jaipur.", specs: "Gold: 22K | Weight: 85g" },
+            { id: 10, name: "Solitaire Pendant", category: "necklace", type: "diamond", price: 320000, img: "images/necklace4.jpg", desc: "A 2ct diamond solitaire on a delicate platinum chain.", specs: "Diamond: 2ct | Platinum 950" },
+
+            // Earrings (10 items)
+            { id: 11, name: "Nizam Pearl Drops", category: "earrings", type: "gold", price: 185000, img: "images/earring1.jpg", desc: "Vintage-inspired Basra pearl drops.", specs: "Gold: 18K | Pearls: Basra" },
+            { id: 12, name: "Infini Diamond Studs", category: "earrings", type: "diamond", price: 95000, img: "images/earring2.jpg", desc: "Brilliant diamonds for maximum fire.", specs: "Diamonds: 1.0ct | Gold: 18K White" },
+            { id: 13, name: "Chandbali Royale", category: "earrings", type: "gold", price: 275000, img: "images/earring3.jpg", desc: "Traditional crescent earrings with pearl seed work.", specs: "Gold: 22K | Pearls: Seed Pearls" },
+            { id: 14, name: "Emerald Halo Studs", category: "earrings", type: "diamond", price: 150000, img: "images/earring4.jpg", desc: "Emerald centerpieces with diamond halos.", specs: "Emeralds: 1.2ct | Diamonds: 0.5ct" },
+            { id: 15, name: "Gold Jhumka Classic", category: "earrings", type: "gold", price: 120000, img: "images/earring5.jpg", desc: "Intricately detailed gold jhumkas.", specs: "Gold: 22K | Weight: 25g" },
+            { id: 16, name: "Blue Sapphire Drops", category: "earrings", type: "diamond", price: 380000, img: "images/earring1.jpg", desc: "Elegant sapphire drops in white gold.", specs: "Sapphires: 3ct | Gold: 18K White" },
+            { id: 17, name: "Rose Gold Florals", category: "earrings", type: "gold", price: 85000, img: "images/earring2.jpg", desc: "Delicate rose gold flower studs.", specs: "Gold: 18K Rose | Weight: 12g" },
+            { id: 18, name: "Art Deco Diamonds", category: "earrings", type: "diamond", price: 520000, img: "images/earring3.jpg", desc: "Geometric diamond patterns in platinum.", specs: "Diamonds: 4ct | Platinum 950" },
+            { id: 19, name: "Ruby Tassel Earrings", category: "earrings", type: "gold", price: 210000, img: "images/earring4.jpg", desc: "Vibrant ruby beads in a tassel design.", specs: "Rubies: 15ct | Gold: 18K" },
+            { id: 20, name: "Modern Hoop Diamonds", category: "earrings", type: "diamond", price: 145000, img: "images/earring5.jpg", desc: "Sleek diamond-encrusted hoops.", specs: "Diamonds: 0.8ct | Gold: 18K" },
+            // Others (10+ items)
+            // Others (Luxury White Theme Images)
+            {
+                id: 21,
+                name: "Aurelia Gold Kada",
+                category: "wrist",
+                type: "gold",
+                price: 215000,
+                img: "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=800&q=90",
+                desc: "Hand-engraved gold bangle.",
+                specs: "Gold: 22K | Weight: 42g"
+            },
+            {
+                id: 22,
+                name: "Celestial Solitaire",
+                category: "rings",
+                type: "diamond",
+                price: 420000,
+                img: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=90",
+                desc: "Minimalist platinum diamond solitaire.",
+                specs: "Diamond: 1.5ct | Platinum"
+            },
+            {
+                id: 23,
+                name: "Stellar Signet Ring",
+                category: "men",
+                type: "diamond",
+                price: 125000,
+                img: "https://images.unsplash.com/photo-1622445272461-c6580cab8755?auto=format&fit=crop&w=800&q=90",
+                desc: "Black diamonds in white gold.",
+                specs: "Black Diamonds: 0.8ct"
+            },
+            {
+                id: 24,
+                name: "Milanese Mesh Bracelet",
+                category: "wrist",
+                type: "gold",
+                price: 310000,
+                img: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=90",
+                desc: "Fluid gold mesh bracelet.",
+                specs: "Gold: 18K | Diamonds: 0.3ct"
+            },
+            {
+                id: 25,
+                name: "Infinity Band",
+                category: "rings",
+                type: "diamond",
+                price: 180000,
+                img: "https://images.unsplash.com/photo-1600180758890-6b94519a8ba6?auto=format&fit=crop&w=800&q=90",
+                desc: "Continuous loop of brilliant diamonds.",
+                specs: "Diamonds: 1.2ct | Gold: 18K"
+            },
+            {
+                id: 26,
+                name: "Imperial Gold Cuff",
+                category: "wrist",
+                type: "gold",
+                price: 480000,
+                img: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=800&q=90",
+                desc: "Bold gold cuff with ruby accents.",
+                specs: "Gold: 22K | Rubies: 2ct"
+            },
+            {
+                id: 27,
+                name: "Sapphire Men's Band",
+                category: "men",
+                type: "gold",
+                price: 165000,
+                img: "https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=800&q=90",
+                desc: "Brushed gold band with a blue sapphire.",
+                specs: "Gold: 18K | Sapphire: 0.5ct"
+            },
+            {
+                id: 28,
+                name: "Diamond Tennis Bracelet",
+                category: "wrist",
+                type: "diamond",
+                price: 850000,
+                img: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=800&q=90",
+                desc: "Classic line of matched diamonds.",
+                specs: "Diamonds: 8ct | Gold: 18K White"
+            },
+            {
+                id: 29,
+                name: "Emerald Cocktail Ring",
+                category: "rings",
+                type: "diamond",
+                price: 350000,
+                img: "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=800&q=90",
+                desc: "Oversized emerald with diamond surround.",
+                specs: "Emerald: 5ct | Diamonds: 1.5ct"
+            },
+
+            {
+                id: 30,
+                name: "Vintage Gold Locket",
+                category: "rings",
+                type: "gold",
+                price: 95000,
+                img: "https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=800&q=90",
+                desc: "Classic gold locket with hand-painted enamel.",
+                specs: "Gold: 18K | Enamel Work"
+            }
+        ];
+
+        let currentCurrency = 'INR';
+        const rate = 83; // Fixed conversion for demo
+
+        function createProductCard(p, index) {
+            const price = currentCurrency === 'INR' ? `₹${p.price.toLocaleString('en-IN')}` : `$${Math.round(p.price / rate).toLocaleString()}`;
+            return `
+                <div class="product-card" style="animation: revealUp 1s forwards ${index * 0.1}s">
+                    <div class="product-img-wrapper">
+                        <div class="sparkle" style="top: 20%; left: 20%;"></div>
+                        <div class="sparkle" style="top: 40%; right: 30%;"></div>
+                        <img src="${p.img}" alt="${p.name}">
+                    </div>
+                    <div class="product-info">
+                        <h3>${p.name}</h3>
+                        <p class="product-price">${price}</p>
+                        <div class="product-actions">
+                            <button class="btn-action" onclick="openProduct(${p.id})">View</button>
+                            <button class="btn-action btn-buy" onclick="openCheckout()">Buy</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderProducts(filter = 'all') {
+            // Horizontal Rows
+            const neckRow = document.getElementById('necklaceRow');
+            const earRow = document.getElementById('earringRow');
+            const otherRow = document.getElementById('otherRow');
+
+            neckRow.innerHTML = products.filter(p => p.category === 'necklace').map((p, i) => createProductCard(p, i)).join('');
+            earRow.innerHTML = products.filter(p => p.category === 'earrings').map((p, i) => createProductCard(p, i)).join('');
+            otherRow.innerHTML = products.filter(p => !['necklace', 'earrings'].includes(p.category)).map((p, i) => createProductCard(p, i)).join('');
+
+            // Main Grid (Filterable)
+            const grid = document.getElementById('productGrid');
+            if (grid) {
+                grid.innerHTML = '';
+                const filtered = filter === 'all' ? products : products.filter(p => p.type === filter || p.category === filter);
+                filtered.forEach((p, index) => {
+                    grid.innerHTML += createProductCard(p, index);
+                });
+            }
+        }
+
+        function openProduct(id) {
+            const p = products.find(prod => prod.id === id);
+            const price = currentCurrency === 'INR' ? `₹${p.price.toLocaleString('en-IN')}` : `$${Math.round(p.price / rate).toLocaleString()}`;
+
+            document.getElementById('modalImg').src = p.img;
+            document.getElementById('modalTitle').innerText = p.name;
+            document.getElementById('modalPrice').innerText = price;
+            document.getElementById('modalDesc').innerText = p.desc;
+            document.getElementById('modalCategory').innerText = p.category;
+            document.getElementById('modalSpecs').innerText = p.specs;
+
+            document.getElementById('productModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openCheckout() {
+            document.getElementById('productModal').style.display = 'none';
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+
+        function closeAllModals() {
+            document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('closeModal').onclick = closeAllModals;
+        document.getElementById('modalBuyBtn').onclick = openCheckout;
+
+        document.getElementById('currencyToggle').onclick = (e) => {
+            if (e.target.tagName === 'SPAN') {
+                document.querySelectorAll('.currency-toggle span').forEach(s => s.classList.remove('active'));
+                e.target.classList.add('active');
+                currentCurrency = e.target.dataset.curr;
+                renderProducts(document.querySelector('.filter-btn.active').dataset.filter);
+            }
+        };
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.onclick = () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderProducts(btn.dataset.filter);
+            };
+        });
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 80) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+
+        // Initial Load
+        window.onload = () => {
+            renderProducts();
+            // Subtle parallax for hero text
+            window.addEventListener('scroll', () => {
+                const scroll = window.scrollY;
+                document.querySelector('.hero-content').style.transform = `translateY(${scroll * 0.4}px)`;
+            });
+        };
+    </script>
+</body>
+
+</html>
