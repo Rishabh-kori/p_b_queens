@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eternal Radiance Diamond Necklace | P_B QUEENS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+         :root {
+            --royal-gold: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            --gold-soft: #D4AF37;
+            --white-pure: #FFFFFF;
+            --white-off: #FDFBF7;
+            --gold-gradient-bg: linear-gradient(90deg, #FFFFFF 0%, #FFF9E6 25%, #FFEAA7 50%, #FFF9E6 75%, #FFFFFF 100%);
+            --charcoal: #121212;
+            --glass: rgba(255, 255, 255, 0.45);
+            --glass-thick: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --shadow-lux: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --transition-smooth: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.15), transparent 60%), linear-gradient(135deg, #FFFFFF 0%, #FFF6E5 40%, #EAD8A5 100%);
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: var(--charcoal);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+        
+        h1,
+        h2,
+        h3,
+        .brand-font {
+            font-family: 'Playfair Display', serif;
+        }
+        /* ===== NAVIGATION ===== */
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 95px;
+            transition: height 0.4s ease, background 0.4s ease, backdrop-filter 0.4s ease;
+            padding: 0 4%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            z-index: 1000;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 249, 230, 0.92) 50%, rgba(255, 255, 255, 0.95) 100%);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+        
+        nav.scrolled {
+            height: 70px;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(28px) saturate(160%);
+            -webkit-backdrop-filter: blur(28px) saturate(160%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+        }
+        
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            z-index: 2;
+            position: relative;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            letter-spacing: 0.35rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            white-space: nowrap;
+            background: var(--royal-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.2rem;
+            font-weight: 500;
+            transition: 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold-soft);
+            transition: 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        /* ===== BREADCRUMB ===== */
+        
+        .breadcrumb {
+            margin-top: 110px;
+            padding: 0 4%;
+            font-size: 0.75rem;
+            letter-spacing: 0.15rem;
+            color: #888;
+            text-transform: uppercase;
+        }
+        
+        .breadcrumb a {
+            color: var(--gold-soft);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--charcoal);
+        }
+        /* ===== MAIN PRODUCT SECTION ===== */
+        
+        .product-section {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            padding: 3rem 4%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        /* ===== IMAGE GALLERY ===== */
+        
+        .image-gallery {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .main-image-container {
+            position: relative;
+            aspect-ratio: 1/1;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: zoom-in;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        
+        .main-image.zoom {
+            transform: scale(1.5);
+        }
+        /* Image Badge */
+        
+        .image-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #BF953F, #F9E27D);
+            color: #121212;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            letter-spacing: 0.15rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            animation: slideInDown 0.8s ease;
+        }
+        
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Thumbnail Gallery */
+        
+        .thumbnail-gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        
+        .thumbnail {
+            aspect-ratio: 1/1;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            opacity: 0.6;
+        }
+        
+        .thumbnail:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+        
+        .thumbnail.active {
+            opacity: 1;
+            border-color: var(--gold-soft);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* ===== PRODUCT DETAILS ===== */
+        
+        .product-details {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+        
+        .product-header {
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .product-title {
+            font-size: 2.8rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        .product-title .gold {
+            background: var(--royal-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-style: italic;
+        }
+        
+        .product-subtitle {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.25rem;
+            color: #888;
+            margin-bottom: 1.5rem;
+        }
+        /* Rating & Reviews */
+        
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .stars {
+            display: flex;
+            gap: 0.25rem;
+        }
+        
+        .star {
+            color: var(--gold-soft);
+            font-size: 0.9rem;
+        }
+        
+        .review-count {
+            font-size: 0.75rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.15rem;
+        }
+        /* Price Section */
+        
+        .price-section {
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 1.5rem 0;
+            animation: fadeInUp 0.8s ease 0.3s both;
+        }
+        
+        .price-row {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .price-current {
+            font-size: 2.2rem;
+            font-weight: 600;
+            background: var(--royal-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .price-original {
+            font-size: 1.2rem;
+            color: #999;
+            text-decoration: line-through;
+        }
+        
+        .discount-badge {
+            background: linear-gradient(135deg, #d32f2f, #ff5252);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+        }
+        
+        .savings {
+            font-size: 0.75rem;
+            color: #d32f2f;
+            text-transform: uppercase;
+            letter-spacing: 0.15rem;
+        }
+        /* Description */
+        
+        .description {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: #555;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+        /* Product Specs */
+        
+        .product-specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+            padding: 1.5rem;
+            background: rgba(212, 175, 55, 0.08);
+            border-radius: 8px;
+            animation: fadeInUp 0.8s ease 0.5s both;
+        }
+        
+        .spec-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .spec-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            color: #888;
+            font-weight: 600;
+        }
+        
+        .spec-value {
+            font-size: 1rem;
+            color: var(--charcoal);
+            font-weight: 500;
+        }
+        /* Options */
+        
+        .options-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+        
+        .option-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .option-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            color: #888;
+            font-weight: 600;
+        }
+        
+        .option-values {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        
+        .option-btn {
+            padding: 0.8rem 1.2rem;
+            border: 2px solid #eee;
+            background: white;
+            color: var(--charcoal);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            border-radius: 6px;
+            font-weight: 600;
+        }
+        
+        .option-btn:hover {
+            border-color: var(--gold-soft);
+            color: var(--gold-soft);
+        }
+        
+        .option-btn.active {
+            background: linear-gradient(135deg, #D4AF37, #F0D36D);
+            border-color: var(--gold-soft);
+            color: #121212;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+        /* Quantity */
+        
+        .quantity-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .quantity-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            color: #888;
+            font-weight: 600;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            border: 1px solid #eee;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            border: none;
+            background: white;
+            color: var(--charcoal);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        
+        .quantity-btn:hover {
+            background: #f5f5f5;
+        }
+        
+        .quantity-display {
+            width: 50px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        /* Action Buttons */
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            animation: fadeInUp 0.8s ease 0.7s both;
+        }
+        
+        .btn-primary {
+            flex: 1;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #D4AF37, #F0D36D);
+            color: #121212;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.35);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.6) 50%, transparent 70%);
+            transform: translateX(-120%);
+            transition: 0.8s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(212, 175, 55, 0.45);
+        }
+        
+        .btn-primary:hover::before {
+            transform: translateX(120%);
+        }
+        
+        .btn-secondary {
+            padding: 1.2rem 2rem;
+            background: white;
+            color: var(--charcoal);
+            border: 2px solid var(--charcoal);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--charcoal);
+            color: white;
+            transform: translateY(-3px);
+        }
+        /* Additional Info */
+        
+        .additional-info {
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding-top: 2rem;
+            animation: fadeInUp 0.8s ease 0.8s both;
+        }
+        
+        .mobile-only {
+            display: none;
+        }
+        /* Mobile shows right-side version */
+        
+        @media(max-width:1024px) {
+            .mobile-only {
+                display: block;
+            }
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .info-icon {
+            color: var(--gold-soft);
+            font-size: 1.4rem;
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
+        
+        .info-content h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15rem;
+            margin-bottom: 0.3rem;
+            color: var(--charcoal);
+            font-weight: 600;
+        }
+        
+        .info-content p {
+            color: #888;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+        /* ===== FEATURED SECTION ===== */
+        
+        .featured-section {
+            padding: 4rem 4%;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            font-size: 0.75rem;
+        }
+        /* Related Products */
+        
+        .related-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+        }
+        
+        .card-image {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        
+        .product-card:hover .card-image {
+            transform: scale(1.08);
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .card-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-price {
+            color: var(--gold-soft);
+            font-weight: 600;
+            font-size: 1rem;
+        }
+        /* ===== RESPONSIVE ===== */
+        
+        @media (max-width: 1024px) {
+            .image-gallery .additional-info {
+                display: none;
+            }
+            .product-section {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .product-title {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .breadcrumb {
+                font-size: 0.7rem;
+            }
+            .product-section {
+                padding: 2rem 3%;
+            }
+            .product-title {
+                font-size: 1.8rem;
+            }
+            .product-specs {
+                grid-template-columns: 1fr;
+            }
+            .action-buttons {
+                flex-direction: column;
+            }
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+            .related-products {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            /* ===== MOBILE THUMBNAIL HORIZONTAL ===== */
+            .thumbnail-gallery {
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                overflow-x: auto;
+                padding-bottom: 5px;
+                scrollbar-width: none;
+            }
+            .thumbnail-gallery::-webkit-scrollbar {
+                display: none;
+            }
+            .thumbnail {
+                min-width: 70px;
+                height: 70px;
+                flex: 0 0 auto;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav {
+                padding: 0 3%;
+                height: 75px;
+            }
+            .logo {
+                font-size: 1.4rem;
+                letter-spacing: 0.2rem;
+            }
+            .nav-links {
+                gap: 1.5rem;
+                font-size: 0.6rem;
+            }
+            .breadcrumb {
+                margin-top: 90px;
+                font-size: 0.65rem;
+            }
+            .product-section {
+                padding: 1.5rem 3%;
+                gap: 2rem;
+            }
+            .product-title {
+                font-size: 1.4rem;
+            }
+            .price-current {
+                font-size: 1.6rem;
+            }
+            .action-buttons {
+                flex-direction: column;
+            }
+            .btn-primary,
+            .btn-secondary {
+                padding: 1rem;
+                font-size: 0.75rem;
+            }
+            .thumbnail-gallery {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .product-specs {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+            .featured-section {
+                padding: 2rem 3%;
+            }
+            .related-products {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+            .product-info h3 {
+                font-size: 0.75rem;
+            }
+            .product-price {
+                font-size: 0.85rem;
+            }
+            .product-img-wrapper {
+                border-radius: 10px;
+            }
+        }
+        /* Smooth scroll transitions */
+        
+        .scroll-appear {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        /* ===== HAMBURGER MENU ===== */
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1100;
+        }
+        
+        .hamburger span {
+            width: 26px;
+            height: 2px;
+            background: var(--charcoal);
+            transition: 0.4s ease;
+        }
+        /* Mobile Nav */
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            .nav-links {
+                position: fixed;
+                top: 95px;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 95px);
+                background: rgba(255, 255, 255, 0.96);
+                backdrop-filter: blur(30px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2.5rem;
+                transition: right 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-links a {
+                font-size: 1rem;
+                letter-spacing: 0.3rem;
+            }
+        }
+        /* Hamburger Animation */
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 6px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+        /* ===== SAME ULTRA LUXURY PRODUCT CARD (FROM INDEX) ===== */
+        
+        .product-card {
+            flex: 0 0 auto;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+        
+        .product-img-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1/1;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .product-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.8s ease;
+        }
+        
+        .product-card:hover img {
+            transform: scale(1.06);
+        }
+        
+        .product-hover {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: 0.4s ease;
+        }
+        
+        .product-card:hover .product-hover {
+            opacity: 1;
+        }
+        
+        .hover-icons {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .hover-icon {
+            width: 36px;
+            height: 36px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .discount-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: linear-gradient(135deg, #BF953F, #F9E27D, #AA771C);
+            padding: 6px 12px;
+            font-size: 10px;
+        }
+        
+        .hover-bottom {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .add-bag {
+            background: linear-gradient(135deg, #D4AF37, #F0D36D);
+            border: none;
+            padding: 10px 24px;
+            font-size: 11px;
+            letter-spacing: 2px;
+        }
+        
+        .product-info {
+            text-align: center;
+            margin-top: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="logo-wrapper">
+            <div class="logo">P_B Queens</div>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Nav Links -->
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#collections">Collections</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="#">Home</a> / <a href="#">Collections</a> / <span>Eternal Radiance Diamond Necklace</span>
+    </div>
+
+    <!-- Main Product Section -->
+    <main class="product-section">
+        <!-- Image Gallery -->
+        <div class="image-gallery">
+            <div class="main-image-container" id="mainImageContainer">
+                <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=800&fit=crop" alt="Eternal Radiance Diamond Necklace" class="main-image" id="mainImage">
+                <div class="image-badge">Signature Collection</div>
+            </div>
+
+            <!-- Thumbnail Gallery -->
+            <div class="thumbnail-gallery">
+                <div class="thumbnail active" data-image="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=800&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=800&h=800&fit=crop" alt="View 1">
+                </div>
+                <div class="thumbnail" data-image="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=800&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&h=800&fit=crop" alt="View 2">
+                </div>
+                <div class="thumbnail" data-image="https://images.unsplash.com/photo-1515377905703-c28f0d9e45e7?w=800&h=800&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1515377905703-c28f0d9e45e7?w=800&h=800&fit=crop" alt="View 3">
+                </div>
+                <div class="thumbnail" data-image="https://images.unsplash.com/photo-1599643478353-c0280ca7e980?w=800&h=800&fit=crop">
+                    <img src="https://images.unsplash.com/photo-1599643478353-c0280ca7e980?w=800&h=800&fit=crop" alt="View 4">
+                </div>
+            </div>
+
+            <!-- Additional Info -->
+            <div class="additional-info">
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-truck"></i></div>
+                    <div class="info-content">
+                        <h4>Free Luxury Shipping</h4>
+                        <p>Complimentary shipping on all orders above ₹1,000</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="info-content">
+                        <h4>Quality Assured</h4>
+                        <p>Every piece undergoes detailed quality inspection for finish and durability</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-undo"></i></div>
+                    <div class="info-content">
+                        <h4>30-Day Returns</h4>
+                        <p>Hassle-free returns within 30 days of purchase for full refund</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Details -->
+        <div class="product-details">
+            <div class="product-header">
+                <h1 class="product-title">Eternal <span class="gold">Radiance</span> Diamond Necklace</h1>
+                <p class="product-subtitle">Premium Gold Finish • High-Quality Stones • Limited Edition</p>
+
+                <!-- Rating -->
+                <div class="rating">
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                    <span class="review-count">248 Reviews</span>
+                </div>
+            </div>
+
+            <!-- Price Section -->
+            <div class="price-section">
+                <div class="price-row">
+                    <span class="price-current">₹4,850</span>
+                    <span class="price-original">₹6,200</span>
+                    <span class="discount-badge">-22%</span>
+                </div>
+                <p class="savings">Save ₹1,350 on this luxury piece</p>
+            </div>
+
+            <!-- Description -->
+            <p class="description">
+                Experience timeless elegance with our Eternal Radiance Necklace. Crafted with a premium gold-tone finish and high-quality brilliance stones, this statement piece delivers luxury-inspired beauty without compromise. Designed for modern queens who love radiant
+                style for every special moment.
+            </p>
+
+            <!-- Specs -->
+            <div class="product-specs">
+                <div class="spec-item">
+                    <span class="spec-label">Material</span>
+                    <span class="spec-value">Premium Gold-Plated Alloy</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Diamonds</span>
+                    <span class="spec-value">High-Quality Cubic Zirconia</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Length</span>
+                    <span class="spec-value">18 inches (Adjustable)</span>
+                </div>
+                <div class="spec-item">
+                    <span class="spec-label">Certification</span>
+                    <span class="spec-value">Quality Checked & Polished Finish</span>
+                </div>
+            </div>
+
+            <!-- Options -->
+            <div class="options-section">
+                <div class="option-group">
+                    <label class="option-label">Chain Style</label>
+                    <div class="option-values">
+                        <button class="option-btn active" data-option="classic">Classic</button>
+                        <button class="option-btn" data-option="tennis">Tennis</button>
+                        <button class="option-btn" data-option="box">Box</button>
+                    </div>
+                </div>
+
+                <div class="option-group">
+                    <label class="option-label">Length</label>
+                    <div class="option-values">
+                        <button class="option-btn" data-option="16">16"</button>
+                        <button class="option-btn active" data-option="18">18"</button>
+                        <button class="option-btn" data-option="20">20"</button>
+                    </div>
+                </div>
+
+                <!-- Quantity -->
+                <div class="option-group">
+                    <label class="option-label">Quantity</label>
+                    <div class="quantity-section">
+                        <div class="quantity-control">
+                            <button class="quantity-btn" id="decreaseQty">−</button>
+                            <div class="quantity-display" id="quantityDisplay">1</div>
+                            <button class="quantity-btn" id="increaseQty">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn-primary" id="addToCart">
+                    <i class="fas fa-shopping-bag"></i> Add to Cart
+                </button>
+                <button class="btn-secondary" id="wishlist">
+                    <i class="far fa-heart"></i> Wishlist
+                </button>
+            </div>
+
+            <!-- Additional Info MOBILE ONLY -->
+            <div class="additional-info mobile-only">
+
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-truck"></i></div>
+                    <div class="info-content">
+                        <h4>Free Luxury Shipping</h4>
+                        <p>Complimentary shipping on all orders above ₹1,000</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="info-content">
+                        <h4>Quality Assured</h4>
+                        <p>Every piece undergoes detailed quality inspection for finish and durability</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon"><i class="fas fa-undo"></i></div>
+                    <div class="info-content">
+                        <h4>30-Day Returns</h4>
+                        <p>Hassle-free returns within 30 days of purchase for full refund</p>
+                    </div>
+                </div>
+            </div>
+    </main>
+
+    <!-- Related Products Section -->
+    <section class="featured-section">
+        <div class="section-header">
+            <h2>You Might Also Love</h2>
+            <p>Curated from our luxury collection</p>
+        </div>
+
+        <div class="related-products" id="relatedProducts"></div>
+
+    </section>
+
+    <!-- JavaScript -->
+    <script>
+        // Navigation scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Image Gallery
+        const mainImage = document.getElementById('mainImage');
+        const mainImageContainer = document.getElementById('mainImageContainer');
+        const thumbnails = document.querySelectorAll('.thumbnail');
+
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', () => {
+                const imageUrl = thumbnail.dataset.image;
+                mainImage.src = imageUrl;
+
+                thumbnails.forEach(t => t.classList.remove('active'));
+                thumbnail.classList.add('active');
+
+                // Smooth transition animation
+                mainImage.style.animation = 'none';
+                setTimeout(() => {
+                    mainImage.style.animation = 'fadeInUp 0.6s ease';
+                }, 10);
+            });
+        });
+
+        // Zoom on click
+        mainImageContainer.addEventListener('click', function() {
+            this.classList.toggle('zoom');
+            this.style.cursor = this.classList.contains('zoom') ? 'zoom-out' : 'zoom-in';
+        });
+
+        // Option buttons
+        const optionBtns = document.querySelectorAll('.option-btn');
+        optionBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const group = this.parentElement;
+                group.querySelectorAll('.option-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Quantity controls
+        let quantity = 1;
+        const quantityDisplay = document.getElementById('quantityDisplay');
+        const increaseQty = document.getElementById('increaseQty');
+        const decreaseQty = document.getElementById('decreaseQty');
+
+        increaseQty.addEventListener('click', () => {
+            quantity++;
+            quantityDisplay.textContent = quantity;
+            quantityDisplay.style.animation = 'pulse 0.3s ease';
+        });
+
+        decreaseQty.addEventListener('click', () => {
+            if (quantity > 1) {
+                quantity--;
+                quantityDisplay.textContent = quantity;
+                quantityDisplay.style.animation = 'pulse 0.3s ease';
+            }
+        });
+
+        // Add to cart
+        const addToCartBtn = document.getElementById('addToCart');
+        addToCartBtn.addEventListener('click', function() {
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fas fa-check"></i> Added to Cart!';
+            this.style.background = 'linear-gradient(135deg, #4CAF50, #8BC34A)';
+
+            setTimeout(() => {
+                this.innerHTML = originalText;
+                this.style.background = '';
+            }, 2000);
+        });
+
+        // Wishlist toggle
+        const wishlistBtn = document.getElementById('wishlist');
+        let isWishlisted = false;
+        wishlistBtn.addEventListener('click', function() {
+            isWishlisted = !isWishlisted;
+            if (isWishlisted) {
+                this.innerHTML = '<i class="fas fa-heart"></i> Added to Wishlist';
+                this.style.background = 'linear-gradient(135deg, #D4AF37, #F0D36D)';
+                this.style.color = '#121212';
+            } else {
+                this.innerHTML = '<i class="far fa-heart"></i> Wishlist';
+                this.style.background = '';
+                this.style.color = '';
+            }
+        });
+
+        // Smooth animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('scroll-appear');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.product-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Add custom pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        /* ===== SAME CARD SYSTEM FROM INDEX ===== */
+
+        const relatedItems = [{
+            name: "Diamond Bracelet",
+            price: 2450,
+            img: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=400&h=400&fit=crop"
+        }, {
+            name: "Emerald Earrings",
+            price: 1850,
+            img: "https://images.unsplash.com/photo-1515377905703-c28f0d9e45e7?w=400&h=400&fit=crop"
+        }, {
+            name: "Pearl Ring Set",
+            price: 3200,
+            img: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&h=400&fit=crop"
+        }, {
+            name: "Sapphire Pendant",
+            price: 2950,
+            img: "https://images.unsplash.com/photo-1599643478353-c0280ca7e980?w=400&h=400&fit=crop"
+        }];
+
+        function createRelatedCard(p) {
+
+            return `
+                <div class="product-card">
+
+                <div class="product-img-wrapper">
+
+                <img src="${p.img}">
+
+                <div class="discount-tag">-20%</div>
+
+                <div class="product-hover">
+
+                <div class="hover-icons">
+                <div class="hover-icon"><i class="fa-regular fa-heart"></i></div>
+                <div class="hover-icon"><i class="fa-regular fa-eye"></i></div>
+                </div>
+
+                <div class="hover-bottom">
+                <button class="add-bag">ADD TO BAG</button>
+                </div>
+
+                </div>
+
+                </div>
+
+                <div class="product-info">
+                <h3>${p.name}</h3>
+                <p class="product-price">₹${p.price.toLocaleString('en-IN')}</p>
+                </div>
+
+                </div>
+                `;
+        }
+
+        document.getElementById("relatedProducts").innerHTML =
+            relatedItems.map(createRelatedCard).join('');
+    </script>
+</body>
