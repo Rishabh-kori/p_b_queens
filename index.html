@@ -7,11 +7,9 @@
     <title>P_B QUEENS | Heritage & Global Luxury Fine Jewelry</title>
     <!-- Added Playfair Display and Montserrat for luxury typography -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
     <style>
-        :root {
+         :root {
             --royal-gold: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
             --gold-soft: #D4AF37;
             --white-pure: #FFFFFF;
@@ -25,40 +23,37 @@
             --shadow-lux: 0 20px 40px rgba(0, 0, 0, 0.08);
             --transition-smooth: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
         }
-
         /* Modern Reset & Base Styling */
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         html {
             scroll-behavior: smooth;
         }
-
+        
         body {
-            background:
-                radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.15), transparent 60%),
-                linear-gradient(135deg, #FFFFFF 0%, #FFF6E5 40%, #EAD8A5 100%);
+            background: radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.15), transparent 60%), linear-gradient(135deg, #FFFFFF 0%, #FFF6E5 40%, #EAD8A5 100%);
             background-attachment: fixed;
             background-repeat: no-repeat;
             background-size: cover;
-
             color: var(--charcoal);
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
             line-height: 1.7;
         }
-
+        
         h1,
         h2,
         h3,
         .brand-font {
             font-family: 'Playfair Display', serif;
         }
-
         /* Premium Glassmorphism & Custom UI Elements */
+        
         .glass-card {
             background: var(--glass);
             backdrop-filter: blur(12px);
@@ -66,18 +61,17 @@
             border: 1px solid var(--glass-border);
             border-radius: 4px;
         }
-
+        
         .gold-text {
             background: var(--royal-gold);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             font-weight: 700;
-
             /* ✨ luxury edge definition */
             -webkit-text-stroke: 0.4px rgba(0, 0, 0, 0.25);
             position: relative;
         }
-
+        
         .gold-text::after {
             content: '';
             position: absolute;
@@ -87,12 +81,12 @@
             -webkit-text-fill-color: transparent;
             pointer-events: none;
         }
-
+        
         nav.scrolled .gold-text {
             -webkit-text-stroke: 0.5px rgba(0, 0, 0, 0.35);
         }
-
         /* --- Navigation --- */
+        
         nav {
             position: fixed;
             top: 0;
@@ -105,22 +99,14 @@
             justify-content: space-between;
             gap: 30px;
             /* important */
-
             z-index: 1000;
-
-            background: linear-gradient(90deg,
-                    rgba(255, 255, 255, 0.95) 0%,
-                    rgba(255, 249, 230, 0.92) 50%,
-                    rgba(255, 255, 255, 0.95) 100%);
-
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 249, 230, 0.92) 50%, rgba(255, 255, 255, 0.95) 100%);
             border-bottom: 1px solid rgba(212, 175, 55, 0.15);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-
             flex-wrap: nowrap;
             /* ⭐ MOST IMPORTANT */
         }
-
-
+        
         .nav-links {
             display: flex;
             gap: 2.5rem;
@@ -128,68 +114,55 @@
             flex-shrink: 1;
             white-space: nowrap;
         }
-
-
+        
         nav:not(.scrolled) .nav-links a {
             color: #2a2a2a;
         }
-
+        
         nav:not(.scrolled) svg {
             stroke: #2a2a2a;
         }
-
-
+        
         nav.scrolled {
             height: 70px;
             background: rgba(255, 255, 255, 0.18);
             /* ✅ true glass */
             backdrop-filter: blur(28px) saturate(160%);
             -webkit-backdrop-filter: blur(28px) saturate(160%);
-
             border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-            box-shadow:
-                0 8px 30px rgba(0, 0, 0, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.35);
-
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.35);
             transition: background 0.4s ease, backdrop-filter 0.4s ease;
         }
-
+        
         nav::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(120deg,
-                    rgba(255, 255, 255, 0.35),
-                    rgba(255, 255, 255, 0.05),
-                    rgba(255, 255, 255, 0.25));
+            background: linear-gradient(120deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.25));
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.4s ease;
         }
-
+        
         nav.scrolled::before {
             opacity: 1;
         }
-
         /* Desktop scroll animation ONLY */
+        
         @media (min-width: 769px) {
-
             nav.scrolled .logo {
                 font-size: 1.6rem;
                 letter-spacing: 0.3rem;
             }
-
             nav.scrolled .nav-logo {
                 height: 50px;
             }
-
             nav.scrolled .nav-links a {
                 font-size: 0.68rem;
                 letter-spacing: 0.18rem;
             }
-
         }
-
+        
         .logo-wrapper {
             display: flex;
             align-items: center;
@@ -200,25 +173,19 @@
             white-space: nowrap;
             flex-shrink: 0;
         }
-
-
+        
         .nav-logo {
             height: 62px;
             width: auto;
             object-fit: contain;
             transition: 0.4s ease;
-
-            filter:
-                drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
         }
-
-
+        
         .nav-logo:hover {
-            filter:
-                drop-shadow(0 6px 10px rgba(0, 0, 0, 0.2)) drop-shadow(0 0 12px rgba(212, 175, 55, 0.35));
+            filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.2)) drop-shadow(0 0 12px rgba(212, 175, 55, 0.35));
         }
-
-
+        
         .logo {
             font-size: 2rem;
             letter-spacing: 0.35rem;
@@ -226,7 +193,7 @@
             text-transform: uppercase;
             white-space: nowrap;
         }
-
+        
         .nav-links a {
             text-decoration: none;
             color: var(--charcoal);
@@ -237,7 +204,7 @@
             transition: 0.3s;
             position: relative;
         }
-
+        
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -248,12 +215,12 @@
             background: var(--gold-soft);
             transition: 0.3s;
         }
-
+        
         .nav-links a:hover::after {
             width: 100%;
         }
-
         /* --- Hero Section --- */
+        
         .hero {
             height: 100vh;
             display: flex;
@@ -263,8 +230,7 @@
             overflow: hidden;
             background: transparent;
         }
-
-
+        
         .hero-bg-accent {
             position: absolute;
             width: 60vw;
@@ -277,30 +243,27 @@
             border-radius: 50%;
             animation: float-pulse 15s infinite alternate;
         }
-
+        
         @keyframes float-pulse {
             0% {
                 transform: scale(1) translate(0, 0);
             }
-
             100% {
                 transform: scale(1.1) translate(-50px, 30px);
             }
         }
-
+        
         @keyframes revealUp {
             from {
                 opacity: 0;
                 transform: translateY(40px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
-
+        
         .hero-tag {
             font-size: 0.9rem;
             text-transform: uppercase;
@@ -308,7 +271,7 @@
             color: #888;
             margin-bottom: 1.5rem;
         }
-
+        
         .hero h1 {
             font-size: 5.5rem;
             font-weight: 300;
@@ -316,99 +279,78 @@
             margin-bottom: 2.5rem;
             letter-spacing: -0.01em;
         }
-
+        
         .hero h1 span {
             font-style: italic;
             font-weight: 400;
         }
-
+        
         .btn-luxury {
             display: inline-block;
             padding: 1.1rem 3.2rem;
-
-            background: linear-gradient(135deg,
-                    #B38728,
-                    #F9E27D,
-                    #D4AF37,
-                    #F3E5AB);
-
+            background: linear-gradient(135deg, #B38728, #F9E27D, #D4AF37, #F3E5AB);
             color: #121212;
             text-decoration: none;
             text-transform: uppercase;
             letter-spacing: 0.28rem;
             font-size: 0.78rem;
             font-weight: 600;
-
             position: relative;
             overflow: hidden;
             transition: var(--transition-smooth);
-
             border-radius: 10px;
             border: none;
             cursor: pointer;
-
-            box-shadow:
-                0 12px 30px rgba(212, 175, 55, 0.35),
-                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.6);
         }
-
-
+        
         .btn-luxury:hover {
             transform: translateY(-3px);
-            box-shadow:
-                0 18px 40px rgba(212, 175, 55, 0.45),
-                inset 0 1px 0 rgba(255, 255, 255, 0.7);
+            box-shadow: 0 18px 40px rgba(212, 175, 55, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.7);
         }
-
-
+        
         .btn-luxury::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(120deg,
-                    transparent 30%,
-                    rgba(255, 255, 255, 0.6) 50%,
-                    transparent 70%);
+            background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.6) 50%, transparent 70%);
             transform: translateX(-120%);
             transition: 0.8s ease;
         }
-
-
+        
         .btn-luxury:hover::before {
             transform: translateX(120%);
         }
-
-
         /* --- Categories --- */
+        
         .section-padding {
             padding: 40px 4%;
         }
-
-
+        
         .section-header {
             text-align: center;
             margin-bottom: 35px;
         }
-
+        
         .section-header h2 {
             font-size: 3rem;
             font-weight: 300;
             margin-bottom: 15px;
         }
-
+        
         .section-header p {
             color: #888;
             text-transform: uppercase;
             letter-spacing: 0.3rem;
             font-size: 0.8rem;
         }
-
+        
         .horizontal-scroll-wrapper {
             position: relative;
             padding: 10px 0;
             overflow: hidden;
         }
-
+        
         .product-row {
             display: flex;
             gap: 1.5rem;
@@ -419,35 +361,35 @@
             scrollbar-width: none;
             scroll-snap-type: x mandatory;
         }
-
+        
         .product-row::-webkit-scrollbar {
             display: none;
         }
-
+        
         .category-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
         }
-
+        
         .category-item {
             position: relative;
             height: 500px;
             overflow: hidden;
             cursor: pointer;
         }
-
+        
         .category-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1);
         }
-
+        
         .category-item:hover img {
             transform: scale(1.1);
         }
-
+        
         .category-overlay {
             position: absolute;
             inset: 0;
@@ -458,28 +400,28 @@
             padding: 2.5rem;
             transition: 0.5s;
         }
-
+        
         .category-overlay h3 {
             color: white;
             font-size: 1.8rem;
             letter-spacing: 0.1rem;
         }
-
+        
         .category-overlay span {
             color: rgba(255, 255, 255, 0.7);
             text-transform: uppercase;
             font-size: 0.7rem;
             letter-spacing: 0.2rem;
         }
-
         /* --- Product Catalog --- */
+        
         .filter-tabs {
             display: flex;
             justify-content: center;
             gap: 2rem;
             margin-bottom: 50px;
         }
-
+        
         .filter-btn {
             background: none;
             border: none;
@@ -492,12 +434,12 @@
             position: relative;
             padding-bottom: 5px;
         }
-
+        
         .filter-btn.active {
             color: var(--gold-soft);
             font-weight: 600;
         }
-
+        
         .filter-btn.active::after {
             content: '';
             position: absolute;
@@ -507,29 +449,26 @@
             height: 2px;
             background: var(--gold-soft);
         }
-
+        
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2.5rem;
         }
-
         /* ===== ULTRA LUXURY PRODUCT CARD ===== */
-
+        
         .product-card {
             flex: 0 0 280px;
             /* ⭐ THIS IS THE FIX */
             scroll-snap-align: start;
-
             cursor: pointer;
             background: transparent;
             border: none;
             box-shadow: none;
             transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
         }
-
         /* IMAGE CONTAINER */
-
+        
         .product-img-wrapper {
             position: relative;
             width: 100%;
@@ -538,7 +477,7 @@
             border-radius: 12px;
             overflow: hidden;
         }
-
+        
         .product-img-wrapper img {
             width: 100%;
             height: 100%;
@@ -548,28 +487,25 @@
             /* ⭐ remove white space */
             transition: 0.8s ease;
         }
-
         /* IMAGE ZOOM */
-
+        
         .product-card:hover img {
             transform: scale(1.06);
         }
-
         /* HOVER OVERLAY */
-
+        
         .product-hover {
             position: absolute;
             inset: 0;
             opacity: 0;
             transition: 0.4s ease;
         }
-
+        
         .product-card:hover .product-hover {
             opacity: 1;
         }
-
         /* TOP RIGHT ICONS */
-
+        
         .hover-icons {
             position: absolute;
             top: 12px;
@@ -578,7 +514,7 @@
             flex-direction: column;
             gap: 10px;
         }
-
+        
         .hover-icon {
             width: 36px;
             height: 36px;
@@ -592,38 +528,30 @@
             opacity: 0;
             transition: 0.4s ease;
         }
-
+        
         .product-card:hover .hover-icon {
             transform: translateY(0);
             opacity: 1;
         }
-
         /* ===== LUXURY DISCOUNT TAG ===== */
-
+        
         .discount-tag {
             position: absolute;
             top: 12px;
             left: 12px;
             z-index: 5;
-
             background: linear-gradient(135deg, #BF953F, #F9E27D, #AA771C);
             color: #121212;
-
             font-size: 10px;
             letter-spacing: 2px;
             font-weight: 600;
             text-transform: uppercase;
-
             padding: 6px 12px;
             border-radius: 4px;
-
-            box-shadow:
-                0 6px 15px rgba(0, 0, 0, 0.15),
-                0 0 12px rgba(212, 175, 55, 0.35);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15), 0 0 12px rgba(212, 175, 55, 0.35);
         }
-
         /* ADD TO BAG BUTTON */
-
+        
         .hover-bottom {
             position: absolute;
             bottom: 15px;
@@ -632,12 +560,12 @@
             opacity: 0;
             transition: 0.4s ease;
         }
-
+        
         .product-card:hover .hover-bottom {
             transform: translate(-50%, 0);
             opacity: 1;
         }
-
+        
         .add-bag {
             background: linear-gradient(135deg, #D4AF37, #F0D36D);
             border: none;
@@ -647,26 +575,24 @@
             color: white;
             border-radius: 6px;
         }
-
         /* TEXT UNDER CARD */
-
+        
         .product-info {
             text-align: center;
             margin-top: 14px;
         }
-
+        
         .product-info h3 {
             font-size: 13px;
             letter-spacing: 2px;
         }
-
+        
         .product-price {
             font-size: 14px;
             color: #c79c2b;
         }
-
         /* OLD CUTTED PRICE (Luxury Style) */
-
+        
         .old-price {
             color: #999;
             text-decoration: line-through;
@@ -674,11 +600,11 @@
             font-size: 0.85rem;
             font-weight: 400;
         }
-
+        
         .product-card:hover .product-img-wrapper img {
             transform: scale(1.08);
         }
-
+        
         .sparkle {
             position: absolute;
             width: 15px;
@@ -689,48 +615,47 @@
             transition: 0.5s;
             pointer-events: none;
         }
-
+        
         .product-card:hover .sparkle {
             opacity: 0.8;
             animation: sparkleRotate 2s linear infinite;
         }
-
+        
         @keyframes sparkleRotate {
             from {
                 transform: rotate(0);
             }
-
             to {
                 transform: rotate(360deg);
             }
         }
-
+        
         .product-info {
             padding: 1.2rem 1.4rem;
             text-align: center;
         }
-
+        
         .product-info h3 {
             font-size: 0.9rem;
             letter-spacing: 0.1rem;
             margin-bottom: 0.5rem;
             text-transform: uppercase;
         }
-
+        
         .product-price {
             color: var(--gold-soft);
             font-weight: 500;
             font-size: 1rem;
             margin-bottom: 1.2rem;
         }
-
+        
         .product-actions {
             display: flex;
             gap: 0.6rem;
             justify-content: center;
             padding: 6px 1.2rem 1.2rem;
         }
-
+        
         .btn-action {
             flex: 1;
             padding: 0.8rem 0;
@@ -744,28 +669,28 @@
             /* Added rounded corners for modern elegance */
             border-radius: 6px;
         }
-
+        
         .btn-action:hover {
             background: var(--charcoal);
             color: white;
             border-color: var(--charcoal);
         }
-
         /* Updated Buy button to gold background with white text */
+        
         .btn-buy {
             background: linear-gradient(135deg, #D4AF37, #F0D36D);
             color: white;
             border: none;
             font-weight: 600;
         }
-
+        
         .btn-buy:hover {
             background: linear-gradient(135deg, #BF953F, #D4AF37);
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
         }
-
         /* --- Modal --- */
+        
         .modal {
             position: fixed;
             inset: 0;
@@ -777,7 +702,7 @@
             justify-content: center;
             padding: 2rem;
         }
-
+        
         .modal-content {
             background: white;
             width: 100%;
@@ -789,26 +714,26 @@
             position: relative;
             animation: modalIn 0.6s cubic-bezier(0.19, 1, 0.22, 1);
         }
-
+        
         @keyframes modalIn {
             from {
                 opacity: 0;
                 transform: scale(0.9) translateY(40px);
             }
         }
-
+        
         .modal-img {
             background: #f9f9f9;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-
+        
         .modal-body {
             padding: 4rem;
             position: relative;
         }
-
+        
         .modal-close {
             position: absolute;
             top: 2rem;
@@ -817,18 +742,18 @@
             font-size: 1.5rem;
             transition: 0.3s;
         }
-
+        
         .modal-close:hover {
             color: var(--gold-soft);
             transform: rotate(90deg);
         }
-
         /* --- Contact Section (Luxury) --- */
+        
         .contact-section {
             position: relative;
             overflow: hidden;
         }
-
+        
         .contact-glow {
             position: absolute;
             width: 420px;
@@ -840,18 +765,16 @@
             right: 10%;
             pointer-events: none;
         }
-
+        
         .contact-card {
             max-width: 1000px;
             margin: auto;
             padding: 4rem 4.5rem;
             text-align: center;
             border-radius: 16px;
-            box-shadow:
-                0 30px 80px rgba(0, 0, 0, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.5);
         }
-
+        
         .contact-intro {
             color: #666;
             font-size: 0.95rem;
@@ -859,18 +782,18 @@
             max-width: 720px;
             margin: 0 auto 3rem;
         }
-
+        
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 2.5rem 4rem;
             margin-bottom: 3.5rem;
         }
-
+        
         .contact-item {
             text-align: center;
         }
-
+        
         .contact-label {
             display: block;
             font-size: 0.65rem;
@@ -879,7 +802,7 @@
             color: #888;
             margin-bottom: 0.6rem;
         }
-
+        
         .contact-item a,
         .contact-item p {
             font-size: 0.95rem;
@@ -887,55 +810,53 @@
             text-decoration: none;
             transition: 0.3s;
         }
-
+        
         .contact-item a:hover {
             color: var(--gold-soft);
         }
-
+        
         .contact-actions {
             display: flex;
             justify-content: center;
         }
-
         /* Responsive */
+        
         @media (max-width: 768px) {
             .contact-card {
                 padding: 3rem 2rem;
             }
-
             .contact-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
         }
-
-
         /* --- Footer --- */
+        
         footer {
             background: var(--charcoal);
             color: white;
             padding: 100px 6% 50px;
         }
-
+        
         .footer-grid {
             display: grid;
             grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
             gap: 4rem;
             margin-bottom: 80px;
         }
-
+        
         .footer-brand h4 {
             font-size: 1.8rem;
             letter-spacing: 0.3rem;
             margin-bottom: 1.5rem;
         }
-
+        
         .footer-brand p {
             color: #888;
             line-height: 2;
             font-size: 0.85rem;
         }
-
+        
         .footer-links h5 {
             font-size: 0.8rem;
             text-transform: uppercase;
@@ -943,27 +864,27 @@
             margin-bottom: 1.5rem;
             color: var(--gold-soft);
         }
-
+        
         .footer-links ul {
             list-style: none;
         }
-
+        
         .footer-links li {
             margin-bottom: 0.8rem;
         }
-
+        
         .footer-links a {
             color: #888;
             text-decoration: none;
             font-size: 0.8rem;
             transition: 0.3s;
         }
-
+        
         .footer-links a:hover {
             color: white;
             padding-left: 5px;
         }
-
+        
         .footer-bottom {
             border-top: 1px solid #222;
             padding-top: 30px;
@@ -971,15 +892,14 @@
             justify-content: space-between;
             align-items: center;
         }
-
+        
         .footer-bottom p {
             color: #555;
             font-size: 0.75rem;
             letter-spacing: 0.1rem;
         }
-
         /* ===== ULTRA LUXURY HERO SLIDER ===== */
-
+        
         .hero-slider {
             position: relative;
             height: calc(100vh - 95px);
@@ -987,69 +907,58 @@
             /* push below navbar */
             overflow: hidden;
         }
-
-
+        
         .hero-slide {
             position: absolute;
             inset: 0;
             background-size: cover;
             background-position: center;
-
             opacity: 0;
             /* REMOVE zoom from content */
             transition: opacity 1.2s ease;
-
             display: flex;
             align-items: center;
             padding-left: 8%;
         }
-
+        
         .hero-slide.active {
             opacity: 1;
         }
-
-
+        
         .hero-overlay {
             position: absolute;
             inset: 0;
             pointer-events: none;
-
-            background: linear-gradient(90deg,
-                    rgba(0, 0, 0, 0.85) 0%,
-                    rgba(0, 0, 0, 0.5) 40%,
-                    rgba(0, 0, 0, 0.1) 70%,
-                    transparent 100%);
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0.1) 70%, transparent 100%);
         }
-
+        
         .hero-content {
             position: relative;
             z-index: 10;
             color: white;
             max-width: 500px;
         }
-
+        
         .hero-content .hero-title {
             font-size: 72px;
             font-weight: 500;
             line-height: 1.05;
         }
-
+        
         .hero-badge {
             background: linear-gradient(135deg, #BF953F, #F9E27D, #AA771C);
             color: #121212;
-
             padding: 6px 14px;
             border-radius: 20px;
             font-size: 12px;
             margin-bottom: 15px;
             display: inline-block;
         }
-
+        
         .hero-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -1059,92 +968,91 @@
             cursor: pointer;
             font-size: 22px;
         }
-
+        /* ===== DESKTOP ARROW POSITIONS ===== */
+        
+        .hero-nav.prev {
+            left: 30px;
+        }
+        
+        .hero-nav.next {
+            right: 30px;
+        }
         /* --- Responsive --- */
+        
         @media (max-width: 1024px) {
             .category-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
             .hero h1 {
                 font-size: 4rem;
             }
-
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
             }
         }
-
+        
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
             }
-
             .hero h1 {
                 font-size: 3rem;
             }
-
             .modal-content {
                 grid-template-columns: 1fr;
                 max-height: 90vh;
                 overflow-y: auto;
             }
-
             .modal-body {
                 padding: 2rem;
             }
-
             .logo-wrapper {
                 gap: 8px;
             }
-
             .nav-logo {
                 height: 42px;
             }
-
             .logo {
                 font-size: 1rem;
                 letter-spacing: 0.18rem;
             }
         }
-
         /* Hide scrollbar but keep scroll functionality */
+        
         html {
             overflow-x: hidden;
         }
-
+        
         body {
             overflow-x: hidden;
             scrollbar-width: none;
             /* Firefox */
         }
-
         /* Chrome, Edge, Safari */
+        
         body::-webkit-scrollbar {
             width: 0;
             height: 0;
         }
-
         /* ===== ULTRA LUXURY HERO TEXT ===== */
-
+        
         .hero-slide {
             justify-content: flex-start;
             padding-left: 8%;
         }
-
+        
         .luxury-layout {
             text-align: left;
             max-width: 560px;
         }
-
-
+        
         .hero-small {
             font-size: 12px;
             letter-spacing: 4px;
             color: #d4af37;
             margin-bottom: 10px;
         }
-
+        
         .hero-title {
             font-family: 'Playfair Display', serif;
             font-size: 72px;
@@ -1152,28 +1060,27 @@
             line-height: 1.05;
             color: white;
         }
-
+        
         .hero-title span {
             background: linear-gradient(135deg, #BF953F, #FCF6BA, #AA771C);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
-
+        
         .hero-desc {
             color: rgba(255, 255, 255, 0.85);
             margin-top: 12px;
             margin-bottom: 28px;
             font-size: 16px;
         }
-
+        
         .hero-actions {
             display: flex;
             gap: 14px;
             justify-content: flex-start;
             margin-bottom: 18px;
         }
-
+        
         .btn-outline {
             padding: 1.1rem 2.5rem;
             border: 1px solid #d4af37;
@@ -1183,20 +1090,19 @@
             font-size: 0.75rem;
             transition: 0.4s;
         }
-
+        
         .btn-outline:hover {
             background: #d4af37;
             color: #121212;
         }
-
+        
         .hero-price {
             color: #f3e5ab;
             font-size: 14px;
             letter-spacing: 2px;
         }
-
         /* default state for ALL slides */
-
+        
         .hero-slide .hero-small,
         .hero-slide .hero-title,
         .hero-slide .hero-desc,
@@ -1205,51 +1111,46 @@
             opacity: 0;
             transform: translateY(50px);
         }
-
-
         /* animation keyframe */
-
+        
         @keyframes fadeUpLuxury {
             from {
                 opacity: 0;
                 transform: translateY(50px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-
         /* when slide active → animate each element */
-
+        
         .hero-slide.active .hero-small {
             animation: fadeUpLuxury 0.6s ease forwards;
             animation-delay: 0.2s;
         }
-
+        
         .hero-slide.active .hero-title {
             animation: fadeUpLuxury 0.7s ease forwards;
             animation-delay: 0.4s;
         }
-
+        
         .hero-slide.active .hero-desc {
             animation: fadeUpLuxury 0.7s ease forwards;
             animation-delay: 0.6s;
         }
-
+        
         .hero-slide.active .hero-actions {
             animation: fadeUpLuxury 0.7s ease forwards;
             animation-delay: 0.8s;
         }
-
+        
         .hero-slide.active .hero-price {
             animation: fadeUpLuxury 0.7s ease forwards;
             animation-delay: 1s;
         }
-
         /* ===== LUXURY HERO DOTS ===== */
-
+        
         .hero-dots {
             position: absolute;
             bottom: 35px;
@@ -1259,7 +1160,7 @@
             gap: 12px;
             z-index: 20;
         }
-
+        
         .hero-dot {
             width: 10px;
             height: 10px;
@@ -1269,33 +1170,27 @@
             transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
             position: relative;
         }
-
         /* luxury glow animation */
+        
         .hero-dot.active {
             background: #D4AF37;
             transform: scale(1.4);
-            box-shadow:
-                0 0 12px rgba(212, 175, 55, 0.8),
-                0 0 24px rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.8), 0 0 24px rgba(212, 175, 55, 0.5);
         }
-
         /* smooth hover */
+        
         .hero-dot:hover {
             transform: scale(1.3);
         }
-
         /* ===== LUXURY TRUST STRIP (GOLD & WHITE THEME) ===== */
-
+        
         .trust-strip {
-            background: linear-gradient(90deg,
-                    #ffffff 0%,
-                    #fff8e8 50%,
-                    #ffffff 100%);
+            background: linear-gradient(90deg, #ffffff 0%, #fff8e8 50%, #ffffff 100%);
             padding: 60px 5%;
             border-top: 1px solid rgba(212, 175, 55, 0.15);
             border-bottom: 1px solid rgba(212, 175, 55, 0.15);
         }
-
+        
         .trust-container {
             display: grid;
             grid-template-columns: repeat(6, 1fr);
@@ -1304,116 +1199,94 @@
             margin: auto;
             text-align: center;
         }
-
+        
         .trust-item {
             transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
         }
-
+        
         .trust-item:hover {
             transform: translateY(-6px);
         }
-
+        
         .trust-icon {
             width: 70px;
             height: 70px;
             margin: 0 auto 18px;
             border-radius: 50%;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             font-size: 24px;
-
             background: rgba(212, 175, 55, 0.08);
             border: 1px solid rgba(212, 175, 55, 0.25);
-
             color: var(--gold-soft);
-
-            box-shadow:
-                0 10px 25px rgba(212, 175, 55, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.7);
-
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.7);
             transition: 0.4s ease;
         }
-
+        
         .trust-item:hover .trust-icon {
             background: var(--royal-gold);
             color: #121212;
             transform: scale(1.08);
         }
-
+        
         .trust-item h4 {
             font-size: 0.95rem;
             font-weight: 600;
             margin-bottom: 6px;
             letter-spacing: 0.05rem;
         }
-
+        
         .trust-item p {
             font-size: 0.8rem;
             color: #777;
         }
-
         /* Responsive */
+        
         @media (max-width: 1200px) {
             .trust-container {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 50px 30px;
             }
         }
-
+        
         @media (max-width: 768px) {
             .trust-container {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-
         /* ===== ULTRA LUXURY WHATSAPP FLOAT ===== */
-
+        
         .whatsapp-float {
             position: fixed;
             bottom: 28px;
             right: 28px;
             text-decoration: none;
-
             width: 60px;
             height: 60px;
-
             display: flex;
             align-items: center;
             justify-content: center;
-
             border-radius: 50%;
-
             background: linear-gradient(135deg, #25D366, #128C7E);
-
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, 0.2),
-                0 0 0 0 rgba(37, 211, 102, 0.6);
-
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 0 0 rgba(37, 211, 102, 0.6);
             z-index: 9999;
-
             transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-
             animation: whatsappFloatIn 1s ease forwards;
         }
-
         /* luxury hover */
+        
         .whatsapp-float:hover {
             transform: translateY(-6px) scale(1.05);
-
-            box-shadow:
-                0 20px 40px rgba(0, 0, 0, 0.25),
-                0 0 25px rgba(37, 211, 102, 0.6);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 0 0 25px rgba(37, 211, 102, 0.6);
         }
-
+        
         .whatsapp-float i {
             font-size: 28px;
             color: white;
         }
-
         /* floating pulse */
+        
         .whatsapp-float::after {
             content: '';
             position: absolute;
@@ -1421,68 +1294,62 @@
             border-radius: 50%;
             animation: whatsappPulse 2.5s infinite;
         }
-
+        
         @keyframes whatsappPulse {
             0% {
                 box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
             }
-
             70% {
                 box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
             }
-
             100% {
                 box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
             }
         }
-
+        
         @keyframes whatsappFloatIn {
             from {
                 opacity: 0;
                 transform: translateY(40px) scale(0.8);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0) scale(1);
             }
         }
-
         /* ===== LUXURY CATEGORY SELECT SECTION ===== */
-
+        
         .select-category-section {
             padding: 60px 6%;
         }
-
+        
         .select-category-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 30px;
         }
-
+        
         .select-category-card {
             position: relative;
             overflow: hidden;
             border-radius: 12px;
             cursor: pointer;
             height: 240px;
-
             box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
-
             transition: 0.6s cubic-bezier(0.19, 1, 0.22, 1);
         }
-
+        
         .select-category-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: 1s ease;
         }
-
+        
         .select-category-card:hover img {
             transform: scale(1.08);
         }
-
+        
         .select-category-overlay {
             position: absolute;
             inset: 0;
@@ -1492,74 +1359,63 @@
             justify-content: flex-end;
             padding: 18px;
         }
-
+        
         .select-category-overlay h3 {
             color: white;
             font-size: 1.1rem;
             margin-bottom: 6px;
         }
-
+        
         .select-category-overlay p {
             color: rgba(255, 255, 255, 0.8);
             font-size: 11px;
             line-height: 1.6;
         }
-
         /* responsive */
+        
         @media(max-width:1024px) {
             .select-category-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-
         /* ===== CATEGORY MOBILE 2x2 GRID ===== */
-
+        
         @media (max-width:600px) {
-
             .select-category-grid {
                 grid-template-columns: repeat(2, 1fr);
                 /* ⭐ 2x2 grid */
                 gap: 12px;
             }
-
             .select-category-card {
                 height: 140px;
                 /* ⭐ smaller cards */
                 border-radius: 10px;
             }
-
             .select-category-overlay {
                 padding: 10px;
             }
-
             .select-category-overlay h3 {
                 font-size: 13px;
             }
-
             .select-category-overlay p {
                 font-size: 9px;
                 line-height: 1.4;
             }
-
             .select-category-section {
                 padding: 35px 4%;
             }
-
         }
-
+        
         .view-all-inline {
             flex: 0 0 auto;
-
             display: flex;
             align-items: center;
             justify-content: center;
             transform: none;
-
             height: 100%;
             /* ⭐ makes it match card height */
             align-self: center;
             /* ⭐ vertical center in flex row */
-
             font-size: 13px;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -1569,108 +1425,96 @@
             white-space: nowrap;
             transition: 0.4s ease;
         }
-
+        
         #collections .section-header {
             margin-bottom: 15px;
             /* was 35px */
         }
-
+        
         #collections .horizontal-scroll-wrapper:last-child {
             padding-bottom: 0;
         }
-
+        
         .view-all-inline i {
             margin-left: 8px;
             transition: 0.4s ease;
         }
-
+        
         .view-all-inline:hover {
             color: #D4AF37;
         }
-
+        
         .view-all-inline:hover i {
             transform: translateX(6px);
         }
-
         /* ===== TRENDING LUXURY SECTION ===== */
-
+        
         .trending-grid {
             display: grid;
             grid-template-columns: repeat(4, 260px);
             justify-content: center;
             gap: 40px;
         }
-
-
+        
         .trending-grid .product-card {
             flex: auto;
             /* disable horizontal scroll behavior */
         }
-
+        
         @media(max-width:1024px) {
             .trending-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-
+        
         @media(max-width:600px) {
-
             .trending-grid {
                 grid-template-columns: repeat(3, 1fr);
                 /* ⭐ 3x3 grid */
                 gap: 14px;
                 justify-content: center;
             }
-
             .trending-grid .product-card {
                 flex: auto;
             }
-
             .trending-grid .product-img-wrapper {
                 border-radius: 10px;
             }
-
             .trending-grid .product-info h3 {
                 font-size: 10px;
                 letter-spacing: 1px;
             }
-
             .trending-grid .product-price {
                 font-size: 11px;
             }
-
             .trending-grid .product-img-wrapper {
                 aspect-ratio: 1/1;
             }
-
         }
-
         /* ===== ULTRA LUXURY MOBILE NAV ===== */
-
+        
         .nav-right {
             display: flex;
             gap: 1.5rem;
             align-items: center;
         }
-
         /* Hamburger */
-
+        
         .hamburger {
             display: none;
             flex-direction: column;
             gap: 5px;
             cursor: pointer;
         }
-
+        
         .hamburger span {
             width: 22px;
             height: 2px;
             background: #121212;
             transition: 0.4s ease;
         }
-
         /* Mobile menu panel */
-
+        
         .mobile-menu {
             position: fixed;
             top: 70px;
@@ -1678,20 +1522,16 @@
             width: 100%;
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(25px);
-
             display: flex;
             flex-direction: column;
             align-items: center;
-
             gap: 25px;
             padding: 40px 0;
-
             transform: translateY(-120%);
             transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-
             z-index: 999;
         }
-
+        
         .mobile-menu a {
             text-decoration: none;
             color: #121212;
@@ -1699,7 +1539,7 @@
             letter-spacing: 3px;
             font-size: 13px;
         }
-
+        
         .mobile-profile {
             display: flex;
             align-items: center;
@@ -1711,264 +1551,207 @@
             letter-spacing: 2px;
             font-size: 13px;
         }
-
         /* Active state */
-
+        
         .mobile-menu.active {
             transform: translateY(0);
         }
-
         /* Show hamburger only on mobile */
-
+        
         @media(max-width:768px) {
-
             .hamburger {
                 display: flex;
             }
-
         }
-
         /* ===================================
    ULTRA RESPONSIVE SYSTEM (PHONES FIRST)
 =================================== */
-
         /* ---------- Tablets ---------- */
+        
         @media (max-width:1024px) {
-
             nav {
                 padding: 0 3%;
                 gap: 15px;
             }
-
             .hero-title {
                 font-size: 48px;
             }
-
             .hero-slider {
                 height: calc(100vh - 70px);
             }
-
             .product-card {
                 flex: 0 0 240px;
             }
-
         }
-
-
         /* ---------- Large Phones ---------- */
+        
         @media (max-width:768px) {
-
+            .profile-desktop {
+                display: none;
+            }
             /* NAVBAR */
             nav {
                 height: 70px;
                 padding: 0 4%;
             }
-
             .nav-links {
                 display: none;
             }
-
             .logo {
                 font-size: 0.9rem;
                 letter-spacing: 0.12rem;
             }
-
             .nav-logo {
                 height: 38px;
             }
-
             /* HERO */
             .hero-slide {
                 padding-left: 6%;
                 justify-content: flex-start;
             }
-
             .luxury-layout {
                 text-align: left;
                 max-width: 75%;
             }
-
             .hero-title {
                 font-size: clamp(22px, 6vw, 36px);
                 line-height: 1.05;
             }
-
             .hero-small {
                 font-size: 9px;
                 letter-spacing: 3px;
             }
-
             .hero-actions {
                 justify-content: flex-start;
             }
-
             .hero-desc {
                 font-size: 12px;
             }
-
             .hero-price {
                 font-size: 12px;
             }
-
             /* ===== MOBILE HERO ARROWS RIGHT SIDE VERTICAL (FIXED) ===== */
-
             /* ===== PERFECT MOBILE ARROW STACK (FINAL FIX) ===== */
-
             .hero-slider {
                 position: relative;
             }
-
             /* create vertical container */
             .hero-slider::after {
                 content: '';
             }
-
             /* group arrows */
             .hero-nav {
                 position: absolute;
                 right: 12px !important;
                 left: auto !important;
-
                 width: 36px;
                 height: 36px;
                 font-size: 16px;
-
                 transform: none !important;
             }
-
             /* exact positions (tight gap) */
             .hero-nav.prev {
                 top: 50%;
                 margin-top: -42px;
                 /* adjust spacing here */
             }
-
             .hero-nav.next {
                 top: 50%;
                 margin-top: 6px;
                 /* adjust spacing here */
             }
-
             .btn-luxury,
             .btn-outline {
                 padding: 10px 16px;
                 font-size: 11px;
             }
-
             /* TRUST STRIP */
             .trust-icon {
                 width: 50px;
                 height: 50px;
                 font-size: 18px;
             }
-
             /* PRODUCTS */
             .product-card {
                 flex: 0 0 210px;
             }
-
             .product-info h3 {
                 font-size: 12px;
             }
-
             /* SECTION PADDING */
             .section-padding {
                 padding: 30px 4%;
             }
-
         }
-
-
         /* ---------- Small Phones (iPhone / Android) ---------- */
+        
         @media (max-width:480px) {
-
             /* ===== HERO (Ultra Compact Mobile) ===== */
-
             .hero-slide {
                 padding-left: 5%;
             }
-
             .luxury-layout {
                 max-width: 80%;
             }
-
             .hero-small {
                 font-size: 8px;
                 letter-spacing: 2px;
                 margin-bottom: 6px;
             }
-
             .hero-title {
                 font-size: clamp(18px, 7vw, 26px);
                 line-height: 1.05;
             }
-
             .hero-desc {
                 font-size: 11px;
                 margin-top: 8px;
                 margin-bottom: 16px;
             }
-
             .hero-actions {
                 gap: 8px;
                 margin-bottom: 12px;
             }
-
             .btn-luxury,
             .btn-outline {
                 padding: 8px 14px;
                 font-size: 10px;
                 letter-spacing: 1px;
             }
-
             .hero-price {
                 font-size: 11px;
             }
-
             .hero-nav {
                 width: 34px;
                 height: 34px;
                 font-size: 16px;
             }
-
             /* ===== PRODUCTS ===== */
-
             .product-card {
                 flex: 0 0 170px;
             }
-
             .discount-tag {
                 font-size: 8px;
                 padding: 4px 6px;
             }
-
             /* ===== CONTACT ===== */
-
             .contact-card {
                 padding: 2rem 1.2rem;
             }
-
             /* ===== FOOTER ===== */
-
             footer {
                 padding: 60px 5% 30px;
             }
-
         }
-
         /* ===================================
    EXTRA SMALL DEVICES (<390px)
 =================================== */
-
         /* ===================================
    ULTRA SMALL DEVICES (≤395px)
    PREMIUM MOBILE SYSTEM
 =================================== */
-
+        
         @media (max-width:395px) {
-
             /* ===== GLOBAL SAFE SIDE SYSTEM ===== */
-
             nav,
             .section-padding,
             .select-category-section,
@@ -1976,191 +1759,146 @@
                 padding-left: 14px !important;
                 padding-right: 14px !important;
             }
-
             body {
                 overflow-x: hidden;
             }
-
             /* ===== NAVBAR ===== */
-
             nav {
                 height: 64px;
             }
-
             .logo-wrapper {
                 gap: 6px;
             }
-
             .nav-logo {
                 height: 30px;
             }
-
             .logo {
                 font-size: 0.72rem;
                 letter-spacing: 0.05rem;
             }
-
             .nav-right {
                 gap: 10px;
                 padding-right: 2px;
             }
-
             .hamburger {
                 margin-right: 2px;
             }
-
             /* ===== HERO ===== */
-
             .hero-slide {
                 padding-left: 0;
             }
-
             .luxury-layout {
                 max-width: 100%;
             }
-
             .hero-small {
                 font-size: 7px;
                 letter-spacing: 1.2px;
                 margin-bottom: 4px;
             }
-
             .hero-title {
                 font-size: 18px;
                 line-height: 1.1;
             }
-
             .hero-desc {
                 font-size: 10px;
                 margin: 6px 0 10px;
             }
-
             .hero-actions {
                 gap: 6px;
                 flex-wrap: wrap;
                 margin-bottom: 10px;
             }
-
             .btn-luxury,
             .btn-outline {
                 padding: 6px 10px;
                 font-size: 9px;
                 letter-spacing: 0.5px;
             }
-
             .hero-price {
                 font-size: 10px;
             }
-
             .hero-nav {
                 width: 28px;
                 height: 28px;
                 font-size: 14px;
                 right: 8px !important;
             }
-
             /* ===== CATEGORY GRID ===== */
-
             .select-category-grid {
                 gap: 10px;
             }
-
             .select-category-card {
                 height: 110px;
                 border-radius: 8px;
             }
-
             .select-category-overlay {
                 padding: 8px;
             }
-
             .select-category-overlay h3 {
                 font-size: 11px;
             }
-
             .select-category-overlay p {
                 font-size: 8px;
                 line-height: 1.3;
             }
-
             /* ===== TRENDING GRID (3 x 3 LUXURY MOBILE) ===== */
-
             .trending-grid {
                 grid-template-columns: repeat(3, 1fr);
                 gap: 10px;
                 width: 100%;
             }
-
             .trending-grid .product-img-wrapper {
                 border-radius: 8px;
             }
-
             .trending-grid .product-info {
                 padding: 6px 2px;
             }
-
             .trending-grid .product-info h3 {
                 font-size: 9px;
                 letter-spacing: 0.5px;
             }
-
             .trending-grid .product-price {
                 font-size: 10px;
             }
-
             /* ===== HORIZONTAL PRODUCTS ===== */
-
             .product-row {
                 padding-left: 2px;
                 padding-right: 2px;
             }
-
             .product-card {
                 flex: 0 0 145px;
             }
-
             .product-info h3 {
                 font-size: 10px;
             }
-
             .product-price {
                 font-size: 11px;
             }
-
             /* ===== TRUST STRIP (2 x 2 GRID STYLE) ===== */
-
             .trust-container {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 20px;
             }
-
             .trust-icon {
                 width: 46px;
                 height: 46px;
                 font-size: 16px;
             }
-
             .trust-item h4 {
                 font-size: 12px;
             }
-
             .trust-item p {
                 font-size: 10px;
             }
-
             /* ===== CONTACT ===== */
-
             .contact-card {
                 padding: 1.5rem 1rem;
             }
-
             /* ===== FOOTER ===== */
-
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 25px;
             }
-
         }
     </style>
 </head>
@@ -2216,6 +1954,12 @@
                 <path d="M16 10a4 4 0 01-8 0" />
             </svg>
 
+            <!-- PROFILE (DESKTOP ONLY) -->
+            <svg class="profile-desktop" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M4 22c0-4 4-6 8-6s8 2 8 6"></path>
+            </svg>
+
             <!-- HAMBURGER RIGHT SIDE -->
             <div class="hamburger" id="hamburger">
                 <span></span>
@@ -2229,8 +1973,7 @@
 
     <section class="hero-slider">
 
-        <div class="hero-slide active"
-            style="background-image:url('https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1600&q=90')">
+        <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1600&q=90')">
 
             <div class="hero-overlay"></div>
 
@@ -2261,8 +2004,7 @@
 
         </div>
 
-        <div class="hero-slide"
-            style="background-image:url('https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=1600&q=90')">
+        <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=1600&q=90')">
 
             <div class="hero-overlay"></div>
 
@@ -2443,44 +2185,13 @@
 
     </section>
 
-    <!-- Luxury Modals -->
-    <div class="modal" id="productModal">
-        <div class="modal-content">
-            <div class="modal-img">
-                <img src="/placeholder.svg" alt="" id="modalImg" style="max-width: 70%;">
-            </div>
-            <div class="modal-body">
-                <span class="modal-close" id="closeModal">&times;</span>
-                <p id="modalCategory"
-                    style="text-transform: uppercase; letter-spacing: 0.3rem; font-size: 0.7rem; color: #888; margin-bottom: 1rem;">
-                </p>
-                <h2 id="modalTitle" style="font-size: 2.5rem; margin-bottom: 1rem;"></h2>
-                <p id="modalPrice" class="gold-text" style="font-size: 1.5rem; margin-bottom: 2rem;"></p>
-                <p id="modalDesc" style="color: #666; font-size: 0.9rem; margin-bottom: 2rem; line-height: 2;"></p>
-
-                <div style="background: #fdfdfd; padding: 1.5rem; border: 1px solid #f0f0f0; margin-bottom: 2rem;">
-                    <p
-                        style="font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 0.1rem; margin-bottom: 0.5rem;">
-                        Specifications</p>
-                    <p id="modalSpecs" style="font-size: 0.8rem;"></p>
-                </div>
-
-                <button class="btn-luxury" style="width: 100%;" id="modalBuyBtn" border-radius="40px">Secure This
-                    Piece</button>
-            </div>
-        </div>
-    </div>
-
     <!-- Checkout Success Modal -->
     <div class="modal" id="checkoutModal">
-        <div class="modal-content"
-            style="grid-template-columns: 1fr; max-width: 500px; padding: 4rem; text-align: center;">
-            <div
-                style="width: 80px; height: 80px; background: #f0fdf4; color: #16a34a; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; font-size: 2rem;">
+        <div class="modal-content" style="grid-template-columns: 1fr; max-width: 500px; padding: 4rem; text-align: center;">
+            <div style="width: 80px; height: 80px; background: #f0fdf4; color: #16a34a; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; font-size: 2rem;">
                 ✓</div>
             <h2 style="margin-bottom: 1rem;">Order Reserved</h2>
-            <p style="color: #666; font-size: 0.9rem; line-height: 1.8; margin-bottom: 2rem;">Your luxury piece has been
-                reserved. Our concierge will contact you shortly to finalize the bespoke delivery experience.</p>
+            <p style="color: #666; font-size: 0.9rem; line-height: 1.8; margin-bottom: 2rem;">Your luxury piece has been reserved. Our concierge will contact you shortly to finalize the bespoke delivery experience.</p>
             <button class="btn-luxury" onclick="closeAllModals()">Return to Boutique</button>
         </div>
     </div>
@@ -2495,8 +2206,7 @@
 
         <div class="contact-card glass-card">
             <p class="contact-intro">
-                Experience personalized assistance from our luxury concierge.
-                From bespoke creations to private viewings, we are here for you.
+                Experience personalized assistance from our luxury concierge. From bespoke creations to private viewings, we are here for you.
             </p>
 
             <div class="contact-grid">
@@ -2533,8 +2243,7 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <h4 class="brand-font gold-text">P_B QUEENS</h4>
-                <p>Preserving the art of Indian jewelry for the modern connoisseur. Every piece tells a story of
-                    royalty, heritage, and meticulous craftsmanship.</p>
+                <p>Preserving the art of Indian jewelry for the modern connoisseur. Every piece tells a story of royalty, heritage, and meticulous craftsmanship.</p>
             </div>
             <div class="footer-links">
                 <h5>Boutique</h5>
@@ -2576,28 +2285,190 @@
     <script>
         const products = [
             // Necklaces (10 items)
-            { id: 1, name: "Maharani Polki Choker", category: "necklace", type: "gold", price: 845000, img: "images/necklace1.jpg", desc: "A masterpiece of 22K gold featuring uncut diamonds (Polki) and emerald drops.", specs: "Gold: 22K | Diamonds: 4.5ct" },
-            { id: 2, name: "Temple Bloom Necklace", category: "necklace", type: "gold", price: 625000, img: "images/necklace2.jpg", desc: "Hand-carved gold necklace inspired by ancient temple architecture.", specs: "Gold: 22K | Weight: 120g" },
-            { id: 3, name: "Diamond Cascade", category: "necklace", type: "diamond", price: 1250000, img: "images/necklace3.jpg", desc: "A river of brilliant-cut diamonds cascading in 18K white gold.", specs: "Diamonds: 12ct | Gold: 18K White" },
-            { id: 4, name: "Emerald Royale", category: "necklace", type: "gold", price: 980000, img: "images/necklace4.jpg", desc: "Zambian emerald beads with a centerpiece diamond pendant.", specs: "Emeralds: 45ct | Diamonds: 2.1ct" },
-            { id: 5, name: "Basra Pearl String", category: "necklace", type: "gold", price: 450000, img: "images/necklace5.jpg", desc: "Authentic Basra pearls with a vintage gold clasp.", specs: "Pearls: AAA Grade | Gold: 18K" },
-            { id: 6, name: "Ruby Radiance", category: "necklace", type: "gold", price: 720000, img: "images/necklace6.jpg", desc: "Pigeon-blood rubies set in a sun-inspired gold frame.", specs: "Rubies: 8.5ct | Gold: 22K" },
-            { id: 7, name: "Minimalist Gold Link", category: "necklace", type: "gold", price: 125000, img: "images/necklace1.jpg", desc: "Modern geometric links in solid 18K gold for daily elegance.", specs: "Gold: 18K | Length: 18in" },
-            { id: 8, name: "Sapphire Night Choker", category: "necklace", type: "diamond", price: 1100000, img: "images/necklace2.jpg", desc: "Deep blue sapphires surrounded by a halo of diamonds.", specs: "Sapphires: 15ct | Diamonds: 3.2ct" },
-            { id: 9, name: "Filigree Heritage", category: "necklace", type: "gold", price: 540000, img: "images/necklace3.jpg", desc: "Exquisite gold filigree work showcasing the mastery of Jaipur.", specs: "Gold: 22K | Weight: 85g" },
-            { id: 10, name: "Solitaire Pendant", category: "necklace", type: "diamond", price: 320000, img: "images/necklace4.jpg", desc: "A 2ct diamond solitaire on a delicate platinum chain.", specs: "Diamond: 2ct | Platinum 950" },
+            {
+                id: 1,
+                name: "Maharani Polki Choker",
+                category: "necklace",
+                type: "gold",
+                price: 845000,
+                img: "images/necklace1.jpg",
+                desc: "A masterpiece of 22K gold featuring uncut diamonds (Polki) and emerald drops.",
+                specs: "Gold: 22K | Diamonds: 4.5ct"
+            }, {
+                id: 2,
+                name: "Temple Bloom Necklace",
+                category: "necklace",
+                type: "gold",
+                price: 625000,
+                img: "images/necklace2.jpg",
+                desc: "Hand-carved gold necklace inspired by ancient temple architecture.",
+                specs: "Gold: 22K | Weight: 120g"
+            }, {
+                id: 3,
+                name: "Diamond Cascade",
+                category: "necklace",
+                type: "diamond",
+                price: 1250000,
+                img: "images/necklace3.jpg",
+                desc: "A river of brilliant-cut diamonds cascading in 18K white gold.",
+                specs: "Diamonds: 12ct | Gold: 18K White"
+            }, {
+                id: 4,
+                name: "Emerald Royale",
+                category: "necklace",
+                type: "gold",
+                price: 980000,
+                img: "images/necklace4.jpg",
+                desc: "Zambian emerald beads with a centerpiece diamond pendant.",
+                specs: "Emeralds: 45ct | Diamonds: 2.1ct"
+            }, {
+                id: 5,
+                name: "Basra Pearl String",
+                category: "necklace",
+                type: "gold",
+                price: 450000,
+                img: "images/necklace5.jpg",
+                desc: "Authentic Basra pearls with a vintage gold clasp.",
+                specs: "Pearls: AAA Grade | Gold: 18K"
+            }, {
+                id: 6,
+                name: "Ruby Radiance",
+                category: "necklace",
+                type: "gold",
+                price: 720000,
+                img: "images/necklace6.jpg",
+                desc: "Pigeon-blood rubies set in a sun-inspired gold frame.",
+                specs: "Rubies: 8.5ct | Gold: 22K"
+            }, {
+                id: 7,
+                name: "Minimalist Gold Link",
+                category: "necklace",
+                type: "gold",
+                price: 125000,
+                img: "images/necklace1.jpg",
+                desc: "Modern geometric links in solid 18K gold for daily elegance.",
+                specs: "Gold: 18K | Length: 18in"
+            }, {
+                id: 8,
+                name: "Sapphire Night Choker",
+                category: "necklace",
+                type: "diamond",
+                price: 1100000,
+                img: "images/necklace2.jpg",
+                desc: "Deep blue sapphires surrounded by a halo of diamonds.",
+                specs: "Sapphires: 15ct | Diamonds: 3.2ct"
+            }, {
+                id: 9,
+                name: "Filigree Heritage",
+                category: "necklace",
+                type: "gold",
+                price: 540000,
+                img: "images/necklace3.jpg",
+                desc: "Exquisite gold filigree work showcasing the mastery of Jaipur.",
+                specs: "Gold: 22K | Weight: 85g"
+            }, {
+                id: 10,
+                name: "Solitaire Pendant",
+                category: "necklace",
+                type: "diamond",
+                price: 320000,
+                img: "images/necklace4.jpg",
+                desc: "A 2ct diamond solitaire on a delicate platinum chain.",
+                specs: "Diamond: 2ct | Platinum 950"
+            },
 
             // Earrings (10 items)
-            { id: 11, name: "Nizam Pearl Drops", category: "earrings", type: "gold", price: 185000, img: "images/earring1.jpg", desc: "Vintage-inspired Basra pearl drops.", specs: "Gold: 18K | Pearls: Basra" },
-            { id: 12, name: "Infini Diamond Studs", category: "earrings", type: "diamond", price: 95000, img: "images/earring2.jpg", desc: "Brilliant diamonds for maximum fire.", specs: "Diamonds: 1.0ct | Gold: 18K White" },
-            { id: 13, name: "Chandbali Royale", category: "earrings", type: "gold", price: 275000, img: "images/earring3.jpg", desc: "Traditional crescent earrings with pearl seed work.", specs: "Gold: 22K | Pearls: Seed Pearls" },
-            { id: 14, name: "Emerald Halo Studs", category: "earrings", type: "diamond", price: 150000, img: "images/earring4.jpg", desc: "Emerald centerpieces with diamond halos.", specs: "Emeralds: 1.2ct | Diamonds: 0.5ct" },
-            { id: 15, name: "Gold Jhumka Classic", category: "earrings", type: "gold", price: 120000, img: "images/earring5.jpg", desc: "Intricately detailed gold jhumkas.", specs: "Gold: 22K | Weight: 25g" },
-            { id: 16, name: "Blue Sapphire Drops", category: "earrings", type: "diamond", price: 380000, img: "images/earring1.jpg", desc: "Elegant sapphire drops in white gold.", specs: "Sapphires: 3ct | Gold: 18K White" },
-            { id: 17, name: "Rose Gold Florals", category: "earrings", type: "gold", price: 85000, img: "images/earring2.jpg", desc: "Delicate rose gold flower studs.", specs: "Gold: 18K Rose | Weight: 12g" },
-            { id: 18, name: "Art Deco Diamonds", category: "earrings", type: "diamond", price: 520000, img: "images/earring3.jpg", desc: "Geometric diamond patterns in platinum.", specs: "Diamonds: 4ct | Platinum 950" },
-            { id: 19, name: "Ruby Tassel Earrings", category: "earrings", type: "gold", price: 210000, img: "images/earring4.jpg", desc: "Vibrant ruby beads in a tassel design.", specs: "Rubies: 15ct | Gold: 18K" },
-            { id: 20, name: "Modern Hoop Diamonds", category: "earrings", type: "diamond", price: 145000, img: "images/earring5.jpg", desc: "Sleek diamond-encrusted hoops.", specs: "Diamonds: 0.8ct | Gold: 18K" },
+            {
+                id: 11,
+                name: "Nizam Pearl Drops",
+                category: "earrings",
+                type: "gold",
+                price: 185000,
+                img: "images/earring1.jpg",
+                desc: "Vintage-inspired Basra pearl drops.",
+                specs: "Gold: 18K | Pearls: Basra"
+            }, {
+                id: 12,
+                name: "Infini Diamond Studs",
+                category: "earrings",
+                type: "diamond",
+                price: 95000,
+                img: "images/earring2.jpg",
+                desc: "Brilliant diamonds for maximum fire.",
+                specs: "Diamonds: 1.0ct | Gold: 18K White"
+            }, {
+                id: 13,
+                name: "Chandbali Royale",
+                category: "earrings",
+                type: "gold",
+                price: 275000,
+                img: "images/earring3.jpg",
+                desc: "Traditional crescent earrings with pearl seed work.",
+                specs: "Gold: 22K | Pearls: Seed Pearls"
+            }, {
+                id: 14,
+                name: "Emerald Halo Studs",
+                category: "earrings",
+                type: "diamond",
+                price: 150000,
+                img: "images/earring4.jpg",
+                desc: "Emerald centerpieces with diamond halos.",
+                specs: "Emeralds: 1.2ct | Diamonds: 0.5ct"
+            }, {
+                id: 15,
+                name: "Gold Jhumka Classic",
+                category: "earrings",
+                type: "gold",
+                price: 120000,
+                img: "images/earring5.jpg",
+                desc: "Intricately detailed gold jhumkas.",
+                specs: "Gold: 22K | Weight: 25g"
+            }, {
+                id: 16,
+                name: "Blue Sapphire Drops",
+                category: "earrings",
+                type: "diamond",
+                price: 380000,
+                img: "images/earring1.jpg",
+                desc: "Elegant sapphire drops in white gold.",
+                specs: "Sapphires: 3ct | Gold: 18K White"
+            }, {
+                id: 17,
+                name: "Rose Gold Florals",
+                category: "earrings",
+                type: "gold",
+                price: 85000,
+                img: "images/earring2.jpg",
+                desc: "Delicate rose gold flower studs.",
+                specs: "Gold: 18K Rose | Weight: 12g"
+            }, {
+                id: 18,
+                name: "Art Deco Diamonds",
+                category: "earrings",
+                type: "diamond",
+                price: 520000,
+                img: "images/earring3.jpg",
+                desc: "Geometric diamond patterns in platinum.",
+                specs: "Diamonds: 4ct | Platinum 950"
+            }, {
+                id: 19,
+                name: "Ruby Tassel Earrings",
+                category: "earrings",
+                type: "gold",
+                price: 210000,
+                img: "images/earring4.jpg",
+                desc: "Vibrant ruby beads in a tassel design.",
+                specs: "Rubies: 15ct | Gold: 18K"
+            }, {
+                id: 20,
+                name: "Modern Hoop Diamonds",
+                category: "earrings",
+                type: "diamond",
+                price: 145000,
+                img: "images/earring5.jpg",
+                desc: "Sleek diamond-encrusted hoops.",
+                specs: "Diamonds: 0.8ct | Gold: 18K"
+            },
             // Others (10+ items)
             // Others (Luxury White Theme Images)
             {
@@ -2609,8 +2480,7 @@
                 img: "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=800&q=90",
                 desc: "Hand-engraved gold bangle.",
                 specs: "Gold: 22K | Weight: 42g"
-            },
-            {
+            }, {
                 id: 22,
                 name: "Celestial Solitaire",
                 category: "rings",
@@ -2619,8 +2489,7 @@
                 img: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=800&q=90",
                 desc: "Minimalist platinum diamond solitaire.",
                 specs: "Diamond: 1.5ct | Platinum"
-            },
-            {
+            }, {
                 id: 23,
                 name: "Stellar Signet Ring",
                 category: "men",
@@ -2629,8 +2498,7 @@
                 img: "https://images.unsplash.com/photo-1622445272461-c6580cab8755?auto=format&fit=crop&w=800&q=90",
                 desc: "Black diamonds in white gold.",
                 specs: "Black Diamonds: 0.8ct"
-            },
-            {
+            }, {
                 id: 24,
                 name: "Milanese Mesh Bracelet",
                 category: "wrist",
@@ -2639,8 +2507,7 @@
                 img: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=800&q=90",
                 desc: "Fluid gold mesh bracelet.",
                 specs: "Gold: 18K | Diamonds: 0.3ct"
-            },
-            {
+            }, {
                 id: 25,
                 name: "Infinity Band",
                 category: "rings",
@@ -2649,8 +2516,7 @@
                 img: "https://images.unsplash.com/photo-1600180758890-6b94519a8ba6?auto=format&fit=crop&w=800&q=90",
                 desc: "Continuous loop of brilliant diamonds.",
                 specs: "Diamonds: 1.2ct | Gold: 18K"
-            },
-            {
+            }, {
                 id: 26,
                 name: "Imperial Gold Cuff",
                 category: "wrist",
@@ -2659,8 +2525,7 @@
                 img: "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=800&q=90",
                 desc: "Bold gold cuff with ruby accents.",
                 specs: "Gold: 22K | Rubies: 2ct"
-            },
-            {
+            }, {
                 id: 27,
                 name: "Sapphire Men's Band",
                 category: "men",
@@ -2669,8 +2534,7 @@
                 img: "https://images.unsplash.com/photo-1599643477877-530eb83abc8e?auto=format&fit=crop&w=800&q=90",
                 desc: "Brushed gold band with a blue sapphire.",
                 specs: "Gold: 18K | Sapphire: 0.5ct"
-            },
-            {
+            }, {
                 id: 28,
                 name: "Diamond Tennis Bracelet",
                 category: "wrist",
@@ -2679,8 +2543,7 @@
                 img: "https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=800&q=90",
                 desc: "Classic line of matched diamonds.",
                 specs: "Diamonds: 8ct | Gold: 18K White"
-            },
-            {
+            }, {
                 id: 29,
                 name: "Emerald Cocktail Ring",
                 category: "rings",
@@ -2715,7 +2578,9 @@
                 `;
 
             return `
-            <div class="product-card" style="animation: revealUp 1s forwards ${index * 0.1}s">
+            <div class="product-card"
+                onclick="window.location.href='product.html?id=${p.id}'"
+                style="animation: revealUp 1s forwards ${index * 0.1}s">
 
                 <div class="product-img-wrapper">
 
@@ -2726,16 +2591,19 @@
                     <div class="product-hover">
 
                         <div class="hover-icons">
-                            <div class="hover-icon">
+                            <div class="hover-icon" onclick="event.stopPropagation(); toggleWishlist(${p.id});">
                                 <i class="fa-regular fa-heart"></i>
                             </div>
-                            <div class="hover-icon" onclick="openProduct(${p.id})">
+                            <div class="hover-icon"
+                                    onclick="event.stopPropagation(); window.location.href='product.html?id=${p.id}'">
                                 <i class="fa-regular fa-eye"></i>
                             </div>
                         </div>
 
                         <div class="hover-bottom">
-                            <button class="add-bag" onclick="openCheckout()">ADD TO BAG</button>
+                           <button class="add-bag" onclick="event.stopPropagation(); openCheckout();">
+                                ADD TO BAG
+                            </button>
                         </div>
 
                     </div>
@@ -2763,8 +2631,7 @@
                 const visible = list.slice(0, limit);
 
                 row.innerHTML =
-                    visible.map((p, i) => createProductCard(p, i)).join('')
-                    +
+                    visible.map((p, i) => createProductCard(p, i)).join('') +
                     `<div class="view-all-inline">
                         VIEW ALL <i class="fa-solid fa-arrow-right"></i>
                     </div>`;
@@ -2804,33 +2671,23 @@
 
         }
 
-        function openProduct(id) {
-            const p = products.find(prod => prod.id === id);
-            const price = `₹${p.price.toLocaleString('en-IN')}`;
-
-            document.getElementById('modalImg').src = p.img;
-            document.getElementById('modalTitle').innerText = p.name;
-            document.getElementById('modalPrice').innerText = price;
-            document.getElementById('modalDesc').innerText = p.desc;
-            document.getElementById('modalCategory').innerText = p.category;
-            document.getElementById('modalSpecs').innerText = p.specs;
-
-            document.getElementById('productModal').style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
         function openCheckout() {
-            document.getElementById('productModal').style.display = 'none';
+
+            const productModal = document.getElementById('productModal');
+
+            // Only close if exists
+            if (productModal) {
+                productModal.style.display = 'none';
+            }
+
             document.getElementById('checkoutModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
 
         function closeAllModals() {
             document.querySelectorAll('.modal').forEach(m => m.style.display = 'none');
             document.body.style.overflow = 'auto';
         }
-
-        document.getElementById('closeModal').onclick = closeAllModals;
-        document.getElementById('modalBuyBtn').onclick = openCheckout;
 
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.onclick = () => {
@@ -2940,7 +2797,7 @@
         /* update dots whenever slide changes */
         const originalShowSlide = showSlide;
 
-        showSlide = function (index) {
+        showSlide = function(index) {
             originalShowSlide(index);
             updateDots();
         }
@@ -2953,10 +2810,30 @@
         const hamburger = document.getElementById("hamburger");
         const mobileMenu = document.getElementById("mobileMenu");
 
-        hamburger.onclick = () => {
+        /* Toggle menu */
+        hamburger.onclick = (e) => {
+            e.stopPropagation();
             mobileMenu.classList.toggle("active");
         };
 
+        /* Close when clicking any menu link */
+        mobileMenu.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+                mobileMenu.classList.remove("active");
+            });
+        });
+
+        /* Close when clicking outside menu */
+        document.addEventListener("click", (e) => {
+            if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                mobileMenu.classList.remove("active");
+            }
+        });
+
+        /* Close on scroll */
+        window.addEventListener("scroll", () => {
+            mobileMenu.classList.remove("active");
+        });
     </script>
 </body>
 
