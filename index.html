@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>P_B QUEENS | Heritage & Global Luxury Fine Jewelry</title>
     <!-- Added Playfair Display and Montserrat for luxury typography -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@100..900&display=swap"
         rel="stylesheet">
@@ -96,21 +97,54 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 1.8rem 6%;
+            height: 95px;
+            transition: height 0.4s ease, background 0.4s ease, backdrop-filter 0.4s ease;
+            padding: 0 4%;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            /* important */
+
             z-index: 1000;
-            transition: var(--transition-smooth);
+
+            background: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0.95) 0%,
+                    rgba(255, 249, 230, 0.92) 50%,
+                    rgba(255, 255, 255, 0.95) 100%);
+
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+
+            flex-wrap: nowrap;
+            /* ⭐ MOST IMPORTANT */
         }
 
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            flex-shrink: 1;
+            white-space: nowrap;
+        }
+
+
+        nav:not(.scrolled) .nav-links a {
+            color: #2a2a2a;
+        }
+
+        nav:not(.scrolled) svg {
+            stroke: #2a2a2a;
+        }
+
+
         nav.scrolled {
+            height: 70px;
             background: rgba(255, 255, 255, 0.18);
             /* ✅ true glass */
             backdrop-filter: blur(28px) saturate(160%);
             -webkit-backdrop-filter: blur(28px) saturate(160%);
-
-            padding: 1.05rem 6%;
 
             border-bottom: 1px solid rgba(255, 255, 255, 0.25);
             box-shadow:
@@ -137,33 +171,60 @@
             opacity: 1;
         }
 
-        nav.scrolled .logo {
-            font-size: 1.6rem;
-            letter-spacing: 0.3rem;
+        /* Desktop scroll animation ONLY */
+        @media (min-width: 769px) {
+
+            nav.scrolled .logo {
+                font-size: 1.6rem;
+                letter-spacing: 0.3rem;
+            }
+
+            nav.scrolled .nav-logo {
+                height: 50px;
+            }
+
+            nav.scrolled .nav-links a {
+                font-size: 0.68rem;
+                letter-spacing: 0.18rem;
+            }
+
         }
 
-        nav.scrolled .nav-links a {
-            font-size: 0.68rem;
-            letter-spacing: 0.18rem;
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            z-index: 2;
+            position: relative;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+
+        .nav-logo {
+            height: 62px;
+            width: auto;
+            object-fit: contain;
+            transition: 0.4s ease;
+
+            filter:
+                drop-shadow(0 4px 6px rgba(0, 0, 0, 0.15)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
+        }
+
+
+        .nav-logo:hover {
+            filter:
+                drop-shadow(0 6px 10px rgba(0, 0, 0, 0.2)) drop-shadow(0 0 12px rgba(212, 175, 55, 0.35));
         }
 
 
         .logo {
-            font-size: 2.2rem;
-            letter-spacing: 0.4rem;
+            font-size: 2rem;
+            letter-spacing: 0.35rem;
             font-weight: 300;
             text-transform: uppercase;
-            cursor: pointer;
-
-            position: relative;
-            z-index: 2;
-        }
-
-
-        .nav-links {
-            display: flex;
-            gap: 3.5rem;
-            list-style: none;
+            white-space: nowrap;
         }
 
         .nav-links a {
@@ -227,26 +288,18 @@
             }
         }
 
-        .hero-content {
-            text-align: center;
-            z-index: 10;
-            max-width: 800px;
-            opacity: 0;
-            transform: translateY(40px);
-            animation: revealUp 1.2s forwards 0.5s;
-        }
-
         @keyframes revealUp {
             from {
                 opacity: 0;
-                transform: translateY(40px) scale(0.98);
+                transform: translateY(40px);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0) scale(1);
+                transform: translateY(0);
             }
         }
+
 
         .hero-tag {
             font-size: 0.9rem;
@@ -328,13 +381,13 @@
 
         /* --- Categories --- */
         .section-padding {
-            padding: 70px 4%;
+            padding: 40px 4%;
         }
 
 
         .section-header {
             text-align: center;
-            margin-bottom: 70px;
+            margin-bottom: 35px;
         }
 
         .section-header h2 {
@@ -352,7 +405,7 @@
 
         .horizontal-scroll-wrapper {
             position: relative;
-            padding: 20px 0;
+            padding: 10px 0;
             overflow: hidden;
         }
 
@@ -360,7 +413,7 @@
             display: flex;
             gap: 1.5rem;
             overflow-x: auto;
-            padding: 16px 3% 28px;
+            padding: 16px 3% 10px;
             scroll-behavior: smooth;
             -ms-overflow-style: none;
             scrollbar-width: none;
@@ -461,89 +514,166 @@
             gap: 2.5rem;
         }
 
+        /* ===== ULTRA LUXURY PRODUCT CARD ===== */
+
         .product-card {
-            flex: 0 0 320px;
+            flex: 0 0 280px;
+            /* ⭐ THIS IS THE FIX */
             scroll-snap-align: start;
+
             cursor: pointer;
-
-            background: rgba(255, 255, 255, 0.72);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            border-radius: 12px;
-            overflow: hidden;
-
-            position: relative;
-
-            box-shadow:
-                0 10px 30px rgba(0, 0, 0, 0.04);
-
-            transition:
-                transform 0.7s cubic-bezier(0.19, 1, 0.22, 1),
-                box-shadow 0.7s cubic-bezier(0.19, 1, 0.22, 1),
-                background 0.7s ease,
-                border-color 0.7s ease;
+            background: transparent;
+            border: none;
+            box-shadow: none;
+            transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        /* FULL CARD HOVER (not image-only) */
-        .product-card:hover {
-            transform: translateY(-14px);
-
-            background: rgba(255, 255, 255, 0.92);
-            border-color: rgba(212, 175, 55, 0.35);
-
-            box-shadow:
-                0 30px 60px rgba(0, 0, 0, 0.12),
-                0 0 0 1px rgba(212, 175, 55, 0.25),
-                0 20px 40px rgba(212, 175, 55, 0.18);
-        }
-
-        /* INNER GLASS HIGHLIGHT */
-        .product-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-
-            background:
-                radial-gradient(circle at 20% 15%,
-                    rgba(255, 255, 255, 0.55),
-                    transparent 60%);
-
-            opacity: 0;
-            pointer-events: none;
-
-            transition: opacity 0.6s ease;
-        }
-
-        .product-card:hover::before {
-            opacity: 1;
-        }
-
-
+        /* IMAGE CONTAINER */
 
         .product-img-wrapper {
-            aspect-ratio: 1 / 1;
-            /* perfect square */
-            background: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             position: relative;
+            width: 100%;
+            aspect-ratio: 1/1;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
         }
-
 
         .product-img-wrapper img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            /* keeps full jewelry visible */
-            object-position: center;
-            padding: 18px;
-            /* breathing space for luxury look */
-            transition: transform 0.8s ease;
+            object-fit: cover;
+            /* ⭐ auto crop + fill card */
+            padding: 0;
+            /* ⭐ remove white space */
+            transition: 0.8s ease;
         }
 
+        /* IMAGE ZOOM */
+
+        .product-card:hover img {
+            transform: scale(1.06);
+        }
+
+        /* HOVER OVERLAY */
+
+        .product-hover {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: 0.4s ease;
+        }
+
+        .product-card:hover .product-hover {
+            opacity: 1;
+        }
+
+        /* TOP RIGHT ICONS */
+
+        .hover-icons {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .hover-icon {
+            width: 36px;
+            height: 36px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: 0.4s ease;
+        }
+
+        .product-card:hover .hover-icon {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* ===== LUXURY DISCOUNT TAG ===== */
+
+        .discount-tag {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            z-index: 5;
+
+            background: linear-gradient(135deg, #BF953F, #F9E27D, #AA771C);
+            color: #121212;
+
+            font-size: 10px;
+            letter-spacing: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
+
+            padding: 6px 12px;
+            border-radius: 4px;
+
+            box-shadow:
+                0 6px 15px rgba(0, 0, 0, 0.15),
+                0 0 12px rgba(212, 175, 55, 0.35);
+        }
+
+        /* ADD TO BAG BUTTON */
+
+        .hover-bottom {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translate(-50%, 20px);
+            opacity: 0;
+            transition: 0.4s ease;
+        }
+
+        .product-card:hover .hover-bottom {
+            transform: translate(-50%, 0);
+            opacity: 1;
+        }
+
+        .add-bag {
+            background: linear-gradient(135deg, #D4AF37, #F0D36D);
+            border: none;
+            padding: 10px 24px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            color: white;
+            border-radius: 6px;
+        }
+
+        /* TEXT UNDER CARD */
+
+        .product-info {
+            text-align: center;
+            margin-top: 14px;
+        }
+
+        .product-info h3 {
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .product-price {
+            font-size: 14px;
+            color: #c79c2b;
+        }
+
+        /* OLD CUTTED PRICE (Luxury Style) */
+
+        .old-price {
+            color: #999;
+            text-decoration: line-through;
+            margin-right: 8px;
+            font-size: 0.85rem;
+            font-weight: 400;
+        }
 
         .product-card:hover .product-img-wrapper img {
             transform: scale(1.08);
@@ -848,29 +978,86 @@
             letter-spacing: 0.1rem;
         }
 
-        /* --- Toggles & Badges --- */
-        .currency-toggle {
-            position: fixed;
-            bottom: 2rem;
-            left: 2rem;
-            z-index: 1000;
-            background: white;
-            padding: 0.5rem 1rem;
-            border-radius: 30px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        /* ===== ULTRA LUXURY HERO SLIDER ===== */
+
+        .hero-slider {
+            position: relative;
+            height: calc(100vh - 95px);
+            margin-top: 95px;
+            /* push below navbar */
+            overflow: hidden;
+        }
+
+
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+
+            opacity: 0;
+            /* REMOVE zoom from content */
+            transition: opacity 1.2s ease;
+
             display: flex;
-            gap: 10px;
+            align-items: center;
+            padding-left: 8%;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+
+            background: linear-gradient(90deg,
+                    rgba(0, 0, 0, 0.85) 0%,
+                    rgba(0, 0, 0, 0.5) 40%,
+                    rgba(0, 0, 0, 0.1) 70%,
+                    transparent 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            color: white;
+            max-width: 500px;
+        }
+
+        .hero-content .hero-title {
+            font-size: 72px;
+            font-weight: 500;
+            line-height: 1.05;
+        }
+
+        .hero-badge {
+            background: linear-gradient(135deg, #BF953F, #F9E27D, #AA771C);
+            color: #121212;
+
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .hero-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
             cursor: pointer;
-        }
-
-        .currency-toggle span {
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: #888;
-        }
-
-        .currency-toggle span.active {
-            color: var(--gold-soft);
+            font-size: 22px;
         }
 
         /* --- Responsive --- */
@@ -906,6 +1093,19 @@
             .modal-body {
                 padding: 2rem;
             }
+
+            .logo-wrapper {
+                gap: 8px;
+            }
+
+            .nav-logo {
+                height: 42px;
+            }
+
+            .logo {
+                font-size: 1rem;
+                letter-spacing: 0.18rem;
+            }
         }
 
         /* Hide scrollbar but keep scroll functionality */
@@ -924,45 +1124,1080 @@
             width: 0;
             height: 0;
         }
+
+        /* ===== ULTRA LUXURY HERO TEXT ===== */
+
+        .hero-slide {
+            justify-content: flex-start;
+            padding-left: 8%;
+        }
+
+        .luxury-layout {
+            text-align: left;
+            max-width: 560px;
+        }
+
+
+        .hero-small {
+            font-size: 12px;
+            letter-spacing: 4px;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 500;
+            line-height: 1.05;
+            color: white;
+        }
+
+        .hero-title span {
+            background: linear-gradient(135deg, #BF953F, #FCF6BA, #AA771C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+
+        .hero-desc {
+            color: rgba(255, 255, 255, 0.85);
+            margin-top: 12px;
+            margin-bottom: 28px;
+            font-size: 16px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            justify-content: flex-start;
+            margin-bottom: 18px;
+        }
+
+        .btn-outline {
+            padding: 1.1rem 2.5rem;
+            border: 1px solid #d4af37;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 0.25rem;
+            font-size: 0.75rem;
+            transition: 0.4s;
+        }
+
+        .btn-outline:hover {
+            background: #d4af37;
+            color: #121212;
+        }
+
+        .hero-price {
+            color: #f3e5ab;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        /* default state for ALL slides */
+
+        .hero-slide .hero-small,
+        .hero-slide .hero-title,
+        .hero-slide .hero-desc,
+        .hero-slide .hero-actions,
+        .hero-slide .hero-price {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+
+        /* animation keyframe */
+
+        @keyframes fadeUpLuxury {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* when slide active → animate each element */
+
+        .hero-slide.active .hero-small {
+            animation: fadeUpLuxury 0.6s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        .hero-slide.active .hero-title {
+            animation: fadeUpLuxury 0.7s ease forwards;
+            animation-delay: 0.4s;
+        }
+
+        .hero-slide.active .hero-desc {
+            animation: fadeUpLuxury 0.7s ease forwards;
+            animation-delay: 0.6s;
+        }
+
+        .hero-slide.active .hero-actions {
+            animation: fadeUpLuxury 0.7s ease forwards;
+            animation-delay: 0.8s;
+        }
+
+        .hero-slide.active .hero-price {
+            animation: fadeUpLuxury 0.7s ease forwards;
+            animation-delay: 1s;
+        }
+
+        /* ===== LUXURY HERO DOTS ===== */
+
+        .hero-dots {
+            position: absolute;
+            bottom: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 20;
+        }
+
+        .hero-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            position: relative;
+        }
+
+        /* luxury glow animation */
+        .hero-dot.active {
+            background: #D4AF37;
+            transform: scale(1.4);
+            box-shadow:
+                0 0 12px rgba(212, 175, 55, 0.8),
+                0 0 24px rgba(212, 175, 55, 0.5);
+        }
+
+        /* smooth hover */
+        .hero-dot:hover {
+            transform: scale(1.3);
+        }
+
+        /* ===== LUXURY TRUST STRIP (GOLD & WHITE THEME) ===== */
+
+        .trust-strip {
+            background: linear-gradient(90deg,
+                    #ffffff 0%,
+                    #fff8e8 50%,
+                    #ffffff 100%);
+            padding: 60px 5%;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .trust-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 40px;
+            max-width: 1400px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .trust-item {
+            transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .trust-item:hover {
+            transform: translateY(-6px);
+        }
+
+        .trust-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 18px;
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 24px;
+
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+
+            color: var(--gold-soft);
+
+            box-shadow:
+                0 10px 25px rgba(212, 175, 55, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.7);
+
+            transition: 0.4s ease;
+        }
+
+        .trust-item:hover .trust-icon {
+            background: var(--royal-gold);
+            color: #121212;
+            transform: scale(1.08);
+        }
+
+        .trust-item h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            letter-spacing: 0.05rem;
+        }
+
+        .trust-item p {
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .trust-container {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 50px 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .trust-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ===== ULTRA LUXURY WHATSAPP FLOAT ===== */
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            text-decoration: none;
+
+            width: 60px;
+            height: 60px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: linear-gradient(135deg, #25D366, #128C7E);
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.2),
+                0 0 0 0 rgba(37, 211, 102, 0.6);
+
+            z-index: 9999;
+
+            transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+
+            animation: whatsappFloatIn 1s ease forwards;
+        }
+
+        /* luxury hover */
+        .whatsapp-float:hover {
+            transform: translateY(-6px) scale(1.05);
+
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.25),
+                0 0 25px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-float i {
+            font-size: 28px;
+            color: white;
+        }
+
+        /* floating pulse */
+        .whatsapp-float::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            animation: whatsappPulse 2.5s infinite;
+        }
+
+        @keyframes whatsappPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+            }
+
+            70% {
+                box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        @keyframes whatsappFloatIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* ===== LUXURY CATEGORY SELECT SECTION ===== */
+
+        .select-category-section {
+            padding: 60px 6%;
+        }
+
+        .select-category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .select-category-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            height: 240px;
+
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+
+            transition: 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .select-category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 1s ease;
+        }
+
+        .select-category-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .select-category-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent 70%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 18px;
+        }
+
+        .select-category-overlay h3 {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 6px;
+        }
+
+        .select-category-overlay p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        /* responsive */
+        @media(max-width:1024px) {
+            .select-category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ===== CATEGORY MOBILE 2x2 GRID ===== */
+
+        @media (max-width:600px) {
+
+            .select-category-grid {
+                grid-template-columns: repeat(2, 1fr);
+                /* ⭐ 2x2 grid */
+                gap: 12px;
+            }
+
+            .select-category-card {
+                height: 140px;
+                /* ⭐ smaller cards */
+                border-radius: 10px;
+            }
+
+            .select-category-overlay {
+                padding: 10px;
+            }
+
+            .select-category-overlay h3 {
+                font-size: 13px;
+            }
+
+            .select-category-overlay p {
+                font-size: 9px;
+                line-height: 1.4;
+            }
+
+            .select-category-section {
+                padding: 35px 4%;
+            }
+
+        }
+
+        .view-all-inline {
+            flex: 0 0 auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: none;
+
+            height: 100%;
+            /* ⭐ makes it match card height */
+            align-self: center;
+            /* ⭐ vertical center in flex row */
+
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #444;
+            cursor: pointer;
+            padding: 0 30px;
+            white-space: nowrap;
+            transition: 0.4s ease;
+        }
+
+        #collections .section-header {
+            margin-bottom: 15px;
+            /* was 35px */
+        }
+
+        #collections .horizontal-scroll-wrapper:last-child {
+            padding-bottom: 0;
+        }
+
+        .view-all-inline i {
+            margin-left: 8px;
+            transition: 0.4s ease;
+        }
+
+        .view-all-inline:hover {
+            color: #D4AF37;
+        }
+
+        .view-all-inline:hover i {
+            transform: translateX(6px);
+        }
+
+        /* ===== TRENDING LUXURY SECTION ===== */
+
+        .trending-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 260px);
+            justify-content: center;
+            gap: 40px;
+        }
+
+
+        .trending-grid .product-card {
+            flex: auto;
+            /* disable horizontal scroll behavior */
+        }
+
+        @media(max-width:1024px) {
+            .trending-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width:600px) {
+
+            .trending-grid {
+                grid-template-columns: repeat(3, 1fr);
+                /* ⭐ 3x3 grid */
+                gap: 14px;
+                justify-content: center;
+            }
+
+            .trending-grid .product-card {
+                flex: auto;
+            }
+
+            .trending-grid .product-img-wrapper {
+                border-radius: 10px;
+            }
+
+            .trending-grid .product-info h3 {
+                font-size: 10px;
+                letter-spacing: 1px;
+            }
+
+            .trending-grid .product-price {
+                font-size: 11px;
+            }
+
+            .trending-grid .product-img-wrapper {
+                aspect-ratio: 1/1;
+            }
+
+        }
+
+        /* ===== ULTRA LUXURY MOBILE NAV ===== */
+
+        .nav-right {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        /* Hamburger */
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 22px;
+            height: 2px;
+            background: #121212;
+            transition: 0.4s ease;
+        }
+
+        /* Mobile menu panel */
+
+        .mobile-menu {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(25px);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            gap: 25px;
+            padding: 40px 0;
+
+            transform: translateY(-120%);
+            transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+
+            z-index: 999;
+        }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: #121212;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 13px;
+        }
+
+        .mobile-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 13px;
+        }
+
+        /* Active state */
+
+        .mobile-menu.active {
+            transform: translateY(0);
+        }
+
+        /* Show hamburger only on mobile */
+
+        @media(max-width:768px) {
+
+            .hamburger {
+                display: flex;
+            }
+
+        }
+
+        /* ===================================
+   ULTRA RESPONSIVE SYSTEM (PHONES FIRST)
+=================================== */
+
+        /* ---------- Tablets ---------- */
+        @media (max-width:1024px) {
+
+            nav {
+                padding: 0 3%;
+                gap: 15px;
+            }
+
+            .hero-title {
+                font-size: 48px;
+            }
+
+            .hero-slider {
+                height: calc(100vh - 70px);
+            }
+
+            .product-card {
+                flex: 0 0 240px;
+            }
+
+        }
+
+
+        /* ---------- Large Phones ---------- */
+        @media (max-width:768px) {
+
+            /* NAVBAR */
+            nav {
+                height: 70px;
+                padding: 0 4%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .logo {
+                font-size: 0.9rem;
+                letter-spacing: 0.12rem;
+            }
+
+            .nav-logo {
+                height: 38px;
+            }
+
+            /* HERO */
+            .hero-slide {
+                padding-left: 6%;
+                justify-content: flex-start;
+            }
+
+            .luxury-layout {
+                text-align: left;
+                max-width: 75%;
+            }
+
+            .hero-title {
+                font-size: clamp(22px, 6vw, 36px);
+                line-height: 1.05;
+            }
+
+            .hero-small {
+                font-size: 9px;
+                letter-spacing: 3px;
+            }
+
+            .hero-actions {
+                justify-content: flex-start;
+            }
+
+            .hero-desc {
+                font-size: 12px;
+            }
+
+            .hero-price {
+                font-size: 12px;
+            }
+
+            /* ===== MOBILE HERO ARROWS RIGHT SIDE VERTICAL (FIXED) ===== */
+
+            /* ===== PERFECT MOBILE ARROW STACK (FINAL FIX) ===== */
+
+            .hero-slider {
+                position: relative;
+            }
+
+            /* create vertical container */
+            .hero-slider::after {
+                content: '';
+            }
+
+            /* group arrows */
+            .hero-nav {
+                position: absolute;
+                right: 12px !important;
+                left: auto !important;
+
+                width: 36px;
+                height: 36px;
+                font-size: 16px;
+
+                transform: none !important;
+            }
+
+            /* exact positions (tight gap) */
+            .hero-nav.prev {
+                top: 50%;
+                margin-top: -42px;
+                /* adjust spacing here */
+            }
+
+            .hero-nav.next {
+                top: 50%;
+                margin-top: 6px;
+                /* adjust spacing here */
+            }
+
+            .btn-luxury,
+            .btn-outline {
+                padding: 10px 16px;
+                font-size: 11px;
+            }
+
+            /* TRUST STRIP */
+            .trust-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 18px;
+            }
+
+            /* PRODUCTS */
+            .product-card {
+                flex: 0 0 210px;
+            }
+
+            .product-info h3 {
+                font-size: 12px;
+            }
+
+            /* SECTION PADDING */
+            .section-padding {
+                padding: 30px 4%;
+            }
+
+        }
+
+
+        /* ---------- Small Phones (iPhone / Android) ---------- */
+        @media (max-width:480px) {
+
+            /* ===== HERO (Ultra Compact Mobile) ===== */
+
+            .hero-slide {
+                padding-left: 5%;
+            }
+
+            .luxury-layout {
+                max-width: 80%;
+            }
+
+            .hero-small {
+                font-size: 8px;
+                letter-spacing: 2px;
+                margin-bottom: 6px;
+            }
+
+            .hero-title {
+                font-size: clamp(18px, 7vw, 26px);
+                line-height: 1.05;
+            }
+
+            .hero-desc {
+                font-size: 11px;
+                margin-top: 8px;
+                margin-bottom: 16px;
+            }
+
+            .hero-actions {
+                gap: 8px;
+                margin-bottom: 12px;
+            }
+
+            .btn-luxury,
+            .btn-outline {
+                padding: 8px 14px;
+                font-size: 10px;
+                letter-spacing: 1px;
+            }
+
+            .hero-price {
+                font-size: 11px;
+            }
+
+            .hero-nav {
+                width: 34px;
+                height: 34px;
+                font-size: 16px;
+            }
+
+            /* ===== PRODUCTS ===== */
+
+            .product-card {
+                flex: 0 0 170px;
+            }
+
+            .discount-tag {
+                font-size: 8px;
+                padding: 4px 6px;
+            }
+
+            /* ===== CONTACT ===== */
+
+            .contact-card {
+                padding: 2rem 1.2rem;
+            }
+
+            /* ===== FOOTER ===== */
+
+            footer {
+                padding: 60px 5% 30px;
+            }
+
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="currency-toggle" id="currencyToggle">
-        <span class="active" data-curr="INR">₹ INR</span>
-        <span data-curr="USD">$ USD</span>
-    </div>
-
     <nav id="navbar">
-        <div class="logo brand-font gold-text">P_B QUEENS</div>
+        <div class="logo-wrapper">
+            <img src="images/logo.png" alt="PB Queens Logo" class="nav-logo">
+            <div class="logo brand-font gold-text">PB QUEENS JEWELS</div>
+        </div>
+
         <ul class="nav-links">
-            <li><a href="#collections">Collections</a></li>
-            <li><a href="#heritage">Heritage</a></li>
-            <li><a href="#bespoke">Bespoke</a></li>
+            <li><a href="#products">Shop All</a></li>
+            <li><a href="#earringRow">Earrings</a></li>
+            <li><a href="#necklaceRow">Necklaces</a></li>
+            <li><a href="#products">Rings</a></li>
+            <li><a href="#products">Bracelets</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <div style="display: flex; gap: 1.5rem; align-items: center;">
+
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-profile">
+                <i class="fa-regular fa-user"></i>
+                <span>My Profile</span>
+            </div>
+            <a href="#products">Shop All</a>
+            <a href="#earringRow">Earrings</a>
+            <a href="#necklaceRow">Necklaces</a>
+            <a href="#products">Rings</a>
+            <a href="#products">Bracelets</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <div class="nav-right">
+
+            <!-- SEARCH -->
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                 <circle cx="11" cy="11" r="8"></circle>
                 <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
+
+            <!-- WISHLIST -->
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4H6z"></path>
-                <line x1="3" y1="6" x2="21" y2="6"></line>
-                <path d="M16 10a4 4 0 01-8 0"></path>
+                <path
+                    d="M20.8 4.6c-1.5-1.5-3.9-1.5-5.4 0L12 8l-3.4-3.4c-1.5-1.5-3.9-1.5-5.4 0s-1.5 3.9 0 5.4L12 21l8.8-11c1.5-1.5 1.5-3.9 0-5.4z" />
             </svg>
+
+            <!-- CART -->
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4H6z" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <path d="M16 10a4 4 0 01-8 0" />
+            </svg>
+
+            <!-- HAMBURGER RIGHT SIDE -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
         </div>
+
     </nav>
 
-    <section class="hero">
-        <div class="hero-bg-accent"></div>
-        <div class="hero-content">
-            <p class="hero-tag">Handcrafted in Jaipur, Celebrated Globally</p>
-            <h1>Eternal <span>Heritage</span>, Modern Luxury</h1>
-            <a href="#products" class="btn-luxury">Explore Collection</a>
+    <section class="hero-slider">
+
+        <div class="hero-slide active"
+            style="background-image:url('https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1600&q=90')">
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content luxury-layout">
+
+                <div class="hero-small">NEW COLLECTION</div>
+
+                <h1 class="hero-title">
+                    Royal<br>
+                    <span>Necklaces</span>
+                </h1>
+
+                <p class="hero-desc">
+                    Timeless heritage inspired by Jaipur royalty
+                </p>
+
+                <div class="hero-actions">
+                    <a class="btn-luxury">Explore →</a>
+                    <a class="btn-outline">View All</a>
+                </div>
+
+                <div class="hero-price">
+                    Starting from ₹95,000
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="hero-slide"
+            style="background-image:url('https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=1600&q=90')">
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content luxury-layout">
+
+                <div class="hero-small">BESTSELLER</div>
+
+                <h1 class="hero-title">
+                    Elegant<br>
+                    <span>Rings</span>
+                </h1>
+
+                <p class="hero-desc">
+                    Luxury handcrafted jewelry for modern queens
+                </p>
+
+                <div class="hero-actions">
+                    <a class="btn-luxury">Explore →</a>
+                    <a class="btn-outline">View All</a>
+                </div>
+
+                <div class="hero-price">
+                    Starting from ₹1,25,000
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <button class="hero-nav prev">‹</button>
+        <button class="hero-nav next">›</button>
+
+        <div class="hero-dots"></div>
+
+    </section>
+
+    <!-- ===== LUXURY TRUST STRIP ===== -->
+    <section class="trust-strip">
+        <div class="trust-container">
+
+            <div class="trust-item">
+                <div class="trust-icon">
+                    🚚
+                </div>
+                <h4>Free Shipping</h4>
+                <p>On orders above ₹799</p>
+            </div>
+
+            <div class="trust-item">
+                <div class="trust-icon">
+                    🛡
+                </div>
+                <h4>Secure Payment</h4>
+                <p>100% secure checkout</p>
+            </div>
+
+            <div class="trust-item">
+                <div class="trust-icon">
+                    ↺
+                </div>
+                <h4>Easy Returns</h4>
+                <p>7-day return policy</p>
+            </div>
+
+            <div class="trust-item">
+                <div class="trust-icon">
+                    ✔
+                </div>
+                <h4>100% Authentic</h4>
+                <p>Quality guaranteed</p>
+            </div>
+
+            <div class="trust-item">
+                <div class="trust-icon">
+                    💳
+                </div>
+                <h4>COD Available</h4>
+                <p>Pay on delivery</p>
+            </div>
+
+            <div class="trust-item">
+                <div class="trust-icon">
+                    🎧
+                </div>
+                <h4>24/7 Support</h4>
+                <p>Always here to help</p>
+            </div>
+
         </div>
     </section>
+
+    <!-- ===== SELECT BY CATEGORY (LUXURY) ===== -->
+    <section class="select-category-section">
+
+        <div class="section-header">
+            <p>Explore The Collection</p>
+            <h2>Shop By Category</h2>
+        </div>
+
+        <div class="select-category-grid">
+
+            <!-- Earrings -->
+            <div class="select-category-card">
+                <img src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=900&q=90">
+                <div class="select-category-overlay">
+                    <h3>Earrings</h3>
+                    <p>Elegant drops and timeless studs crafted for royal sophistication.</p>
+                </div>
+            </div>
+
+            <!-- Necklace -->
+            <div class="select-category-card">
+                <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=900&q=90">
+                <div class="select-category-overlay">
+                    <h3>Necklaces</h3>
+                    <p>Statement heritage pieces blending tradition with modern luxury.</p>
+                </div>
+            </div>
+
+            <!-- Rings -->
+            <div class="select-category-card">
+                <img src="https://images.unsplash.com/photo-1622445272461-c6580cab8755?auto=format&fit=crop&w=900&q=90">
+                <div class="select-category-overlay">
+                    <h3>Rings</h3>
+                    <p>Symbolic creations celebrating beauty, commitment and elegance.</p>
+                </div>
+            </div>
+
+            <!-- Bangles / Bracelets -->
+            <div class="select-category-card">
+                <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=900&q=90">
+                <div class="select-category-overlay">
+                    <h3>Bangles & Bracelets</h3>
+                    <p>Graceful wristwear crafted to elevate every royal moment.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
 
     <!-- Categories Section with Premium Hover Effects -->
     <section class="section-padding" id="collections">
@@ -976,7 +2211,7 @@
             </div>
         </div>
 
-        <div class="section-header" style="margin-top: 100px;">
+        <div class="section-header">
             <p>Ethereal Drops</p>
             <h2>The Earring Edit</h2>
         </div>
@@ -985,61 +2220,20 @@
                 <!-- 10 Earrings injected by JS -->
             </div>
         </div>
-
-        <div class="section-header" style="margin-top: 100px;">
-            <p>Signature Curations</p>
-            <h2>Bespoke Rings & Wristwear</h2>
-        </div>
-        <div class="horizontal-scroll-wrapper">
-            <div class="product-row" id="otherRow">
-                <!-- 10+ Other items injected by JS -->
-            </div>
-        </div>
     </section>
 
-    <!-- Advanced Product Catalog with Filtering -->
-    <section class="section-padding" id="products">
+    <!-- ===== TRENDING COLLECTION (ULTRA LUXURY) ===== -->
+    <section class="section-padding" id="trending">
+
         <div class="section-header">
-            <p>Fine Jewelry</p>
-            <h2>Signature Collection</h2>
+            <p>Most Desired Pieces</p>
+            <h2>Trending Now</h2>
         </div>
 
-        <div class="filter-tabs">
-            <button class="filter-btn active" data-filter="all">All Pieces</button>
-            <button class="filter-btn" data-filter="gold">Pure Gold</button>
-            <button class="filter-btn" data-filter="diamond">Diamond</button>
-            <button class="filter-btn" data-filter="bridal">Heritage Bridal</button>
-            <button class="filter-btn" data-filter="men">Men's Edit</button>
+        <div class="trending-grid" id="trendingGrid">
+            <!-- 6 trending items injected by JS -->
         </div>
 
-        <div class="product-grid" id="productGrid">
-            <!-- Products injected by JS -->
-        </div>
-    </section>
-
-    <section class="section-padding glass-card" style="margin: 0 6% 100px; text-align: center;">
-        <div class="section-header" style="margin-bottom: 40px;">
-            <p>Our Promise</p>
-            <h2>Excellence Certified</h2>
-        </div>
-        <div style="display: flex; justify-content: center; gap: 5rem; flex-wrap: wrap;">
-            <div>
-                <h4 class="gold-text">BIS 916</h4>
-                <p style="font-size: 0.7rem; color: #888;">Hallmarked Gold</p>
-            </div>
-            <div>
-                <h4 class="gold-text">IGI</h4>
-                <p style="font-size: 0.7rem; color: #888;">Certified Diamonds</p>
-            </div>
-            <div>
-                <h4 class="gold-text">WORLDWIDE</h4>
-                <p style="font-size: 0.7rem; color: #888;">Secured Shipping</p>
-            </div>
-            <div>
-                <h4 class="gold-text">LIFETIME</h4>
-                <p style="font-size: 0.7rem; color: #888;">Buyback Policy</p>
-            </div>
-        </div>
     </section>
 
     <!-- Luxury Modals -->
@@ -1302,27 +2496,51 @@
             }
         ];
 
-        let currentCurrency = 'INR';
-        const rate = 83; // Fixed conversion for demo
-
         function createProductCard(p, index) {
-            const price = currentCurrency === 'INR' ? `₹${p.price.toLocaleString('en-IN')}` : `$${Math.round(p.price / rate).toLocaleString()}`;
+            const discountPercent = 20;
+
+            const originalPrice = p.price;
+            const discountPrice = Math.round(originalPrice * (1 - discountPercent / 100));
+
+            const priceHTML = `
+                <span class="old-price">₹${originalPrice.toLocaleString('en-IN')}</span>
+                ₹${discountPrice.toLocaleString('en-IN')}
+                `;
+
             return `
-                <div class="product-card" style="animation: revealUp 1s forwards ${index * 0.1}s">
-                    <div class="product-img-wrapper">
-                        <div class="sparkle" style="top: 20%; left: 20%;"></div>
-                        <div class="sparkle" style="top: 40%; right: 30%;"></div>
-                        <img src="${p.img}" alt="${p.name}">
-                    </div>
-                    <div class="product-info">
-                        <h3>${p.name}</h3>
-                        <p class="product-price">${price}</p>
-                        <div class="product-actions">
-                            <button class="btn-action" onclick="openProduct(${p.id})">View</button>
-                            <button class="btn-action btn-buy" onclick="openCheckout()">Buy</button>
+            <div class="product-card" style="animation: revealUp 1s forwards ${index * 0.1}s">
+
+                <div class="product-img-wrapper">
+
+                    <img src="${p.img}" alt="${p.name}">
+
+                    <div class="discount-tag">-20%</div>
+
+                    <div class="product-hover">
+
+                        <div class="hover-icons">
+                            <div class="hover-icon">
+                                <i class="fa-regular fa-heart"></i>
+                            </div>
+                            <div class="hover-icon" onclick="openProduct(${p.id})">
+                                <i class="fa-regular fa-eye"></i>
+                            </div>
                         </div>
+
+                        <div class="hover-bottom">
+                            <button class="add-bag" onclick="openCheckout()">ADD TO BAG</button>
+                        </div>
+
                     </div>
+
                 </div>
+
+                <div class="product-info">
+                    <h3>${p.name}</h3>
+                    <p class="product-price">${priceHTML}</p>
+                </div>
+
+            </div>
             `;
         }
 
@@ -1330,11 +2548,30 @@
             // Horizontal Rows
             const neckRow = document.getElementById('necklaceRow');
             const earRow = document.getElementById('earringRow');
-            const otherRow = document.getElementById('otherRow');
 
-            neckRow.innerHTML = products.filter(p => p.category === 'necklace').map((p, i) => createProductCard(p, i)).join('');
-            earRow.innerHTML = products.filter(p => p.category === 'earrings').map((p, i) => createProductCard(p, i)).join('');
-            otherRow.innerHTML = products.filter(p => !['necklace', 'earrings'].includes(p.category)).map((p, i) => createProductCard(p, i)).join('');
+            function renderLimitedRow(row, list) {
+
+                const limit = 8;
+
+                const visible = list.slice(0, limit);
+
+                row.innerHTML =
+                    visible.map((p, i) => createProductCard(p, i)).join('')
+                    +
+                    `<div class="view-all-inline">
+                        VIEW ALL <i class="fa-solid fa-arrow-right"></i>
+                    </div>`;
+            }
+
+            renderLimitedRow(
+                neckRow,
+                products.filter(p => p.category === 'necklace')
+            );
+
+            renderLimitedRow(
+                earRow,
+                products.filter(p => p.category === 'earrings')
+            );
 
             // Main Grid (Filterable)
             const grid = document.getElementById('productGrid');
@@ -1345,11 +2582,24 @@
                     grid.innerHTML += createProductCard(p, index);
                 });
             }
+
+            // Trending Section (Only 6 premium items)
+            const trending = document.getElementById('trendingGrid');
+
+            if (trending) {
+                const trendingItems = products.slice(0, 6); // first 6 items
+
+                trending.innerHTML = '';
+                trendingItems.forEach((p, index) => {
+                    trending.innerHTML += createProductCard(p, index);
+                });
+            }
+
         }
 
         function openProduct(id) {
             const p = products.find(prod => prod.id === id);
-            const price = currentCurrency === 'INR' ? `₹${p.price.toLocaleString('en-IN')}` : `$${Math.round(p.price / rate).toLocaleString()}`;
+            const price = `₹${p.price.toLocaleString('en-IN')}`;
 
             document.getElementById('modalImg').src = p.img;
             document.getElementById('modalTitle').innerText = p.name;
@@ -1375,15 +2625,6 @@
         document.getElementById('closeModal').onclick = closeAllModals;
         document.getElementById('modalBuyBtn').onclick = openCheckout;
 
-        document.getElementById('currencyToggle').onclick = (e) => {
-            if (e.target.tagName === 'SPAN') {
-                document.querySelectorAll('.currency-toggle span').forEach(s => s.classList.remove('active'));
-                e.target.classList.add('active');
-                currentCurrency = e.target.dataset.curr;
-                renderProducts(document.querySelector('.filter-btn.active').dataset.filter);
-            }
-        };
-
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.onclick = () => {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -1401,13 +2642,121 @@
         // Initial Load
         window.onload = () => {
             renderProducts();
-            // Subtle parallax for hero text
-            window.addEventListener('scroll', () => {
-                const scroll = window.scrollY;
-                document.querySelector('.hero-content').style.transform = `translateY(${scroll * 0.4}px)`;
-            });
         };
+
+        /* ===== ULTRA LUXURY HERO AUTO SLIDER ===== */
+
+        const slides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
+        let heroInterval;
+
+        function showSlide(index) {
+
+            slides.forEach((slide) => {
+                slide.classList.remove('active');
+
+                // reset animation (THIS is the secret)
+                const animated = slide.querySelectorAll(
+                    '.hero-small, .hero-title, .hero-desc, .hero-actions, .hero-price'
+                );
+
+                animated.forEach(el => {
+                    el.style.animation = 'none';
+                    el.offsetHeight; // force reflow
+                    el.style.animation = null;
+                });
+            });
+
+            slides[index].classList.add('active');
+        }
+
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        /* arrow buttons */
+        document.querySelector('.next').onclick = () => {
+            nextSlide();
+            restartAuto();
+        };
+
+        document.querySelector('.prev').onclick = () => {
+            prevSlide();
+            restartAuto();
+        };
+
+        /* AUTO SLIDE */
+        function startAuto() {
+            heroInterval = setInterval(nextSlide, 5000);
+        }
+
+        function restartAuto() {
+            clearInterval(heroInterval);
+            startAuto();
+        }
+
+        startAuto();
+
+        /* ===== HERO DOTS SYSTEM ===== */
+
+        const dotsContainer = document.querySelector('.hero-dots');
+
+        /* create dots dynamically */
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('hero-dot');
+
+            dot.onclick = () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+                updateDots();
+                restartAuto();
+            };
+
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll('.hero-dot');
+
+        function updateDots() {
+            dots.forEach(d => d.classList.remove('active'));
+            dots[currentSlide].classList.add('active');
+        }
+
+        /* update dots whenever slide changes */
+        const originalShowSlide = showSlide;
+
+        showSlide = function (index) {
+            originalShowSlide(index);
+            updateDots();
+        }
+
+        /* initial state */
+        updateDots();
+
+        /* ===== MOBILE MENU ===== */
+
+        const hamburger = document.getElementById("hamburger");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        hamburger.onclick = () => {
+            mobileMenu.classList.toggle("active");
+        };
+
     </script>
 </body>
 
-</html>
+<!-- ===== LUXURY WHATSAPP FLOAT ===== -->
+
+<a href="https://wa.me/919999999999" target="_blank" class="whatsapp-float">
+
+    <i class="fa-brands fa-whatsapp"></i>
+
+</a>
