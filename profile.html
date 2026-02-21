@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | P_B QUEENS | Heritage & Global Luxury Fine Jewelry</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+         :root {
+            --royal-gold: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            --gold-soft: #D4AF37;
+            --white-pure: #FFFFFF;
+            --white-off: #FDFBF7;
+            --gold-gradient-bg: linear-gradient(90deg, #FFFFFF 0%, #FFF9E6 25%, #FFEAA7 50%, #FFF9E6 75%, #FFFFFF 100%);
+            --charcoal: #121212;
+            --glass: rgba(255, 255, 255, 0.45);
+            --glass-thick: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --shadow-lux: 0 20px 40px rgba(0, 0, 0, 0.08);
+            --transition-smooth: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.15), transparent 60%), linear-gradient(135deg, #FFFFFF 0%, #FFF6E5 40%, #EAD8A5 100%);
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: var(--charcoal);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.7;
+            padding-top: 40px;
+        }
+        
+        h1,
+        h2,
+        h3,
+        .brand-font {
+            font-family: 'Playfair Display', serif;
+        }
+        /* Navigation */
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 95px;
+            transition: height 0.4s ease, background 0.4s ease, backdrop-filter 0.4s ease;
+            padding: 0 4%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            z-index: 1000;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 249, 230, 0.92) 50%, rgba(255, 255, 255, 0.95) 100%);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+        
+        nav.scrolled {
+            height: 70px;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(28px) saturate(160%);
+            -webkit-backdrop-filter: blur(28px) saturate(160%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+        }
+        
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            z-index: 2;
+            position: relative;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            letter-spacing: 0.35rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            background: var(--royal-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            flex-shrink: 1;
+            white-space: nowrap;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.2rem;
+            font-weight: 500;
+            transition: 0.3s;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold-soft);
+            transition: 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        /* Glass Card */
+        
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: var(--transition-smooth);
+        }
+        
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.55);
+            box-shadow: var(--shadow-lux);
+        }
+        /* Buttons */
+        
+        .btn-luxury {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #B38728, #F9E27D, #D4AF37, #F3E5AB);
+            color: #121212;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        }
+        
+        .btn-luxury:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(212, 175, 55, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+        }
+        
+        .btn-secondary {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: white;
+            color: var(--charcoal);
+            border: 1px solid #ddd;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.15rem;
+            font-size: 0.7rem;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--charcoal);
+            color: white;
+            border-color: var(--charcoal);
+        }
+        /* Profile Container */
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4%;
+        }
+        
+        .profile-header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: slideInDown 0.8s ease;
+        }
+        
+        .profile-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            background: var(--royal-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .profile-header p {
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.3rem;
+            font-size: 0.8rem;
+        }
+        /* Main Grid */
+        
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 2.5rem;
+            margin-bottom: 50px;
+        }
+        /* Sidebar */
+        
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+        
+        .profile-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+        
+        .profile-avatar {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #BF953F, #D4AF37);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: white;
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.35);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-avatar::before {
+            content: '';
+            position: absolute;
+            inset: -50%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        
+        .profile-name {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .profile-email {
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+        
+        .profile-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 20px 0;
+            padding: 20px 0;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 1.8rem;
+            background: var(--royal-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+        
+        .stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #888;
+            letter-spacing: 0.1rem;
+            margin-top: 5px;
+        }
+        
+        .menu-tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .menu-btn {
+            padding: 0.9rem 1.2rem;
+            background: white;
+            border: 1px solid #eee;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: var(--transition-smooth);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .menu-btn i {
+            color: var(--gold-soft);
+            width: 20px;
+        }
+        
+        .menu-btn:hover,
+        .menu-btn.active {
+            background: var(--charcoal);
+            color: white;
+            border-color: var(--charcoal);
+        }
+        
+        .menu-btn.active i {
+            color: var(--gold-soft);
+        }
+        
+        .menu-btn.active {
+            position: relative;
+        }
+        
+        .menu-btn.active::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: var(--royal-gold);
+        }
+        /* Content Sections */
+        
+        .content-section {
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Personal Info Section */
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-group label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            margin-bottom: 8px;
+            color: #666;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group select {
+            padding: 0.9rem 1.2rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            transition: var(--transition-smooth);
+            background: white;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gold-soft);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+        
+        .form-full {
+            grid-column: 1 / -1;
+        }
+        /* Orders Section */
+        
+        .order-card {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition-smooth);
+            animation: fadeInScale 0.6s ease;
+        }
+        
+        .order-card:hover {
+            box-shadow: var(--shadow-lux);
+            border-color: var(--gold-soft);
+        }
+        
+        .order-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .order-id {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            color: var(--gold-soft);
+            font-weight: 600;
+        }
+        
+        .order-status {
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            font-weight: 600;
+        }
+        
+        .status-delivered {
+            background: rgba(76, 175, 80, 0.15);
+            color: #4CAF50;
+        }
+        
+        .status-processing {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold-soft);
+        }
+        
+        .status-shipped {
+            background: rgba(33, 150, 243, 0.15);
+            color: #2196F3;
+        }
+        
+        .order-items {
+            margin-bottom: 1rem;
+        }
+        
+        .order-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .item-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .item-details {
+            flex: 1;
+        }
+        
+        .item-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        
+        .item-meta {
+            font-size: 0.75rem;
+            color: #888;
+            margin-bottom: 4px;
+        }
+        
+        .item-price {
+            color: var(--gold-soft);
+            font-weight: 600;
+        }
+        
+        .order-total {
+            text-align: right;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .total-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 4px;
+        }
+        
+        .total-amount {
+            font-size: 1.3rem;
+            background: var(--royal-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+        /* Addresses Section */
+        
+        .address-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .address-card {
+            background: white;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: var(--transition-smooth);
+            position: relative;
+            animation: fadeInScale 0.6s ease;
+        }
+        
+        .address-card.primary {
+            border-color: var(--gold-soft);
+            background: rgba(212, 175, 55, 0.05);
+        }
+        
+        .address-card:hover {
+            border-color: var(--gold-soft);
+            box-shadow: var(--shadow-lux);
+        }
+        
+        .address-label {
+            display: inline-block;
+            background: linear-gradient(135deg, #BF953F, #D4AF37);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .address-content {
+            line-height: 1.8;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .address-actions {
+            display: flex;
+            gap: 0.8rem;
+        }
+        
+        .address-actions button {
+            flex: 1;
+            padding: 0.6rem;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            transition: var(--transition-smooth);
+        }
+        
+        .address-actions button:hover {
+            background: var(--charcoal);
+            color: white;
+            border-color: var(--charcoal);
+        }
+        /* Wishlist Section */
+        
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .wishlist-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            animation: fadeInScale 0.6s ease;
+        }
+        
+        .wishlist-item:hover {
+            box-shadow: var(--shadow-lux);
+            transform: translateY(-5px);
+        }
+        
+        .wishlist-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .wishlist-remove {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: var(--transition-smooth);
+            color: var(--gold-soft);
+        }
+        
+        .wishlist-remove:hover {
+            background: var(--gold-soft);
+            color: white;
+        }
+        
+        .wishlist-info {
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .wishlist-name {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .wishlist-price {
+            color: var(--gold-soft);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .wishlist-actions {
+            display: flex;
+            gap: 0.6rem;
+        }
+        
+        .wishlist-actions button {
+            flex: 1;
+            padding: 0.6rem;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            transition: var(--transition-smooth);
+        }
+        
+        .wishlist-actions button:first-child {
+            background: linear-gradient(135deg, #B38728, #F9E27D, #D4AF37, #F3E5AB);
+            color: #121212;
+            border-color: transparent;
+            font-weight: 600;
+        }
+        
+        .wishlist-actions button:hover {
+            background: var(--charcoal);
+            color: white;
+            border-color: var(--charcoal);
+        }
+        /* Payment Methods */
+        
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .payment-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-radius: 12px;
+            padding: 1.5rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInScale 0.6s ease;
+        }
+        
+        .payment-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+        }
+        
+        .payment-card.primary {
+            border: 2px solid var(--gold-soft);
+        }
+        
+        .payment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .payment-type {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .primary-badge {
+            background: var(--gold-soft);
+            color: #121212;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            font-weight: 600;
+        }
+        
+        .card-number {
+            font-size: 1.3rem;
+            letter-spacing: 0.3rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .card-holder {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .holder-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4px;
+        }
+        
+        .holder-name {
+            font-size: 0.85rem;
+            letter-spacing: 0.1rem;
+        }
+        
+        .card-expiry {
+            text-align: right;
+        }
+        
+        .expiry-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 4px;
+        }
+        
+        .expiry-date {
+            font-size: 0.85rem;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .payment-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 0.8rem;
+        }
+        
+        .payment-actions button {
+            flex: 1;
+            padding: 0.6rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            transition: var(--transition-smooth);
+        }
+        
+        .payment-actions button:hover {
+            background: var(--gold-soft);
+            border-color: var(--gold-soft);
+            color: #121212;
+        }
+        /* Settings Section */
+        
+        .settings-group {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInScale 0.6s ease;
+        }
+        
+        .settings-group h3 {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 1rem;
+        }
+        
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+        
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+        
+        .setting-label {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .setting-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .setting-desc {
+            font-size: 0.75rem;
+            color: #888;
+        }
+        
+        .toggle {
+            position: relative;
+            width: 50px;
+            height: 28px;
+            background: #ccc;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            border: none;
+        }
+        
+        .toggle.active {
+            background: var(--gold-soft);
+        }
+        
+        .toggle::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: var(--transition-smooth);
+        }
+        
+        .toggle.active::after {
+            left: 24px;
+        }
+        /* Empty State */
+        
+        .empty-state {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #888;
+        }
+        
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.3;
+        }
+        
+        .empty-text {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        /* Action Buttons */
+        
+        .section-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .address-grid,
+            .payment-grid,
+            .wishlist-grid {
+                grid-template-columns: 1fr;
+            }
+            .profile-header h1 {
+                font-size: 2rem;
+            }
+            .nav-links {
+                gap: 1rem;
+            }
+            .menu-tabs {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            .menu-btn {
+                flex: 1;
+                min-width: 150px;
+            }
+        }
+        
+        .loyalty-tier {
+            background: var(--royal-gold);
+            padding: 6px 12px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+        
+        .order-timeline {
+            display: flex;
+            gap: 6px;
+            margin-top: 10px;
+        }
+        
+        .order-timeline span {
+            width: 100%;
+            height: 3px;
+            background: #eee;
+        }
+        
+        .order-timeline span.done {
+            background: var(--gold-soft);
+        }
+        /* ===== LUXURY BACK TEXT ===== */
+        
+        .back-home {
+            position: fixed;
+            top: 25px;
+            left: 30px;
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            letter-spacing: 0.18rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--gold-soft);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 2000;
+            transition: all 0.4s cubic-bezier(.19, 1, .22, 1);
+        }
+        /* arrow animation */
+        
+        .back-home i {
+            transition: 0.35s ease;
+        }
+        /* luxury hover */
+        
+        .back-home:hover {
+            transform: translateX(-6px);
+            letter-spacing: 0.25rem;
+        }
+        
+        .back-home:hover i {
+            transform: translateX(-4px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== LUXURY BACK BUTTON ===== -->
+    <a href="index.html" class="back-home">
+        <i class="fa-solid fa-arrow-left"></i> Back to Home
+    </a>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="profile-header">
+            <h1>My Account</h1>
+            <p>Welcome back to P_B QUEENS</p>
+        </div>
+
+        <!-- Main Grid -->
+        <div class="profile-grid">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="glass-card profile-card">
+                    <div class="profile-avatar">👑</div>
+                    <h2 class="profile-name">Sarah Anderson</h2>
+                    <p class="profile-email">sarah.anderson@email.com</p>
+                    <div class="loyalty-tier">ROYAL MEMBER</div>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Orders</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">8</div>
+                            <div class="stat-label">Saved Items</div>
+                        </div>
+                    </div>
+                    <button class="btn-luxury" style="width: 100%; margin-top: 15px;">Edit Profile</button>
+                </div>
+
+                <!-- Menu -->
+                <div class="menu-tabs">
+                    <button class="menu-btn active" data-section="overview">
+                        <i class="fas fa-user"></i> Overview
+                    </button>
+                    <button class="menu-btn" data-section="personal">
+                        <i class="fas fa-id-card"></i> Personal Info
+                    </button>
+                    <button class="menu-btn" data-section="orders">
+                        <i class="fas fa-shopping-bag"></i> Orders
+                    </button>
+                    <button class="menu-btn" data-section="addresses">
+                        <i class="fas fa-map-marker-alt"></i> Addresses
+                    </button>
+                    <button class="menu-btn" data-section="wishlist">
+                        <i class="fas fa-heart"></i> Wishlist
+                    </button>
+                    <button class="menu-btn" data-section="payments">
+                        <i class="fas fa-credit-card"></i> Payments
+                    </button>
+                    <button class="menu-btn" data-section="settings">
+                        <i class="fas fa-cog"></i> Settings
+                    </button>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Overview Section -->
+                <div class="content-section active" id="overview">
+                    <div class="glass-card">
+                        <h2 style="margin-bottom: 1.5rem;">Account Overview</h2>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                            <div style="background: rgba(212, 175, 55, 0.05); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                <div style="font-size: 2rem; background: var(--royal-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem;">12</div>
+                                <div style="font-size: 0.8rem; text-transform: uppercase; color: #888; letter-spacing: 0.1rem;">Total Orders</div>
+                            </div>
+                            <div style="background: rgba(76, 175, 80, 0.05); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                <div style="font-size: 2rem; color: #4CAF50; margin-bottom: 0.5rem;">8</div>
+                                <div style="font-size: 0.8rem; text-transform: uppercase; color: #888; letter-spacing: 0.1rem;">Delivered</div>
+                            </div>
+                            <div style="background: rgba(212, 175, 55, 0.05); padding: 1.5rem; border-radius: 8px; text-align: center;">
+                                <div style="font-size: 2rem; background: var(--royal-gold); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem;">2,450.00</div>
+                                <div style="font-size: 0.8rem; text-transform: uppercase; color: #888; letter-spacing: 0.1rem;">Total Spent</div>
+                            </div>
+                        </div>
+
+                        <h3 style="margin-top: 2rem; margin-bottom: 1rem;">Recent Orders</h3>
+                        <div style="max-height: 400px; overflow-y: auto;">
+                            <div class="order-card">
+                                <div class="order-header">
+                                    <span class="order-id">Order #PB2024001</span>
+                                    <span class="order-status status-delivered">Delivered</span>
+                                </div>
+                                <div class="order-items">
+                                    <div class="order-item">
+                                        <div class="item-image">💎</div>
+                                        <div class="item-details">
+                                            <div class="item-name">Diamond Pendant Necklace</div>
+                                            <div class="item-meta">Gold • 18K</div>
+                                            <div class="item-price">$1,299.00</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="order-timeline">
+                                    <span class="done"></span>
+                                    <span class="done"></span>
+                                    <span></span>
+                                </div>
+                                <div class="order-total">
+                                    <div class="total-label">Order Total</div>
+                                    <div class="total-amount">$1,299.00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Personal Info Section -->
+                <div class="content-section" id="personal">
+                    <div class="glass-card">
+                        <h2 style="margin-bottom: 2rem;">Personal Information</h2>
+                        <div class="info-grid">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" value="Sarah" />
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" value="Anderson" />
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" value="sarah.anderson@email.com" />
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="tel" value="+1 (555) 123-4567" />
+                            </div>
+                            <div class="form-group form-full">
+                                <label>Date of Birth</label>
+                                <input type="date" />
+                            </div>
+                        </div>
+                        <div class="section-actions">
+                            <button class="btn-luxury">Save Changes</button>
+                            <button class="btn-secondary">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orders Section -->
+                <div class="content-section" id="orders">
+                    <div class="glass-card">
+                        <h2 style="margin-bottom: 1.5rem;">Order History</h2>
+                        <div class="order-card">
+                            <div class="order-header">
+                                <span class="order-id">Order #PB2024001</span>
+                                <span class="order-status status-delivered">Delivered</span>
+                            </div>
+                            <div class="order-items">
+                                <div class="order-item">
+                                    <div class="item-image">💎</div>
+                                    <div class="item-details">
+                                        <div class="item-name">Diamond Pendant Necklace</div>
+                                        <div class="item-meta">Gold • 18K • Size: Standard</div>
+                                        <div class="item-price">$1,299.00 x1</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="order-total">
+                                <div class="total-label">Order Total</div>
+                                <div class="total-amount">$1,299.00</div>
+                            </div>
+                        </div>
+
+                        <div class="order-card">
+                            <div class="order-header">
+                                <span class="order-id">Order #PB2024002</span>
+                                <span class="order-status status-shipped">Shipped</span>
+                            </div>
+                            <div class="order-items">
+                                <div class="order-item">
+                                    <div class="item-image">💍</div>
+                                    <div class="item-details">
+                                        <div class="item-name">Emerald Cut Diamond Ring</div>
+                                        <div class="item-meta">Platinum • Size: 7</div>
+                                        <div class="item-price">$2,899.00 x1</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="order-total">
+                                <div class="total-label">Order Total</div>
+                                <div class="total-amount">$2,899.00</div>
+                            </div>
+                        </div>
+
+                        <div class="order-card">
+                            <div class="order-header">
+                                <span class="order-id">Order #PB2024003</span>
+                                <span class="order-status status-processing">Processing</span>
+                            </div>
+                            <div class="order-items">
+                                <div class="order-item">
+                                    <div class="item-image">💎</div>
+                                    <div class="item-details">
+                                        <div class="item-name">Pearl Earrings Collection</div>
+                                        <div class="item-meta">Gold • Freshwater Pearls</div>
+                                        <div class="item-price">$599.00 x1</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="order-total">
+                                <div class="total-label">Order Total</div>
+                                <div class="total-amount">$599.00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Addresses Section -->
+                <div class="content-section" id="addresses">
+                    <div class="glass-card">
+                        <h2 style="margin-bottom: 1.5rem;">Saved Addresses</h2>
+                        <div class="address-grid">
+                            <div class="address-card primary">
+                                <span class="address-label">Primary Address</span>
+                                <div class="address-content">
+                                    <strong>Sarah Anderson</strong><br> 123 Park Avenue<br> New York, NY 10022<br> United States<br> +1 (555) 123-4567
+                                </div>
+                                <div class="address-actions">
+                                    <button>Edit</button>
+                                    <button>Delete</button>
+                                </div>
+                            </div>
+                            <div class="address-card">
+                                <span class="address-label">Billing Address</span>
+                                <div class="address-content">
+                                    <strong>Sarah A. Johnson</strong><br> 456 Madison Avenue<br> New York, NY 10016<br> United States<br> +1 (555) 987-6543
+                                </div>
+                                <div class="address-actions">
+                                    <button>Edit</button>
+                                    <button>Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn-luxury" style="margin-top: 1rem;">
+                            <i class="fas fa-plus"></i> Add New Address
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Wishlist Section -->
+                <div class="content-section" id="wishlist">
+                    <div class="glass-card" style="padding: 0;">
+                        <div style="padding: 2rem;">
+                            <h2 style="margin-bottom: 1.5rem;">My Wishlist</h2>
+                        </div>
+                        <div class="wishlist-grid" style="padding: 0 2rem 2rem;">
+                            <div class="wishlist-item">
+                                <div class="wishlist-image">
+                                    💎
+                                    <button class="wishlist-remove" title="Remove from wishlist">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                                <div class="wishlist-info">
+                                    <div class="wishlist-name">Diamond Solitaire Ring</div>
+                                    <div class="wishlist-price">$3,299.00</div>
+                                    <div class="wishlist-actions">
+                                        <button>Add to Cart</button>
+                                        <button>View</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wishlist-item">
+                                <div class="wishlist-image">
+                                    👑
+                                    <button class="wishlist-remove" title="Remove from wishlist">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                                <div class="wishlist-info">
+                                    <div class="wishlist-name">Sapphire Tiara Crown</div>
+                                    <div class="wishlist-price">$5,499.00</div>
+                                    <div class="wishlist-actions">
+                                        <button>Add to Cart</button>
+                                        <button>View</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wishlist-item">
+                                <div class="wishlist-image">
+                                    🔗
+                                    <button class="wishlist-remove" title="Remove from wishlist">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                                <div class="wishlist-info">
+                                    <div class="wishlist-name">Gold Bracelet Chain</div>
+                                    <div class="wishlist-price">$1,899.00</div>
+                                    <div class="wishlist-actions">
+                                        <button>Add to Cart</button>
+                                        <button>View</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="wishlist-item">
+                                <div class="wishlist-image">
+                                    💍
+                                    <button class="wishlist-remove" title="Remove from wishlist">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
+                                <div class="wishlist-info">
+                                    <div class="wishlist-name">Ruby Wedding Band</div>
+                                    <div class="wishlist-price">$2,199.00</div>
+                                    <div class="wishlist-actions">
+                                        <button>Add to Cart</button>
+                                        <button>View</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Methods Section -->
+                <div class="content-section" id="payments">
+                    <div class="glass-card">
+                        <h2 style="margin-bottom: 1.5rem;">Payment Methods</h2>
+                        <div class="payment-grid">
+                            <div class="payment-card primary">
+                                <div class="payment-header">
+                                    <span class="payment-type">Visa</span>
+                                    <span class="primary-badge">Primary</span>
+                                </div>
+                                <div class="card-number">•••• •••• •••• 4242</div>
+                                <div class="card-footer">
+                                    <div class="card-holder">
+                                        <span class="holder-label">Card Holder</span>
+                                        <span class="holder-name">Sarah Anderson</span>
+                                    </div>
+                                    <div class="card-expiry">
+                                        <span class="expiry-label">Expires</span>
+                                        <span class="expiry-date">12/28</span>
+                                    </div>
+                                </div>
+                                <div class="payment-actions">
+                                    <button>Edit</button>
+                                    <button>Remove</button>
+                                </div>
+                            </div>
+
+                            <div class="payment-card">
+                                <div class="payment-header">
+                                    <span class="payment-type">Mastercard</span>
+                                </div>
+                                <div class="card-number">•••• •••• •••• 5555</div>
+                                <div class="card-footer">
+                                    <div class="card-holder">
+                                        <span class="holder-label">Card Holder</span>
+                                        <span class="holder-name">Sarah Anderson</span>
+                                    </div>
+                                    <div class="card-expiry">
+                                        <span class="expiry-label">Expires</span>
+                                        <span class="expiry-date">09/26</span>
+                                    </div>
+                                </div>
+                                <div class="payment-actions">
+                                    <button>Edit</button>
+                                    <button>Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn-luxury" style="margin-top: 1rem;">
+                            <i class="fas fa-plus"></i> Add New Card
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Settings Section -->
+                <div class="content-section" id="settings">
+                    <div class="settings-group">
+                        <h3>Notifications</h3>
+                        <div class="setting-item">
+                            <div class="setting-label">
+                                <span class="setting-name">Email Notifications</span>
+                                <span class="setting-desc">Receive updates about orders and promotions</span>
+                            </div>
+                            <button class="toggle active"></button>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">
+                                <span class="setting-name">SMS Notifications</span>
+                                <span class="setting-desc">Get text messages for order updates</span>
+                            </div>
+                            <button class="toggle"></button>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">
+                                <span class="setting-name">Newsletter</span>
+                                <span class="setting-desc">Subscribe to exclusive offers and news</span>
+                            </div>
+                            <button class="toggle active"></button>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3>Privacy & Security</h3>
+                        <div class="setting-item">
+                            <div class="setting-label">
+                                <span class="setting-name">Two-Factor Authentication</span>
+                                <span class="setting-desc">Add extra security to your account</span>
+                            </div>
+                            <button class="btn-secondary">Enable</button>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">
+                                <span class="setting-name">Change Password</span>
+                                <span class="setting-desc">Update your password regularly</span>
+                            </div>
+                            <button class="btn-secondary">Change</button>
+                        </div>
+                    </div>
+
+                    <div class="settings-group">
+                        <h3>Account</h3>
+                        <div class="setting-item">
+                            <div class="setting-label">
+                                <span class="setting-name">Download Your Data</span>
+                                <span class="setting-desc">Get a copy of your account information</span>
+                            </div>
+                            <button class="btn-secondary">Download</button>
+                        </div>
+                        <div class="setting-item">
+                            <div class="setting-label">
+                                <span class="setting-name">Delete Account</span>
+                                <span class="setting-desc">Permanently delete your account</span>
+                            </div>
+                            <button class="btn-secondary" style="background: rgba(244, 67, 54, 0.1); color: #f44336; border-color: #f44336;">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Menu Navigation
+        const menuButtons = document.querySelectorAll('.menu-btn');
+        const contentSections = document.querySelectorAll('.content-section');
+
+        menuButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                const sectionId = this.getAttribute('data-section');
+
+                // Remove active class from all buttons and sections
+                menuButtons.forEach(btn => btn.classList.remove('active'));
+                contentSections.forEach(section => {
+                    section.style.opacity = 0;
+                    setTimeout(() => {
+                        section.classList.remove('active');
+                    }, 200);
+                });
+
+                setTimeout(() => {
+                    const target = document.getElementById(sectionId);
+                    target.classList.add('active');
+                    target.style.opacity = 1;
+                }, 200);
+
+                // Smooth scroll to top
+                document.querySelector('.content').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Toggle Switches
+        const toggles = document.querySelectorAll('.toggle');
+        toggles.forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+
+        // Wishlist Remove Buttons
+        const removeButtons = document.querySelectorAll('.wishlist-remove');
+        removeButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const item = this.closest('.wishlist-item');
+                item.style.animation = 'fadeOut 0.4s ease forwards';
+                setTimeout(() => {
+                    item.remove();
+                }, 400);
+            });
+        });
+
+        // Add CSS animation for fade out
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeOut {
+                from {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+                to {
+                    opacity: 0;
+                    transform: scale(0.95);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Button Interactions
+        const allButtons = document.querySelectorAll('.btn-luxury, .btn-secondary, button[style*="width"]');
+        allButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.pointerEvents = 'none';
+                ripple.style.background = 'rgba(255, 255, 255, 0.5)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.animation = 'ripple 0.6s ease-out';
+
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = event.clientX - rect.left - size / 2;
+                const y = event.clientY - rect.top - size / 2;
+
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // Ripple animation
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+
+        // Form Input Focus Effect
+        const inputs = document.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.boxShadow = '0 0 0 3px rgba(212, 175, 55, 0.2)';
+            });
+            input.addEventListener('blur', function() {
+                this.style.boxShadow = 'none';
+            });
+        });
+
+        // Smooth Section Loading
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add stagger animation to initial cards
+            const cards = document.querySelectorAll('.glass-card, .order-card, .address-card, .wishlist-item');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = (index * 0.05) + 's';
+            });
+        });
+    </script>
+</body>
+
+</html>
