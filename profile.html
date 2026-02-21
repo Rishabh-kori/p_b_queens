@@ -283,12 +283,16 @@
         .profile-name {
             font-size: 1.5rem;
             margin-bottom: 5px;
+            text-align: center;
+            /* ⭐ ADD THIS */
         }
         
         .profile-email {
             color: #888;
             font-size: 0.85rem;
             margin-bottom: 20px;
+            text-align: center;
+            /* ⭐ ADD THIS */
         }
         
         .profile-stats {
@@ -1017,16 +1021,6 @@
             }
         }
         
-        .loyalty-tier {
-            background: var(--royal-gold);
-            padding: 6px 12px;
-            font-size: 10px;
-            letter-spacing: 2px;
-            display: inline-block;
-            margin-top: 10px;
-            border-radius: 4px;
-        }
-        
         .order-timeline {
             display: flex;
             gap: 6px;
@@ -1098,9 +1092,8 @@
             <div class="sidebar">
                 <div class="glass-card profile-card">
                     <div class="profile-avatar">👑</div>
-                    <h2 class="profile-name">Sarah Anderson</h2>
-                    <p class="profile-email">sarah.anderson@email.com</p>
-                    <div class="loyalty-tier">ROYAL MEMBER</div>
+                    <h2 class="profile-name" id="profileName"></h2>
+                    <p class="profile-email" id="profileEmail"></p>
                     <div class="profile-stats">
                         <div class="stat">
                             <div class="stat-number">12</div>
@@ -1111,7 +1104,6 @@
                             <div class="stat-label">Saved Items</div>
                         </div>
                     </div>
-                    <button class="btn-luxury" style="width: 100%; margin-top: 15px;">Edit Profile</button>
                 </div>
 
                 <!-- Menu -->
@@ -1200,23 +1192,27 @@
                         <div class="info-grid">
                             <div class="form-group">
                                 <label>First Name</label>
-                                <input type="text" value="Sarah" />
+                                <input type="text" id="firstName" />
                             </div>
+
                             <div class="form-group">
                                 <label>Last Name</label>
-                                <input type="text" value="Anderson" />
+                                <input type="text" id="lastName" />
                             </div>
+
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email" value="sarah.anderson@email.com" />
+                                <input type="email" id="personalEmail" />
                             </div>
+
                             <div class="form-group">
                                 <label>Phone</label>
-                                <input type="tel" value="+1 (555) 123-4567" />
+                                <input type="tel" id="phone" placeholder="Add phone number" />
                             </div>
+
                             <div class="form-group form-full">
                                 <label>Date of Birth</label>
-                                <input type="date" />
+                                <input type="date" id="dob" />
                             </div>
                         </div>
                         <div class="section-actions">
@@ -1527,6 +1523,67 @@
     </div>
 
     <script>
+        // ===== LOAD LOGGED USER =====
+
+        document.addEventListener("DOMContentLoaded", function() {
+
+            let user = null;
+
+            try {
+                user = JSON.parse(localStorage.getItem("user"));
+            } catch (e) {
+                localStorage.removeItem("user");
+            }
+
+            if (!user || !user.id) {
+                window.location.href = "login.html";
+                return;
+            }
+
+            // Show loading state
+            document.getElementById("profileName").innerText = "Loading...";
+            document.getElementById("profileEmail").innerText = "Loading...";
+
+            // Fetch fresh data from database
+            fetch("api/get_profile.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        id: user.id
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+
+                    if (!data.status) {
+                        window.location.href = "login.html";
+                        return;
+                    }
+
+                    const dbUser = data.user;
+
+                    // Sidebar Info
+                    // Sidebar Info
+                    document.getElementById("profileName").innerText =
+                        dbUser.first_name + " " + dbUser.last_name;
+
+                    document.getElementById("profileEmail").innerText = dbUser.email;
+
+                    // Personal Info Inputs
+                    document.getElementById("firstName").value = dbUser.first_name || "";
+                    document.getElementById("lastName").value = dbUser.last_name || "";
+                    document.getElementById("personalEmail").value = dbUser.email || "";
+
+                })
+                .catch(error => {
+                    console.error("Profile fetch failed:", error);
+                    window.location.href = "login.html";
+                });
+
+
+        });
         // Menu Navigation
         const menuButtons = document.querySelectorAll('.menu-btn');
         const contentSections = document.querySelectorAll('.content-section');
@@ -1597,7 +1654,7 @@
         // Button Interactions
         const allButtons = document.querySelectorAll('.btn-luxury, .btn-secondary, button[style*="width"]');
         allButtons.forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function(event) {
                 // Create ripple effect
                 const ripple = document.createElement('span');
                 ripple.style.position = 'absolute';

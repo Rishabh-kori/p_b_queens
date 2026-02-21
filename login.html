@@ -583,6 +583,36 @@
                 opacity: 1;
             }
         }
+        /* REMOVE EDGE DEFAULT PASSWORD ICON */
+        
+        input[type="password"]::-ms-reveal,
+        input[type="password"]::-ms-clear {
+            display: none;
+        }
+        /* PASSWORD WRAPPER */
+        
+        .password-wrapper {
+            position: relative;
+        }
+        
+        .password-wrapper input {
+            padding-right: 45px;
+        }
+        /* CUSTOM EYE ICON */
+        
+        .toggle-password {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #B38728;
+            transition: 0.3s;
+        }
+        
+        .toggle-password:hover {
+            color: #D4AF37;
+        }
     </style>
 </head>
 
@@ -619,7 +649,10 @@
 
                             <div class="form-group">
                                 <label for="loginPassword">Password</label>
-                                <input type="password" id="loginPassword" placeholder="••••••••" required>
+                                <div class="password-wrapper">
+                                    <input type="password" id="loginPassword" placeholder="••••••••" required>
+                                    <i class="fa-solid fa-eye toggle-password"></i>
+                                </div>
                                 <div class="error-message" id="loginPasswordError"></div>
                             </div>
 
@@ -672,9 +705,15 @@
 
                         <form id="signupForm" onsubmit="handleSignup(event)">
                             <div class="form-group">
-                                <label for="fullName">Full Name</label>
-                                <input type="text" id="fullName" placeholder="Jane Luxury" required>
-                                <div class="error-message" id="fullNameError"></div>
+                                <label for="firstName">First Name</label>
+                                <input type="text" id="firstName" placeholder="Jane" required>
+                                <div class="error-message" id="firstNameError"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastName">Last Name</label>
+                                <input type="text" id="lastName" placeholder="Luxury" required>
+                                <div class="error-message" id="lastNameError"></div>
                             </div>
 
                             <div class="form-group">
@@ -685,13 +724,19 @@
 
                             <div class="form-group">
                                 <label for="signupPassword">Password</label>
-                                <input type="password" id="signupPassword" placeholder="••••••••" required>
+                                <div class="password-wrapper">
+                                    <input type="password" id="signupPassword" placeholder="••••••••" required>
+                                    <i class="fa-solid fa-eye toggle-password"></i>
+                                </div>
                                 <div class="error-message" id="signupPasswordError"></div>
                             </div>
 
                             <div class="form-group">
                                 <label for="confirmPassword">Confirm Password</label>
-                                <input type="password" id="confirmPassword" placeholder="••••••••" required>
+                                <div class="password-wrapper">
+                                    <input type="password" id="confirmPassword" placeholder="••••••••" required>
+                                    <i class="fa-solid fa-eye toggle-password"></i>
+                                </div>
                                 <div class="error-message" id="confirmPasswordError"></div>
                             </div>
 
@@ -796,27 +841,53 @@
             }
 
             if (isValid) {
-                // Simulate successful login
-                const successMsg = document.getElementById('loginSuccess');
-                successMsg.classList.add('show');
+                fetch("api/login.php", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            email: email,
+                            password: password
+                        })
+                    })
+                    .then(res => res.json())
+                    .then(data => {
 
-                setTimeout(() => {
-                    // In a real app, redirect to dashboard
-                    if (isValid) {
+                        if (data.status) {
 
-                        const overlay = document.getElementById('loginOverlay');
+                            // SHOW SUCCESS MESSAGE ABOVE FORM
+                            const successMsg = document.getElementById('loginSuccess');
+                            successMsg.classList.add('show');
 
-                        // Show luxury message
-                        overlay.classList.add('show');
+                            // SHOW LUXURY OVERLAY MESSAGE BOX
+                            const overlay = document.getElementById('loginOverlay');
 
-                        // Redirect after animation
-                        setTimeout(() => {
-                            window.location.href = "profile.html";
-                        }, 2200);
-                    }
-                    document.getElementById('loginForm').reset();
-                    successMsg.classList.remove('show');
-                }, 1500);
+                            if (overlay) {
+                                overlay.classList.add('show');
+                            }
+
+                            // Save logged user
+                            localStorage.setItem("user", JSON.stringify(data.user));
+
+                            // Redirect AFTER animation
+                            setTimeout(() => {
+
+                                if (data.user.role === "admin") {
+                                    window.location.href = "admin.html";
+                                } else {
+                                    window.location.href = "profile.html";
+                                }
+
+                            }, 2200);
+
+                        } else {
+
+                            alert(data.message);
+
+                        }
+
+                    });
             }
         }
 
@@ -825,7 +896,8 @@
             event.preventDefault();
             clearErrors();
 
-            const fullName = document.getElementById('fullName').value.trim();
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
             const email = document.getElementById('signupEmail').value.trim();
             const password = document.getElementById('signupPassword').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
@@ -834,8 +906,13 @@
             let isValid = true;
 
             // Validate full name
-            if (fullName.length < 3) {
-                showError('fullNameError', 'Full name must be at least 3 characters');
+            if (firstName.length < 2) {
+                showError('firstNameError', 'First name must be at least 2 characters');
+                isValid = false;
+            }
+
+            if (lastName.length < 2) {
+                showError('lastNameError', 'Last name must be at least 2 characters');
                 isValid = false;
             }
 
@@ -864,16 +941,53 @@
             }
 
             if (isValid) {
-                // Simulate successful signup
-                const successMsg = document.getElementById('signupSuccess');
-                successMsg.classList.add('show');
 
-                setTimeout(() => {
-                    // In a real app, send data to backend
-                    alert('Account created! Email: ' + email);
-                    document.getElementById('signupForm').reset();
-                    successMsg.classList.remove('show');
-                }, 1500);
+                fetch("api/signup.php", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            first_name: firstName,
+                            last_name: lastName,
+                            email: email,
+                            password: password
+                        })
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+
+                        if (data.status) {
+
+                            // SHOW SUCCESS MESSAGE ONLY AFTER REAL SUCCESS
+                            const successMsg = document.getElementById('signupSuccess');
+                            successMsg.classList.add('show');
+
+                            // RESET FORM
+                            document.getElementById('signupForm').reset();
+
+                            // AUTO SWITCH TO LOGIN AFTER DELAY
+                            setTimeout(() => {
+
+                                successMsg.classList.remove('show');
+                                toggleForms();
+
+                            }, 1500);
+
+                        } else {
+
+                            alert(data.message);
+
+                        }
+
+                    })
+                    .catch(error => {
+
+                        console.error("Signup Error:", error);
+                        alert("Something went wrong. Please try again.");
+
+                    });
+
             }
         }
 
@@ -911,6 +1025,27 @@
             if (!this.checkValidity()) {
                 e.preventDefault();
             }
+        });
+
+        // CUSTOM PASSWORD TOGGLE (PERMANENT FIX)
+        document.addEventListener("click", function(e) {
+
+            if (e.target.classList.contains("toggle-password")) {
+
+                const input = e.target.previousElementSibling;
+
+                if (input.type === "password") {
+                    input.type = "text";
+                    e.target.classList.remove("fa-eye");
+                    e.target.classList.add("fa-eye-slash");
+                } else {
+                    input.type = "password";
+                    e.target.classList.remove("fa-eye-slash");
+                    e.target.classList.add("fa-eye");
+                }
+
+            }
+
         });
     </script>
 
