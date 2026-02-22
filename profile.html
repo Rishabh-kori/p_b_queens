@@ -7,6 +7,8 @@
     <title>My Profile | P_B QUEENS | Heritage & Global Luxury Fine Jewelry</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <style>
          :root {
             --royal-gold: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
@@ -425,7 +427,9 @@
         .info-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+            gap: 1.8rem;
+            /* ⭐ more spacing */
+            margin-top: 10px;
         }
         
         .form-group {
@@ -451,6 +455,8 @@
             font-size: 0.9rem;
             transition: var(--transition-smooth);
             background: white;
+            width: 100%;
+            max-width: 100%;
         }
         
         .form-group input:focus,
@@ -648,11 +654,35 @@
             letter-spacing: 0.1rem;
             transition: var(--transition-smooth);
         }
+        /* ===== ADDRESS BUTTON BASE ===== */
         
-        .address-actions button:hover {
+        .address-actions button {
+            flex: 1;
+            padding: 0.6rem;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            transition: 0.4s cubic-bezier(.19, 1, .22, 1);
+        }
+        /* Edit hover */
+        
+        .address-actions .edit-address:hover {
             background: var(--charcoal);
             color: white;
             border-color: var(--charcoal);
+        }
+        /* 🔥 Delete hover (Luxury Red Glow) */
+        
+        .address-actions .delete-address:hover {
+            background: linear-gradient(135deg, #ff4d4d, #c62828);
+            color: white;
+            border-color: #c62828;
+            box-shadow: 0 10px 25px rgba(198, 40, 40, 0.4);
+            transform: translateY(-2px);
         }
         /* Wishlist Section */
         
@@ -989,8 +1019,19 @@
         
         .section-actions {
             display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            justify-content: flex-start;
+            /* ⭐ aligns properly */
+        }
+        
+        .popup-card {
+            transform: translateY(20px);
+        }
+        
+        .glass-popup.active .popup-card {
+            transform: translateY(0);
+            transition: 0.5s cubic-bezier(.19, 1, .22, 1);
         }
         
         @media (max-width: 768px) {
@@ -1069,6 +1110,129 @@
         .back-home:hover i {
             transform: translateX(-4px);
         }
+        /* ===== GLASS POPUP ===== */
+        
+        .glass-popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(14px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 60px 20px;
+            /* ⭐ adds top & bottom breathing space */
+            z-index: 5000;
+            opacity: 0;
+            pointer-events: none;
+            transition: 0.4s ease;
+            overflow-y: auto;
+            /* ⭐ allows scroll if needed */
+        }
+        
+        .glass-popup.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .popup-card {
+            width: 650px;
+            /* ⭐ bigger */
+            max-width: 95%;
+            padding: 3rem;
+            /* ⭐ more inner spacing */
+            border-radius: 20px;
+            /* ⭐ softer luxury look */
+            animation: fadeInScale 0.4s ease;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.15);
+            /* ⭐ floating effect */
+        }
+        
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .close-popup {
+            cursor: pointer;
+            font-size: 18px;
+            color: var(--gold-soft);
+        }
+        /* ===== ADDRESS VALIDATION ===== */
+        
+        .error-text {
+            color: #f44336;
+            font-size: 0.7rem;
+            margin-top: 5px;
+        }
+        
+        .input-error {
+            border-color: #f44336 !important;
+        }
+        /* ===== PROFILE PROGRESS ===== */
+        
+        .profile-progress {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1rem;
+            margin-bottom: 8px;
+            color: #888;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: rgba(212, 175, 55, 0.15);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: var(--royal-gold);
+            transition: width 0.6s cubic-bezier(.19, 1, .22, 1);
+            border-radius: 20px;
+        }
+        
+        .progress-hint {
+            font-size: 0.7rem;
+            color: #666;
+            margin-top: 8px;
+        }
+        /* ===== LOGOUT BUTTON ===== */
+        
+        .logout-btn {
+            position: fixed;
+            top: 25px;
+            right: 30px;
+            padding: 0.6rem 1.5rem;
+            font-size: 0.7rem;
+            letter-spacing: 0.15rem;
+            text-transform: uppercase;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            background: linear-gradient(135deg, #ff4d4d, #c62828);
+            color: white;
+            box-shadow: 0 12px 30px rgba(198, 40, 40, 0.35);
+            transition: 0.4s cubic-bezier(.19, 1, .22, 1);
+            z-index: 3000;
+        }
+        
+        .logout-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(198, 40, 40, 0.45);
+        }
     </style>
 </head>
 
@@ -1078,6 +1242,10 @@
     <a href="index.html" class="back-home">
         <i class="fa-solid fa-arrow-left"></i> Back to Home
     </a>
+
+    <button class="logout-btn" id="logoutBtn">
+         <i class="fas fa-sign-out-alt"></i> Logout
+    </button>
 
     <div class="container">
         <!-- Header -->
@@ -1102,6 +1270,20 @@
                         <div class="stat">
                             <div class="stat-number">8</div>
                             <div class="stat-label">Saved Items</div>
+                        </div>
+                    </div>
+
+                    <!-- ===== PROFILE COMPLETION ===== -->
+                    <div class="profile-progress">
+                        <div class="progress-header">
+                            <span>Profile Completion</span>
+                            <span id="progressPercent">0%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <div class="progress-hint" id="progressHint">
+                            Complete your profile to unlock full experience ✨
                         </div>
                     </div>
                 </div>
@@ -1212,11 +1394,11 @@
 
                             <div class="form-group form-full">
                                 <label>Date of Birth</label>
-                                <input type="date" id="dob" />
+                                <input type="text" id="dob" placeholder="DD/MM/YYYY" />
                             </div>
                         </div>
                         <div class="section-actions">
-                            <button class="btn-luxury">Save Changes</button>
+                            <button class="btn-luxury" id="saveProfileBtn">Save Changes</button>
                             <button class="btn-secondary">Cancel</button>
                         </div>
                     </div>
@@ -1296,28 +1478,9 @@
                     <div class="glass-card">
                         <h2 style="margin-bottom: 1.5rem;">Saved Addresses</h2>
                         <div class="address-grid">
-                            <div class="address-card primary">
-                                <span class="address-label">Primary Address</span>
-                                <div class="address-content">
-                                    <strong>Sarah Anderson</strong><br> 123 Park Avenue<br> New York, NY 10022<br> United States<br> +1 (555) 123-4567
-                                </div>
-                                <div class="address-actions">
-                                    <button>Edit</button>
-                                    <button>Delete</button>
-                                </div>
-                            </div>
-                            <div class="address-card">
-                                <span class="address-label">Billing Address</span>
-                                <div class="address-content">
-                                    <strong>Sarah A. Johnson</strong><br> 456 Madison Avenue<br> New York, NY 10016<br> United States<br> +1 (555) 987-6543
-                                </div>
-                                <div class="address-actions">
-                                    <button>Edit</button>
-                                    <button>Delete</button>
-                                </div>
-                            </div>
+
                         </div>
-                        <button class="btn-luxury" style="margin-top: 1rem;">
+                        <button id="addAddressBtn" class="btn-luxury" style="margin-top: 1rem;">
                             <i class="fas fa-plus"></i> Add New Address
                         </button>
                     </div>
@@ -1563,8 +1726,8 @@
                     }
 
                     const dbUser = data.user;
+                    updateProfileProgress(dbUser, 0); // address count will update later
 
-                    // Sidebar Info
                     // Sidebar Info
                     document.getElementById("profileName").innerText =
                         dbUser.first_name + " " + dbUser.last_name;
@@ -1575,6 +1738,11 @@
                     document.getElementById("firstName").value = dbUser.first_name || "";
                     document.getElementById("lastName").value = dbUser.last_name || "";
                     document.getElementById("personalEmail").value = dbUser.email || "";
+                    document.getElementById("phone").value = dbUser.phone || "";
+
+                    if (dbUser.dob) {
+                        dobPicker.setDate(dbUser.dob, true, "Y-m-d");
+                    }
 
                 })
                 .catch(error => {
@@ -1582,6 +1750,465 @@
                     window.location.href = "login.html";
                 });
 
+            // Initialize Flatpickr and store instance
+            const dobPicker = flatpickr("#dob", {
+                dateFormat: "d/m/Y",
+                allowInput: true
+            });
+
+            // ===== OPEN ADD ADDRESS POPUP =====
+
+            const addBtn = document.getElementById("addAddressBtn");
+            const popup = document.getElementById("addressPopup");
+            const closeBtns = document.querySelectorAll(".close-popup");
+
+            if (addBtn) {
+                addBtn.addEventListener("click", function() {
+                    popup.classList.add("active");
+                });
+            }
+
+            closeBtns.forEach(btn => {
+                btn.addEventListener("click", function() {
+                    popup.classList.remove("active");
+                });
+            });
+
+            // ===== AUTO FILL STATE + CITY FROM PINCODE =====
+
+            const pincodeInput = document.getElementById("addr_zip");
+            const stateInput = document.getElementById("addr_state");
+            const cityInput = document.getElementById("addr_city");
+
+            if (pincodeInput) {
+
+                pincodeInput.addEventListener("keyup", function() {
+
+                    const pincode = this.value.trim();
+
+                    // Only when 6 digit pincode
+                    if (pincode.length === 6 && /^\d+$/.test(pincode)) {
+
+                        fetch("https://api.postalpincode.in/pincode/" + pincode)
+                            .then(res => res.json())
+                            .then(data => {
+
+                                if (data[0].Status === "Success") {
+
+                                    const postOffice = data[0].PostOffice[0];
+
+                                    if (stateInput) stateInput.value = postOffice.State;
+                                    if (cityInput) cityInput.value = postOffice.District;
+
+                                }
+
+                            })
+                            .catch(err => console.log("Pincode lookup error", err));
+
+                    }
+
+                });
+
+            }
+
+            // ===== ADDRESS VALIDATION =====
+
+            const saveAddressBtn = document.getElementById("saveAddressBtn");
+
+            if (saveAddressBtn) {
+
+                saveAddressBtn.addEventListener("click", function() {
+
+                    // ===== CLEAR OLD ERRORS =====
+                    document.querySelectorAll(".error-text").forEach(el => el.remove());
+                    document.querySelectorAll(".input-error").forEach(el => el.classList.remove("input-error"));
+
+                    let isValid = true;
+
+                    function showError(input, message) {
+                        isValid = false;
+                        input.classList.add("input-error");
+
+                        const error = document.createElement("div");
+                        error.className = "error-text";
+                        error.innerText = message;
+
+                        input.parentElement.appendChild(error);
+                    }
+
+                    // ===== INPUTS =====
+                    const name = document.getElementById("addr_name");
+                    const phone = document.getElementById("addr_phone");
+                    const altPhone = document.getElementById("addr_alt_phone");
+                    const flat = document.getElementById("addr_flat");
+                    const address = document.getElementById("addr_line");
+                    const state = document.getElementById("addr_state");
+                    const city = document.getElementById("addr_city");
+                    const zip = document.getElementById("addr_zip");
+
+                    // ===== VALIDATION =====
+
+                    if (!name.value.trim()) {
+                        showError(name, "Full name is required");
+                    }
+
+                    if (!/^[0-9]{10}$/.test(phone.value.trim())) {
+                        showError(phone, "Enter valid 10-digit phone number");
+                    }
+
+                    if (altPhone.value.trim() && !/^[0-9]{10}$/.test(altPhone.value.trim())) {
+                        showError(altPhone, "Alternate phone must be 10 digits");
+                    }
+
+                    if (!flat.value.trim()) {
+                        showError(flat, "Flat / Building number required");
+                    }
+
+                    if (!address.value.trim()) {
+                        showError(address, "Address line is required");
+                    }
+
+                    if (!state.value.trim()) {
+                        showError(state, "Please select a state");
+                    }
+
+                    if (!city.value.trim()) {
+                        showError(city, "City is required");
+                    }
+
+                    if (!/^[0-9]{6}$/.test(zip.value.trim())) {
+                        showError(zip, "Enter valid 6-digit pincode");
+                    }
+
+                    if (!isValid) return;
+
+                    // ===== CHECK EDIT MODE =====
+
+                    const popup = document.getElementById("addressPopup");
+                    const editId = popup.getAttribute("data-edit-id");
+                    const user = JSON.parse(localStorage.getItem("user"));
+
+                    const apiUrl = editId ? "api/update_address.php" : "api/add_address.php";
+
+                    const payload = editId ? {
+                        address_id: editId,
+                        full_name: name.value.trim(),
+                        phone: phone.value.trim(),
+                        alternate_phone: altPhone.value.trim(),
+                        address_line: flat.value.trim() + ", " + address.value.trim(),
+                        city: city.value.trim(),
+                        state: state.value.trim(),
+                        pincode: zip.value.trim()
+                    } : {
+                        user_id: user.id,
+                        full_name: name.value.trim(),
+                        phone: phone.value.trim(),
+                        alternate_phone: altPhone.value.trim(),
+                        address_line: flat.value.trim() + ", " + address.value.trim(),
+                        city: city.value.trim(),
+                        state: state.value.trim(),
+                        pincode: zip.value.trim()
+                    };
+
+                    fetch(apiUrl, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(payload)
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+
+                            if (data.status) {
+
+                                alert(editId ? "Address Updated Successfully ✨" : "Address Saved Successfully ✨");
+
+                                // Close popup
+                                popup.classList.remove("active");
+
+                                // Reset form
+                                name.value = "";
+                                phone.value = "";
+                                altPhone.value = "";
+                                flat.value = "";
+                                address.value = "";
+                                state.value = "";
+                                city.value = "";
+                                zip.value = "";
+
+                                // Reset edit mode
+                                popup.removeAttribute("data-edit-id");
+                                popup.querySelector("h3").innerText = "Add New Address";
+
+                                // Reload to reflect changes
+                                location.reload();
+
+                            } else {
+                                alert(data.message || "Operation failed");
+                            }
+
+                        })
+                        .catch(err => {
+                            console.log(err);
+                            alert("Something went wrong");
+                        });
+
+                });
+
+            }
+
+            fetch("api/get_addresses.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        user_id: user.id
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+
+                    if (data.status) {
+
+                        const grid = document.querySelector(".address-grid");
+                        grid.innerHTML = "";
+
+                        if (data.addresses.length === 0) {
+                            grid.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-icon"><i class="fas fa-map-marker-alt"></i></div>
+                            <div class="empty-text">No saved addresses yet</div>
+                        </div>
+                    `;
+                            return;
+                        }
+
+                        data.addresses.forEach(addr => {
+
+                            grid.innerHTML += `
+                                <div class="address-card ${addr.is_primary == 1 ? 'primary' : ''}">
+                                    ${addr.is_primary == 1 ? '<span class="address-label">Primary Address</span>' : ''}
+                                    <div class="address-content">
+                                        <strong>${addr.full_name}</strong><br>
+                                        ${addr.address_line}<br>
+                                        ${addr.city}, ${addr.state} ${addr.pincode}<br>
+                                        ${addr.country}<br>
+                                        ${addr.phone}
+                                        ${addr.alternate_phone ? "<br>" + addr.alternate_phone : ""}
+                                    </div>
+                                        <div class="address-actions">
+                                            <button class="edit-address" 
+                                                data-id="${addr.id}"
+                                                data-name="${addr.full_name}"
+                                                data-phone="${addr.phone}"
+                                                data-address="${addr.address_line}"
+                                                data-city="${addr.city}"
+                                                data-state="${addr.state}"
+                                                data-zip="${addr.pincode}">
+                                                Edit
+                                            </button>
+                                            <button class="delete-address" data-id="${addr.id}">
+                                                Delete
+                                            </button>
+                                        </div>
+                                    </div>
+                                `;
+                        });
+
+                        updateProfileProgress({
+                                first_name: document.getElementById("firstName").value,
+                                last_name: document.getElementById("lastName").value,
+                                email: document.getElementById("personalEmail").value,
+                                phone: document.getElementById("phone").value,
+                                dob: document.getElementById("dob").value
+                            },
+                            data.addresses.length
+                        );
+
+                    }
+
+                });
+
+            // ===== EDIT ADDRESS =====
+
+            document.addEventListener("click", function(e) {
+
+                if (e.target.classList.contains("edit-address")) {
+
+                    const popup = document.getElementById("addressPopup");
+                    popup.classList.add("active");
+
+                    // Change popup title
+                    popup.querySelector("h3").innerText = "Edit Address";
+
+                    // Store edit ID
+                    popup.setAttribute("data-edit-id", e.target.dataset.id);
+
+                    // Split flat + address
+                    const addressParts = e.target.dataset.address.split(",");
+
+                    document.getElementById("addr_name").value = e.target.dataset.name;
+                    document.getElementById("addr_phone").value = e.target.dataset.phone;
+                    document.getElementById("addr_flat").value = addressParts[0] || "";
+                    document.getElementById("addr_line").value = addressParts[1] || "";
+                    document.getElementById("addr_city").value = e.target.dataset.city;
+                    document.getElementById("addr_state").value = e.target.dataset.state;
+                    document.getElementById("addr_zip").value = e.target.dataset.zip;
+
+                }
+
+                // ===== DELETE ADDRESS (Luxury Modal) =====
+
+                if (e.target.classList.contains("delete-address")) {
+
+                    const addressId = e.target.dataset.id;
+                    const user = JSON.parse(localStorage.getItem("user"));
+
+                    const modal = document.getElementById("deleteConfirmModal");
+                    const confirmBtn = document.getElementById("confirmDeleteBtn");
+                    const cancelBtn = document.getElementById("cancelDelete");
+
+                    modal.classList.add("active");
+
+                    // Cancel
+                    cancelBtn.onclick = function() {
+                        modal.classList.remove("active");
+                    };
+
+                    // Confirm Delete
+                    confirmBtn.onclick = function() {
+
+                        fetch("api/delete_address.php", {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                },
+                                body: JSON.stringify({
+                                    address_id: addressId,
+                                    user_id: user.id
+                                })
+                            })
+                            .then(res => res.json())
+                            .then(data => {
+
+                                if (data.status) {
+
+                                    const card = e.target.closest(".address-card");
+
+                                    card.style.animation = "fadeOut 0.4s ease forwards";
+
+                                    setTimeout(() => {
+                                        card.remove();
+                                        modal.classList.remove("active");
+
+                                        const grid = document.querySelector(".address-grid");
+                                        if (grid.children.length === 0) {
+                                            grid.innerHTML = `
+                            <div class="empty-state">
+                                <div class="empty-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="empty-text">
+                                    No saved addresses yet
+                                </div>
+                            </div>
+                        `;
+                                        }
+
+                                    }, 400);
+
+                                } else {
+                                    modal.classList.remove("active");
+                                    alert(data.message || "Delete failed");
+                                }
+
+                            })
+                            .catch(err => {
+                                console.log(err);
+                                modal.classList.remove("active");
+                                alert("Something went wrong");
+                            });
+
+                    };
+                }
+
+            });
+
+            function updateProfileProgress(userData, addressCount = 0) {
+
+                let totalFields = 6;
+                let completed = 0;
+
+                if (userData.first_name && userData.first_name.trim() !== "") completed++;
+                if (userData.last_name && userData.last_name.trim() !== "") completed++;
+                if (userData.email && userData.email.trim() !== "") completed++;
+                if (userData.phone && userData.phone.trim() !== "") completed++;
+                if (userData.dob && userData.dob.trim() !== "") completed++;
+                if (addressCount > 0) completed++;
+
+                let percent = Math.round((completed / totalFields) * 100);
+
+                document.getElementById("progressFill").style.width = percent + "%";
+                document.getElementById("progressPercent").innerText = percent + "%";
+
+                if (percent === 100) {
+                    document.getElementById("progressHint").innerText =
+                        "✨ Your profile is fully completed!";
+                } else {
+                    document.getElementById("progressHint").innerText =
+                        "Complete your profile to unlock full experience ✨";
+                }
+            }
+
+            // ===== LOGOUT =====
+
+            const logoutBtn = document.getElementById("logoutBtn");
+            const logoutModal = document.getElementById("logoutModal");
+            const confirmLogout = document.getElementById("confirmLogoutBtn");
+            const cancelLogout = document.getElementById("cancelLogout");
+
+            logoutBtn.addEventListener("click", function() {
+                logoutModal.classList.add("active");
+            });
+
+            cancelLogout.addEventListener("click", function() {
+                logoutModal.classList.remove("active");
+            });
+
+            confirmLogout.addEventListener("click", function() {
+
+                fetch("api/logout.php", {
+                        method: "POST",
+                        credentials: "same-origin"
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+
+                        if (data.status) {
+
+                            localStorage.removeItem("user");
+
+                            window.location.replace("login.html");
+
+                        } else {
+                            alert("Logout failed");
+                        }
+
+                    })
+                    .catch(() => {
+                        alert("Something went wrong");
+                    });
+
+            });
+
+            // ===== FORCE SESSION CHECK ON BACK BUTTON =====
+            window.addEventListener("pageshow", function(event) {
+                if (event.persisted) {
+                    window.location.reload();
+                }
+            });
 
         });
         // Menu Navigation
@@ -1711,7 +2338,258 @@
                 card.style.animationDelay = (index * 0.05) + 's';
             });
         });
+
+        // ===== UPDATE PROFILE =====
+
+        document.getElementById("saveProfileBtn").addEventListener("click", function() {
+
+            const user = JSON.parse(localStorage.getItem("user"));
+
+            // ===== VERIFY SESSION FROM SERVER =====
+            fetch("api/check_session.php", {
+                    credentials: "same-origin"
+                })
+                .then(res => res.json())
+                .then(session => {
+
+                    if (!session.logged_in) {
+                        localStorage.removeItem("user");
+                        window.location.replace("login.html");
+                        return;
+                    }
+
+                })
+                .catch(() => {
+                    window.location.replace("login.html");
+                });
+
+            const firstName = document.getElementById("firstName").value.trim();
+            const lastName = document.getElementById("lastName").value.trim();
+            const email = document.getElementById("personalEmail").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const dob = document.getElementById("dob").value.trim();
+
+            fetch("api/update_profile.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        id: user.id,
+                        first_name: firstName,
+                        last_name: lastName,
+                        email: email,
+                        phone: phone,
+                        dob: dob
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+
+                    if (data.status) {
+
+                        // Update sidebar instantly
+                        document.getElementById("profileName").innerText =
+                            firstName + " " + lastName;
+
+                        document.getElementById("profileEmail").innerText = email;
+
+                        // Update localStorage
+                        user.first_name = firstName;
+                        user.last_name = lastName;
+                        user.email = email;
+                        localStorage.setItem("user", JSON.stringify(user));
+
+                        alert("Profile Updated Successfully ✨");
+                        updateProfileProgress({
+                            first_name: firstName,
+                            last_name: lastName,
+                            email: email,
+                            phone: phone,
+                            dob: dob
+                        }, document.querySelectorAll(".address-card").length);
+
+                    } else {
+
+                        alert(data.message);
+
+                    }
+
+                })
+                .catch(err => {
+                    console.log(err);
+                    alert("Update failed");
+                });
+
+        });
     </script>
+    <!-- ===== ADD ADDRESS GLASS POPUP ===== -->
+    <div id="addressPopup" class="glass-popup">
+
+        <div class="glass-card popup-card">
+
+            <div class="popup-header">
+                <h3>Add New Address</h3>
+                <i class="fas fa-times close-popup"></i>
+            </div>
+
+            <div class="info-grid">
+
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="addr_name">
+                </div>
+
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text" id="addr_phone">
+                </div>
+
+                <div class="form-group">
+                    <label>Alternate Phone</label>
+                    <input type="text" id="addr_alt_phone">
+                </div>
+
+                <div class="form-group form-full">
+                    <label>Room / Flat / Building No</label>
+                    <input type="text" id="addr_flat">
+                </div>
+
+                <div class="form-group form-full">
+                    <label>Address Line</label>
+                    <input type="text" id="addr_line">
+                </div>
+
+                <div class="form-group">
+                    <label>State</label>
+                    <select id="addr_state">
+        <option value="">Select State</option>
+
+        <option>Andhra Pradesh</option>
+        <option>Arunachal Pradesh</option>
+        <option>Assam</option>
+        <option>Bihar</option>
+        <option>Chhattisgarh</option>
+        <option>Goa</option>
+        <option>Gujarat</option>
+        <option>Haryana</option>
+        <option>Himachal Pradesh</option>
+        <option>Jharkhand</option>
+        <option>Karnataka</option>
+        <option>Kerala</option>
+        <option>Madhya Pradesh</option>
+        <option>Maharashtra</option>
+        <option>Manipur</option>
+        <option>Meghalaya</option>
+        <option>Mizoram</option>
+        <option>Nagaland</option>
+        <option>Odisha</option>
+        <option>Punjab</option>
+        <option>Rajasthan</option>
+        <option>Sikkim</option>
+        <option>Tamil Nadu</option>
+        <option>Telangana</option>
+        <option>Tripura</option>
+        <option>Uttar Pradesh</option>
+        <option>Uttarakhand</option>
+        <option>West Bengal</option>
+
+        <option>Andaman and Nicobar Islands</option>
+        <option>Chandigarh</option>
+        <option>Dadra and Nagar Haveli and Daman & Diu</option>
+        <option>Delhi</option>
+        <option>Jammu and Kashmir</option>
+        <option>Ladakh</option>
+        <option>Lakshadweep</option>
+        <option>Puducherry</option>
+
+    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>City</label>
+                    <input type="text" id="addr_city">
+                </div>
+
+                <div class="form-group">
+                    <label>ZIP Code</label>
+                    <input type="text" id="addr_zip">
+                </div>
+
+            </div>
+
+            <div class="section-actions">
+                <button class="btn-luxury" id="saveAddressBtn">Save Address</button>
+                <button class="btn-secondary close-popup">Cancel</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ===== DELETE CONFIRM MODAL ===== -->
+    <div id="deleteConfirmModal" class="glass-popup">
+        <div class="glass-card popup-card" style="max-width:500px; text-align:center;">
+
+            <h3 style="margin-bottom:15px;">Delete Address?</h3>
+
+            <p style="color:#666; margin-bottom:25px;">
+                This action cannot be undone. Are you sure you want to remove this address?
+            </p>
+
+            <div style="display:flex; gap:15px; justify-content:center;">
+                <button class="btn-secondary" id="cancelDelete">Cancel</button>
+                <button id="confirmDeleteBtn" style="
+                padding:0.8rem 2rem;
+                border:none;
+                border-radius:8px;
+                background:linear-gradient(135deg,#ff4d4d,#c62828);
+                color:white;
+                text-transform:uppercase;
+                letter-spacing:0.15rem;
+                font-size:0.7rem;
+                cursor:pointer;
+                box-shadow:0 15px 35px rgba(198,40,40,0.4);
+                transition:0.4s;
+                ">
+                Yes, Delete
+            </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ===== LOGOUT CONFIRM MODAL ===== -->
+    <div id="logoutModal" class="glass-popup">
+        <div class="glass-card popup-card" style="max-width:500px; text-align:center;">
+
+            <h3 style="margin-bottom:15px;">Logout?</h3>
+
+            <p style="color:#666; margin-bottom:25px;">
+                Are you sure you want to logout from your account?
+            </p>
+
+            <div style="display:flex; gap:15px; justify-content:center;">
+                <button class="btn-secondary" id="cancelLogout">Cancel</button>
+                <button id="confirmLogoutBtn" style="
+                padding:0.8rem 2rem;
+                border:none;
+                border-radius:8px;
+                background:linear-gradient(135deg,#ff4d4d,#c62828);
+                color:white;
+                text-transform:uppercase;
+                letter-spacing:0.15rem;
+                font-size:0.7rem;
+                cursor:pointer;
+                box-shadow:0 15px 35px rgba(198,40,40,0.4);
+                transition:0.4s;
+            ">
+                Yes, Logout
+            </button>
+            </div>
+
+        </div>
+    </div>
 </body>
 
 </html>

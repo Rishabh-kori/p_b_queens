@@ -580,6 +580,11 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" onclick="showPage('heroSlides')">
+                        <i class="fas fa-images"></i> Hero Slides
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" onclick="showPage('products')">
                         <i class="fas fa-box"></i> Products
                     </a>
@@ -676,6 +681,35 @@
                             </tr>
                         </thead>
                         <tbody id="recentOrdersTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- HERO SLIDES PAGE -->
+            <div id="heroSlides" class="page">
+                <h1 class="section-title">Hero Slider Management</h1>
+
+                <button class="btn btn-gold" onclick="openSlideModal()">
+        <i class="fas fa-plus"></i> Add Slide
+    </button>
+
+                <div class="table-wrapper">
+                    <div class="table-header">
+                        <h3>All Slides</h3>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Badge</th>
+                                <th>Title</th>
+                                <th>Price</th>
+                                <th>Order</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="slidesTable"></tbody>
                     </table>
                 </div>
             </div>
@@ -969,6 +1003,58 @@
         </div>
     </div>
 
+
+    <!-- SLIDE MODAL -->
+    <div id="slideModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add/Edit Slide</h2>
+                <button class="close-btn" onclick="closeSlideModal()">&times;</button>
+            </div>
+
+            <form id="slideForm">
+                <div class="form-group">
+                    <label>Badge *</label>
+                    <input type="text" id="slideBadge" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Title Line 1 *</label>
+                    <input type="text" id="slideTitle1" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Title Line 2 *</label>
+                    <input type="text" id="slideTitle2" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="slideDesc"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Starting Price (₹)</label>
+                    <input type="number" id="slidePrice" step="0.01" placeholder="e.g. 1999.00">
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Image *</label>
+                    <input type="file" id="slideImage" accept="image/*">
+                </div>
+
+                <div class="form-group">
+                    <label>Sort Order</label>
+                    <input type="number" id="slideOrder" value="0">
+                </div>
+
+                <button type="submit" class="btn btn-gold" style="width:100%;">
+                Save Slide
+            </button>
+            </form>
+        </div>
+    </div>
+
     <script>
         // ============ DATA STORAGE ============
         const data = {
@@ -1102,25 +1188,38 @@
             }
         };
 
-        // ============ INITIALIZATION ============
         document.addEventListener('DOMContentLoaded', function() {
-            loadData();
-            updateDashboard();
-            populateCategorySelect();
-            loadProducts();
-            loadCategories();
-            loadOrders();
-            loadCustomers();
-            loadInventory();
-            loadAnalytics();
-            loadSettings();
 
-            // Setup forms
-            document.getElementById('productForm').addEventListener('submit', saveProduct);
-            document.getElementById('categoryForm').addEventListener('submit', saveCategory);
-            document.getElementById('productSearch').addEventListener('keyup', filterProducts);
-            document.getElementById('orderSearch').addEventListener('keyup', filterOrders);
-            document.getElementById('customerSearch').addEventListener('keyup', filterCustomers);
+            // ===== ADMIN SESSION CHECK =====
+            fetch("api/check_session.php", {
+                    credentials: "same-origin"
+                })
+                .then(res => res.json())
+                .then(data => {
+
+                    if (!data.logged_in || data.role !== "admin") {
+                        window.location.replace("login.html");
+                        return;
+                    }
+
+                    // If admin verified, load dashboard
+                    loadData();
+                    updateDashboard();
+                    loadSlides();
+                    populateCategorySelect();
+                    loadProducts();
+                    loadCategories();
+                    loadOrders();
+                    loadCustomers();
+                    loadInventory();
+                    loadAnalytics();
+                    loadSettings();
+
+                })
+                .catch(() => {
+                    window.location.replace("login.html");
+                });
+
         });
 
         // ============ NAVIGATION ============
@@ -1653,6 +1752,194 @@
             if (event.target === categoryModal) {
                 categoryModal.classList.remove('active');
             }
+        });
+
+        // ================= HERO SLIDES =================
+
+        let editingSlideId = null;
+
+        function loadSlides() {
+            fetch("api/get_hero_slides.php", {
+                    credentials: "same-origin"
+                })
+                .then(res => res.json())
+                .then(data => {
+                    const tbody = document.getElementById("slidesTable");
+                    tbody.innerHTML = "";
+
+                    data.slides.forEach(slide => {
+                        tbody.innerHTML += `
+                    <tr>
+                        <td>${slide.badge}</td>
+                        <td>${slide.title_line1} ${slide.title_line2}</td>
+                        <td>
+                            ${slide.starting_price 
+                                ? '₹' + Number(slide.starting_price).toLocaleString('en-IN') 
+                                : '-'}
+                        </td>
+                        <td>${slide.sort_order}</td>
+                       <td>
+                            <div style="display:flex;align-items:center;gap:8px;">
+                                <span class="status-badge ${slide.is_active == 1 ? 'status-completed' : 'status-cancelled'}">
+                                    ${slide.is_active == 1 ? 'Active' : 'Disabled'}
+                                </span>
+
+                                <button class="btn btn-small ${slide.is_active == 1 ? 'btn-danger' : 'btn-gold'}"
+                                    onclick="toggleSlideStatus(${slide.id})">
+                                    ${slide.is_active == 1 ? 'Disable' : 'Enable'}
+                                </button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn btn-edit btn-small" onclick="editSlide(${slide.id})">Edit</button>
+                                <button class="btn btn-danger btn-small" onclick="deleteSlide(${slide.id})">Delete</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                    });
+                });
+        }
+
+        function openSlideModal(isEdit = false) {
+
+            if (!isEdit) {
+                editingSlideId = null;
+                document.getElementById("slideForm").reset();
+            }
+
+            document.getElementById("slideModal").classList.add("active");
+        }
+
+        function closeSlideModal() {
+            document.getElementById("slideModal").classList.remove("active");
+        }
+
+        function editSlide(id) {
+            fetch("api/get_hero_slides.php", {
+                    credentials: "same-origin"
+                })
+                .then(res => res.json())
+                .then(data => {
+                    const slide = data.slides.find(s => s.id == id);
+                    if (!slide) return;
+
+                    editingSlideId = id;
+
+                    document.getElementById("slideBadge").value = slide.badge;
+                    document.getElementById("slideTitle1").value = slide.title_line1;
+                    document.getElementById("slideTitle2").value = slide.title_line2;
+                    document.getElementById("slideDesc").value = slide.description;
+                    document.getElementById("slidePrice").value = slide.starting_price || "";
+                    document.getElementById("slideOrder").value = slide.sort_order;
+
+                    openSlideModal(true);
+                });
+        }
+
+        function deleteSlide(id) {
+
+            if (!confirm("Delete this slide?")) return;
+
+            fetch("api/delete_slide.php", {
+                    method: "POST",
+                    credentials: "same-origin",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        id
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+
+                    if (data.status) {
+                        loadSlides();
+                    } else {
+                        alert(data.message || "Delete failed");
+                    }
+
+                })
+                .catch(err => {
+                    console.error("Delete error:", err);
+                });
+        }
+
+        function toggleSlideStatus(id) {
+
+            fetch("api/toggle_slide_status.php", {
+                    method: "POST",
+                    credentials: "same-origin",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        id
+                    })
+                })
+                .then(res => res.json())
+                .then(data => {
+
+                    if (data.status) {
+                        loadSlides();
+                    } else {
+                        alert(data.message || "Toggle failed");
+                    }
+
+                })
+                .catch(err => {
+                    console.error("Toggle error:", err);
+                });
+        }
+
+        document.getElementById("slideForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const formData = new FormData();
+
+            const badge = document.getElementById("slideBadge").value;
+            const title1 = document.getElementById("slideTitle1").value;
+            const title2 = document.getElementById("slideTitle2").value;
+            const desc = document.getElementById("slideDesc").value;
+            const order = document.getElementById("slideOrder").value;
+            const price = document.getElementById("slidePrice").value;
+            const imageInput = document.getElementById("slideImage");
+
+            if (editingSlideId) {
+                formData.append("id", editingSlideId);
+            }
+            formData.append("badge", badge);
+            formData.append("title_line1", title1);
+            formData.append("title_line2", title2);
+            formData.append("description", desc);
+            formData.append("sort_order", order);
+            formData.append("starting_price", price);
+
+            if (imageInput.files.length > 0) {
+                formData.append("image", imageInput.files[0]);
+            }
+
+            fetch("api/save_slide.php", {
+                    method: "POST",
+                    body: formData,
+                    credentials: "same-origin"
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data); // ⭐ very important for debugging
+
+                    if (data.status) {
+                        closeSlideModal();
+                        loadSlides();
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .catch(err => {
+                    console.error("Error:", err);
+                });
         });
     </script>
 </body>

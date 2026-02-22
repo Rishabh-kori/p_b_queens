@@ -1,6 +1,6 @@
 <?php
 
-include "config.php";   // (use same DB file as login/signup)
+include "config.php";   // DB connection
 
 header("Content-Type: application/json");
 
@@ -19,9 +19,9 @@ if (!isset($data['id'])) {
 
 $id = intval($data['id']);
 
-// Fetch user profile (ONLY required fields)
+// Fetch FULL profile including phone & dob
 $stmt = $conn->prepare("
-    SELECT id, first_name, last_name, email, role 
+    SELECT id, first_name, last_name, email, phone, dob, role
     FROM users 
     WHERE id=?
 ");

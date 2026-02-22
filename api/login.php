@@ -1,4 +1,15 @@
 <?php
+$lifetime = 60 * 60 * 24 * 2; // 2 days in seconds
+
+session_set_cookie_params([
+    'lifetime' => $lifetime,
+    'path' => '/',
+    'httponly' => true,
+    'secure' => false, // true if using HTTPS
+    'samesite' => 'Lax'
+]);
+
+session_start();
 include "config.php";
 
 header("Content-Type: application/json");
@@ -31,6 +42,12 @@ if($user && password_verify($password,$user['password'])){
 
     // Remove password before sending response
     unset($user['password']);
+
+    // Save user in session
+$_SESSION['user_id'] = $user['id'];
+$_SESSION['user_name'] = $user['first_name'];
+$_SESSION['user_email'] = $user['email'];
+$_SESSION['role'] = $user['role'];  
 
     echo json_encode([
         "status"=>true,

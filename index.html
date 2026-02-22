@@ -2393,7 +2393,7 @@
         </ul>
 
         <div class="mobile-menu" id="mobileMenu">
-            <div class="mobile-profile" onclick="window.location.href='login.html'" style="cursor:pointer">
+            <div class="mobile-profile" id="mobileProfileBtn" style="cursor:pointer">
 
                 <i class="fa-regular fa-user"></i>
                 <span>My Profile</span>
@@ -2429,7 +2429,7 @@
             </svg>
 
             <!-- PROFILE (DESKTOP ONLY) -->
-            <svg class="profile-desktop" onclick="window.location.href='login.html'" style="cursor:pointer" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <svg class="profile-desktop" id="profileBtn" style="cursor:pointer" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
 
                 <circle cx="12" cy="8" r="4"></circle>
                 <path d="M4 22c0-4 4-6 8-6s8 2 8 6"></path>
@@ -2466,67 +2466,7 @@
 
     <section class="hero-slider">
 
-        <div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1605100804763-247f67b3557e?auto=format&fit=crop&w=1600&q=90')">
-
-            <div class="hero-overlay"></div>
-
-            <div class="hero-content luxury-layout">
-
-                <div class="hero-small">NEW COLLECTION</div>
-
-                <h1 class="hero-title">
-                    Royal<br>
-                    <span>Necklaces</span>
-                </h1>
-
-                <p class="hero-desc">
-                    Timeless heritage inspired by Jaipur royalty
-                </p>
-
-                <div class="hero-actions">
-                    <a class="btn-luxury">Explore →</a>
-                    <a class="btn-outline">View All</a>
-                </div>
-
-                <div class="hero-price">
-                    Starting from ₹95,000
-                </div>
-
-            </div>
-
-
-        </div>
-
-        <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=1600&q=90')">
-
-            <div class="hero-overlay"></div>
-
-            <div class="hero-content luxury-layout">
-
-                <div class="hero-small">BESTSELLER</div>
-
-                <h1 class="hero-title">
-                    Elegant<br>
-                    <span>Rings</span>
-                </h1>
-
-                <p class="hero-desc">
-                    Luxury handcrafted jewelry for modern queens
-                </p>
-
-                <div class="hero-actions">
-                    <a class="btn-luxury">Explore →</a>
-                    <a class="btn-outline">View All</a>
-                </div>
-
-                <div class="hero-price">
-                    Starting from ₹1,25,000
-                </div>
-
-            </div>
-
-
-        </div>
+        <!-- Slides will load here dynamically -->
 
         <button class="hero-nav prev">‹</button>
         <button class="hero-nav next">›</button>
@@ -3199,104 +3139,159 @@
         // Initial Load
         window.onload = () => {
             renderProducts();
+            loadHeroSlides();
         };
 
-        /* ===== ULTRA LUXURY HERO AUTO SLIDER ===== */
+        /* ===== LOAD HERO SLIDES FROM DATABASE ===== */
 
-        const slides = document.querySelectorAll('.hero-slide');
+        async function loadHeroSlides() {
+
+            try {
+
+                const response = await fetch("api/get_active_hero_slides.php");
+                const data = await response.json();
+
+                if (!data.status || data.slides.length === 0) return;
+
+                const slider = document.querySelector(".hero-slider");
+
+                data.slides.forEach((slide, index) => {
+
+                            const slideDiv = document.createElement("div");
+                            slideDiv.classList.add("hero-slide");
+
+                            if (index === 0) slideDiv.classList.add("active");
+
+                            slideDiv.style.backgroundImage = `url('${slide.image_url}')`;
+
+                            slideDiv.innerHTML = `
+                                <div class="hero-overlay"></div>
+
+                                <div class="hero-content luxury-layout">
+
+                                    <div class="hero-small">${slide.badge}</div>
+
+                                    <h1 class="hero-title">
+                                        ${slide.title_line1}<br>
+                                        <span>${slide.title_line2}</span>
+                                    </h1>
+
+                                    <p class="hero-desc">
+                                        ${slide.description ?? ''}
+                                    </p>
+
+                                    <div class="hero-actions">
+                                        <a class="btn-luxury">Explore →</a>
+                                        <a class="btn-outline">View All</a>
+                                    </div>
+
+                                    ${
+                                        slide.starting_price
+                                        ? `<div class="hero-price">
+                                                Starting from ₹${Number(slide.starting_price).toLocaleString('en-IN')}
+                                        </div>`
+                                        : ''
+                                    }
+
+                                </div>
+                            `;
+
+                    slider.insertBefore(slideDiv, slider.querySelector(".hero-nav.prev"));
+                });
+
+                initHeroSlider();
+
+            } catch (error) {
+                console.error("Hero load error:", error);
+            }
+        }
+
+        /* ===== HERO SLIDER SYSTEM (DYNAMIC SAFE VERSION) ===== */
+
         let currentSlide = 0;
         let heroInterval;
 
-        function showSlide(index) {
+        function initHeroSlider() {
 
-            slides.forEach((slide) => {
-                slide.classList.remove('active');
+            const slides = document.querySelectorAll('.hero-slide');
+            const dotsContainer = document.querySelector('.hero-dots');
 
-                // reset animation (THIS is the secret)
-                const animated = slide.querySelectorAll(
-                    '.hero-small, .hero-title, .hero-desc, .hero-actions, .hero-price'
-                );
+            if (slides.length === 0) return;
 
-                animated.forEach(el => {
-                    el.style.animation = 'none';
-                    el.offsetHeight; // force reflow
-                    el.style.animation = null;
-                });
+            dotsContainer.innerHTML = "";
+
+            slides.forEach((_, index) => {
+                const dot = document.createElement("div");
+                dot.classList.add("hero-dot");
+
+                dot.onclick = () => {
+                    currentSlide = index;
+                    showSlide(currentSlide);
+                    restartAuto();
+                };
+
+                dotsContainer.appendChild(dot);
             });
 
-            slides[index].classList.add('active');
-        }
+            function showSlide(index) {
 
+                slides.forEach((slide) => {
+                    slide.classList.remove('active');
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % slides.length;
-            showSlide(currentSlide);
-        }
+                    const animated = slide.querySelectorAll(
+                        '.hero-small, .hero-title, .hero-desc, .hero-actions, .hero-price'
+                    );
 
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-            showSlide(currentSlide);
-        }
+                    animated.forEach(el => {
+                        el.style.animation = 'none';
+                        el.offsetHeight;
+                        el.style.animation = null;
+                    });
+                });
 
-        /* arrow buttons */
-        document.querySelector('.next').onclick = () => {
-            nextSlide();
-            restartAuto();
-        };
+                slides[index].classList.add('active');
 
-        document.querySelector('.prev').onclick = () => {
-            prevSlide();
-            restartAuto();
-        };
-
-        /* AUTO SLIDE */
-        function startAuto() {
-            heroInterval = setInterval(nextSlide, 5000);
-        }
-
-        function restartAuto() {
-            clearInterval(heroInterval);
-            startAuto();
-        }
-
-        startAuto();
-
-        /* ===== HERO DOTS SYSTEM ===== */
-
-        const dotsContainer = document.querySelector('.hero-dots');
-
-        /* create dots dynamically */
-        slides.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.classList.add('hero-dot');
-
-            dot.onclick = () => {
-                currentSlide = index;
-                showSlide(currentSlide);
                 updateDots();
+            }
+
+            function updateDots() {
+                const dots = document.querySelectorAll(".hero-dot");
+                dots.forEach(d => d.classList.remove("active"));
+                dots[currentSlide].classList.add("active");
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            document.querySelector('.next').onclick = () => {
+                nextSlide();
                 restartAuto();
             };
 
-            dotsContainer.appendChild(dot);
-        });
+            document.querySelector('.prev').onclick = () => {
+                prevSlide();
+                restartAuto();
+            };
 
-        const dots = document.querySelectorAll('.hero-dot');
+            function startAuto() {
+                heroInterval = setInterval(nextSlide, 5000);
+            }
 
-        function updateDots() {
-            dots.forEach(d => d.classList.remove('active'));
-            dots[currentSlide].classList.add('active');
-        }
+            function restartAuto() {
+                clearInterval(heroInterval);
+                startAuto();
+            }
 
-        /* update dots whenever slide changes */
-        const originalShowSlide = showSlide;
-
-        showSlide = function(index) {
-            originalShowSlide(index);
             updateDots();
+            startAuto();
         }
-
-        /* initial state */
-        updateDots();
 
         /* ===== MOBILE MENU ===== */
 
@@ -3617,6 +3612,32 @@
     searchInput.value = text;
     searchInput.dispatchEvent(new Event('input'));
     }
+
+    /* ===== PROFILE SESSION CHECK ===== */
+
+async function checkLoginAndRedirect() {
+
+    try {
+        const response = await fetch("api/check_session.php", {
+    credentials: "same-origin"
+});
+        const data = await response.json();
+
+        if (data.logged_in) {
+            window.location.href = "profile.html";
+        } else {
+            window.location.href = "login.html";
+        }
+
+    } catch (error) {
+        window.location.href = "login.html";
+    }
+}
+
+/* Attach to buttons */
+
+document.getElementById("profileBtn").addEventListener("click", checkLoginAndRedirect);
+document.getElementById("mobileProfileBtn").addEventListener("click", checkLoginAndRedirect);
     </script>
 
     <!-- ===== LUXURY WHATSAPP FLOAT ===== -->
