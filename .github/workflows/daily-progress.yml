@@ -1,0 +1,42 @@
+
+name: Record Development Progress
+
+on:
+  workflow_dispatch:
+    inputs:
+      work:
+        description: "Describe the real work completed"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Record progress
+        env:
+          WORK_DONE: ${{ inputs.work }}
+        run: python daily_progress.py
+
+      - name: Commit and push log
+        run: |
+          git add DEVELOPMENT_LOG.md
+          git commit -m "docs: record development progress"
+          git push
